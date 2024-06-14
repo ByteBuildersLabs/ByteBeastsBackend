@@ -1,5 +1,5 @@
-use dojo_starter::models::moves::Direction;
-use dojo_starter::models::position::Position;
+use bytebeastsbeta::models::moves::Direction;
+use bytebeastsbeta::models::position::Position;
 
 // define the interface
 #[dojo::interface]
@@ -13,7 +13,7 @@ trait IActions {
 mod actions {
     use super::{IActions, next_position};
     use starknet::{ContractAddress, get_caller_address};
-    use dojo_starter::models::{position::{Position, Vec2}, moves::{Moves, Direction}};
+    use bytebeastsbeta::models::{position::{Position, Vec2}, moves::{Moves, Direction}};
 
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {

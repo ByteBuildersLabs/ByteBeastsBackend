@@ -2,6 +2,13 @@
 version = 1
 
 [[package]]
+name = "bytebeastsbeta"
+version = "0.6.0"
+dependencies = [
+ "dojo",
+]
+
+[[package]]
 name = "dojo"
 version = "0.6.0"
 source = "git+https://github.com/dojoengine/dojo?tag=v0.6.0#fc5ad790c1993713e59f3fc65739160f132f29f0"
@@ -13,10 +20,3 @@ dependencies = [
 name = "dojo_plugin"
 version = "0.3.11"
 source = "git+https://github.com/dojoengine/dojo?tag=v0.3.11#1e651b5d4d3b79b14a7d8aa29a92062fcb9e6659"
-
-[[package]]
-name = "dojo_starter"
-version = "0.6.0"
-dependencies = [
- "dojo",
-]

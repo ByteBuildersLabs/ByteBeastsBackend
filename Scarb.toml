@@ -1,6 +1,6 @@
 [package]
 cairo-version = "2.5.4"
-name = "dojo_starter"
+name = "bytebeastsbeta"
 version = "0.6.0"
 
 [cairo]
@@ -27,14 +27,9 @@ private_key = "0x2bbf4f9fd0bbb2e60b0316c1fe0b76cf7a4d0198bd493ced9b8df2a3a24d68a
 world_address = "0x446f1f19ba951b59935df72974f8ba6060e5fbb411ca21d3e3e3812e3eb8df8" # Update this line with your world address
 
 [tool.dojo.world]
-name = "Dojo starter"
-description = "The official Dojo Starter guide, the quickest and most streamlined way to get your Dojo Autonomous World up and running. This guide will assist you with the initial setup, from cloning the repository to deploying your world."
-cover_uri = "file://assets/cover.png"
-icon_uri = "file://assets/icon.png"
-website = "https://github.com/dojoengine/dojo-starter"
+name = "ByteBeastsBeta"
+description = "This the Dojo project for Stark Hack June 2024"
 
 [tool.dojo.world.socials]
-x = "https://x.com/ohayo_dojo"
-discord = "https://discord.gg/FB2wR6uF"
-github = "https://github.com/dojoengine/dojo-starter"
-telegram = "https://t.me/dojoengine"
+x = "https://twitter.com/ByteBuildersLab"
+github = "https://github.com/ByteBuildersLabs/StarkHack2024BackEnd"
