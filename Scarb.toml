@@ -8,11 +8,11 @@ sierra-replace-ids = true
 
 [scripts]
 migrate = "sozo build && sozo migrate apply && ./scripts/default_auth.sh"
-spawn = "./scripts/spawn.sh"
-move = "./scripts/move.sh"
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v0.6.0" }
+alexandria_sorting = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "ecc881e2aee668332441bdfa32336e3404cf8eb1"}
+alexandria_data_structures = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "ecc881e2aee668332441bdfa32336e3404cf8eb1"}
 
 [[target.dojo]]
 

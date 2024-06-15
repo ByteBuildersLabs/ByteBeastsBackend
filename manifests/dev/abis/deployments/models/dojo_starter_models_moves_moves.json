@@ -170,11 +170,11 @@
   {
     "type": "impl",
     "name": "movesImpl",
-    "interface_name": "dojo_starter::models::moves::Imoves"
+    "interface_name": "bytebeastsbeta::models::moves::Imoves"
   },
   {
     "type": "enum",
-    "name": "dojo_starter::models::moves::Direction",
+    "name": "bytebeastsbeta::models::moves::Direction",
     "variants": [
       {
         "name": "None",
@@ -200,7 +200,7 @@
   },
   {
     "type": "struct",
-    "name": "dojo_starter::models::moves::Moves",
+    "name": "bytebeastsbeta::models::moves::Moves",
     "members": [
       {
         "name": "player",
@@ -212,13 +212,13 @@
       },
       {
         "name": "last_direction",
-        "type": "dojo_starter::models::moves::Direction"
+        "type": "bytebeastsbeta::models::moves::Direction"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "dojo_starter::models::moves::Imoves",
+    "name": "bytebeastsbeta::models::moves::Imoves",
     "items": [
       {
         "type": "function",
@@ -226,7 +226,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "dojo_starter::models::moves::Moves"
+            "type": "bytebeastsbeta::models::moves::Moves"
           }
         ],
         "outputs": [],
@@ -236,7 +236,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::models::moves::moves::Event",
+    "name": "bytebeastsbeta::models::moves::moves::Event",
     "kind": "enum",
     "variants": []
   }

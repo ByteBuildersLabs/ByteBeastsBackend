@@ -169,40 +169,38 @@
   },
   {
     "type": "impl",
-    "name": "positionImpl",
-    "interface_name": "dojo_starter::models::position::Iposition"
+    "name": "beastImpl",
+    "interface_name": "bytebeastsbeta::models::entities::beast::Ibeast"
   },
   {
     "type": "struct",
-    "name": "dojo_starter::models::position::Vec2",
+    "name": "bytebeastsbeta::models::entities::beast::Beast",
     "members": [
       {
-        "name": "x",
+        "name": "beast_id",
         "type": "core::integer::u32"
       },
       {
-        "name": "y",
-        "type": "core::integer::u32"
-      }
-    ]
-  },
-  {
-    "type": "struct",
-    "name": "dojo_starter::models::position::Position",
-    "members": [
-      {
-        "name": "player",
-        "type": "core::starknet::contract_address::ContractAddress"
+        "name": "beast_type",
+        "type": "core::integer::u8"
       },
       {
-        "name": "vec",
-        "type": "dojo_starter::models::position::Vec2"
+        "name": "hp",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "attack",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "movement_range",
+        "type": "core::integer::u64"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "dojo_starter::models::position::Iposition",
+    "name": "bytebeastsbeta::models::entities::beast::Ibeast",
     "items": [
       {
         "type": "function",
@@ -210,7 +208,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "dojo_starter::models::position::Position"
+            "type": "bytebeastsbeta::models::entities::beast::Beast"
           }
         ],
         "outputs": [],
@@ -220,7 +218,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::models::position::position::Event",
+    "name": "bytebeastsbeta::models::entities::beast::beast::Event",
     "kind": "enum",
     "variants": []
   }

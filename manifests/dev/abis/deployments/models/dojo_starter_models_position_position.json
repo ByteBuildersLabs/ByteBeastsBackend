@@ -170,11 +170,11 @@
   {
     "type": "impl",
     "name": "positionImpl",
-    "interface_name": "dojo_starter::models::position::Iposition"
+    "interface_name": "bytebeastsbeta::models::position::Iposition"
   },
   {
     "type": "struct",
-    "name": "dojo_starter::models::position::Vec2",
+    "name": "bytebeastsbeta::models::position::Vec2",
     "members": [
       {
         "name": "x",
@@ -188,7 +188,7 @@
   },
   {
     "type": "struct",
-    "name": "dojo_starter::models::position::Position",
+    "name": "bytebeastsbeta::models::position::Position",
     "members": [
       {
         "name": "player",
@@ -196,13 +196,13 @@
       },
       {
         "name": "vec",
-        "type": "dojo_starter::models::position::Vec2"
+        "type": "bytebeastsbeta::models::position::Vec2"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "dojo_starter::models::position::Iposition",
+    "name": "bytebeastsbeta::models::position::Iposition",
     "items": [
       {
         "type": "function",
@@ -210,7 +210,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "dojo_starter::models::position::Position"
+            "type": "bytebeastsbeta::models::position::Position"
           }
         ],
         "outputs": [],
@@ -220,7 +220,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::models::position::position::Event",
+    "name": "bytebeastsbeta::models::position::position::Event",
     "kind": "enum",
     "variants": []
   }
