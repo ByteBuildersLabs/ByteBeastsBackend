@@ -319,8 +319,8 @@
   },
   {
     "type": "impl",
-    "name": "movesImpl",
-    "interface_name": "dojo_starter::models::moves::Imoves"
+    "name": "movedImpl",
+    "interface_name": "dojo_starter::systems::actions::actions::Imoved"
   },
   {
     "type": "enum",
@@ -349,44 +349,22 @@
     ]
   },
   {
-    "type": "enum",
-    "name": "core::bool",
-    "variants": [
-      {
-        "name": "False",
-        "type": "()"
-      },
-      {
-        "name": "True",
-        "type": "()"
-      }
-    ]
-  },
-  {
     "type": "struct",
-    "name": "dojo_starter::models::moves::Moves",
+    "name": "dojo_starter::systems::actions::actions::Moved",
     "members": [
       {
         "name": "player",
         "type": "core::starknet::contract_address::ContractAddress"
       },
       {
-        "name": "remaining",
-        "type": "core::integer::u8"
-      },
-      {
-        "name": "last_direction",
+        "name": "direction",
         "type": "dojo_starter::models::moves::Direction"
-      },
-      {
-        "name": "can_move",
-        "type": "core::bool"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "dojo_starter::models::moves::Imoves",
+    "name": "dojo_starter::systems::actions::actions::Imoved",
     "items": [
       {
         "type": "function",
@@ -394,7 +372,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "dojo_starter::models::moves::Moves"
+            "type": "dojo_starter::systems::actions::actions::Moved"
           }
         ],
         "outputs": [],
@@ -404,7 +382,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::models::moves::moves::Event",
+    "name": "dojo_starter::systems::actions::actions::moved::Event",
     "kind": "enum",
     "variants": []
   }

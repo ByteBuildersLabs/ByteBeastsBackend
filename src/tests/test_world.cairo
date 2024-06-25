@@ -6,13 +6,12 @@ mod tests {
     // import test utils
     use dojo::test_utils::{spawn_test_world, deploy_contract};
     // import test utils
-    use bytebeastsbeta::{
+    use dojo_starter::{
         systems::{actions::{actions, IActionsDispatcher, IActionsDispatcherTrait}},
         models::{position::{Position, Vec2, position}, moves::{Moves, Direction, moves}}
     };
 
     #[test]
-    #[available_gas(30000000)]
     fn test_move() {
         // caller
         let caller = starknet::contract_address_const::<0x0>();
@@ -25,7 +24,7 @@ mod tests {
 
         // deploy systems contract
         let contract_address = world
-            .deploy_contract('salt', actions::TEST_CLASS_HASH.try_into().unwrap());
+            .deploy_contract('salt', actions::TEST_CLASS_HASH.try_into().unwrap(), array![].span());
         let actions_system = IActionsDispatcher { contract_address };
 
         // call spawn()

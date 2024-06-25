@@ -2,56 +2,9 @@
 version = 1
 
 [[package]]
-name = "alexandria_data_structures"
-version = "0.2.0"
-source = "git+https://github.com/keep-starknet-strange/alexandria.git?rev=ecc881e2aee668332441bdfa32336e3404cf8eb1#ecc881e2aee668332441bdfa32336e3404cf8eb1"
-dependencies = [
- "alexandria_encoding",
-]
-
-[[package]]
-name = "alexandria_encoding"
-version = "0.1.0"
-source = "git+https://github.com/keep-starknet-strange/alexandria.git?rev=ecc881e2aee668332441bdfa32336e3404cf8eb1#ecc881e2aee668332441bdfa32336e3404cf8eb1"
-dependencies = [
- "alexandria_math",
- "alexandria_numeric",
-]
-
-[[package]]
-name = "alexandria_math"
-version = "0.2.0"
-source = "git+https://github.com/keep-starknet-strange/alexandria.git?rev=ecc881e2aee668332441bdfa32336e3404cf8eb1#ecc881e2aee668332441bdfa32336e3404cf8eb1"
-dependencies = [
- "alexandria_data_structures",
-]
-
-[[package]]
-name = "alexandria_numeric"
-version = "0.1.0"
-source = "git+https://github.com/keep-starknet-strange/alexandria.git?rev=ecc881e2aee668332441bdfa32336e3404cf8eb1#ecc881e2aee668332441bdfa32336e3404cf8eb1"
-dependencies = [
- "alexandria_math",
-]
-
-[[package]]
-name = "alexandria_sorting"
-version = "0.1.0"
-source = "git+https://github.com/keep-starknet-strange/alexandria.git?rev=ecc881e2aee668332441bdfa32336e3404cf8eb1#ecc881e2aee668332441bdfa32336e3404cf8eb1"
-
-[[package]]
-name = "bytebeastsbeta"
-version = "0.6.0"
-dependencies = [
- "alexandria_data_structures",
- "alexandria_sorting",
- "dojo",
-]
-
-[[package]]
 name = "dojo"
-version = "0.6.0"
-source = "git+https://github.com/dojoengine/dojo?tag=v0.6.0#fc5ad790c1993713e59f3fc65739160f132f29f0"
+version = "0.7.1"
+source = "git+https://github.com/dojoengine/dojo?tag=v0.7.1#c4a1feadf1d5c5ecf9593b50c1a2ca2856ae2313"
 dependencies = [
  "dojo_plugin",
 ]
@@ -60,3 +13,10 @@ dependencies = [
 name = "dojo_plugin"
 version = "0.3.11"
 source = "git+https://github.com/dojoengine/dojo?tag=v0.3.11#1e651b5d4d3b79b14a7d8aa29a92062fcb9e6659"
+
+[[package]]
+name = "dojo_starter"
+version = "0.7.0"
+dependencies = [
+ "dojo",
+]

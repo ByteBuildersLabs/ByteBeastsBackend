@@ -1,18 +1,18 @@
 [package]
-cairo-version = "2.5.4"
-name = "bytebeastsbeta"
-version = "0.6.0"
+cairo-version = "2.6.3"
+name = "dojo_starter"
+version = "0.7.0"
 
 [cairo]
 sierra-replace-ids = true
 
 [scripts]
-migrate = "sozo build && sozo migrate apply && ./scripts/default_auth.sh"
+migrate = "sozo build && sozo migrate apply"
+spawn = "./scripts/spawn.sh"
+move = "./scripts/move.sh"
 
 [dependencies]
-dojo = { git = "https://github.com/dojoengine/dojo", tag = "v0.6.0" }
-alexandria_sorting = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "ecc881e2aee668332441bdfa32336e3404cf8eb1"}
-alexandria_data_structures = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "ecc881e2aee668332441bdfa32336e3404cf8eb1"}
+dojo = { git = "https://github.com/dojoengine/dojo", tag = "v0.7.1" }
 
 [[target.dojo]]
 
@@ -20,16 +20,21 @@ alexandria_data_structures = { git = "https://github.com/keep-starknet-strange/a
 initializer_class_hash = "0xbeef"
 
 [tool.dojo.env]
-rpc_url = "http://localhost:5050/"
+rpc_url = "https://api.cartridge.gg/x/bytebeast/katana"
 # Default account for katana with seed = 0
-account_address = "0xb3ff441a68610b30fd5e2abbf3a1548eb6ba6f3559f2862bf2dc757e5828ca"
-private_key = "0x2bbf4f9fd0bbb2e60b0316c1fe0b76cf7a4d0198bd493ced9b8df2a3a24d68a"
-world_address = "0x446f1f19ba951b59935df72974f8ba6060e5fbb411ca21d3e3e3812e3eb8df8" # Update this line with your world address
+account_address = "0x69562e297da25abcc1fd34e53b4a534e939fcc445f946e8d8d2bcb3e0e44e44"
+private_key = "0x4710e214ec335128592d179195a0b52a641d32bdb780803f30f6ee5805783c4"
+#world_address = "0xb4079627ebab1cd3cf9fd075dda1ad2454a7a448bf659591f259efa2519b18"  # Uncomment and update this line with your world address.
 
 [tool.dojo.world]
-name = "ByteBeastsBeta"
-description = "This the Dojo project for Stark Hack June 2024"
+name = "Dojo starter"
+description = "The official Dojo Starter guide, the quickest and most streamlined way to get your Dojo Autonomous World up and running. This guide will assist you with the initial setup, from cloning the repository to deploying your world."
+cover_uri = "file://assets/cover.png"
+icon_uri = "file://assets/icon.png"
+website = "https://github.com/dojoengine/dojo-starter"
 
 [tool.dojo.world.socials]
-x = "https://twitter.com/ByteBuildersLab"
-github = "https://github.com/ByteBuildersLabs/StarkHack2024BackEnd"
+x = "https://x.com/ohayo_dojo"
+discord = "https://discord.gg/FB2wR6uF"
+github = "https://github.com/dojoengine/dojo-starter"
+telegram = "https://t.me/dojoengine"

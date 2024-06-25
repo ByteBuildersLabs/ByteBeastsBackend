@@ -2,9 +2,22 @@
 set -euo pipefail
 pushd $(dirname "$0")/..
 
-export RPC_URL="http://localhost:5050"
+need_cmd() {
+  if ! check_cmd "$1"; then
+    printf "need '$1' (command not found)"
+    exit 1
+  fi
+}
 
-export WORLD_ADDRESS="0x446f1f19ba951b59935df72974f8ba6060e5fbb411ca21d3e3e3812e3eb8df8"
+check_cmd() {
+  command -v "$1" &>/dev/null
+}
+
+need_cmd jq
+
+export RPC_URL="https://api.cartridge.gg/x/bytebeast/katana"
+
+export WORLD_ADDRESS=$(cat ./manifests/dev/manifest.json | jq -r '.world.address')
 
 echo "---------------------------------------------------------------------------"
 echo world : $WORLD_ADDRESS
@@ -12,8 +25,11 @@ echo "--------------------------------------------------------------------------
 
 # enable system -> models authorizations
 sozo auth grant --world $WORLD_ADDRESS --wait writer \
-  Position,bytebeastsbeta::systems::actions::actions\
-  Moves,bytebeastsbeta::systems::actions::actions\
+  Health,dojo_starter::systems::actions::actions\
+  Player,dojo_starter::systems::actions::actions\
+  Skill,dojo_starter::systems::actions::actions\
+  Game,dojo_starter::systems::actions::actions\
+  Counter,dojo_starter::systems::actions::actions\
   >/dev/null
 
 echo "Default authorizations have been successfully set."

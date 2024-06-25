@@ -1,9 +1,0 @@
-kind = "DojoContract"
-class_hash = "0x7a6fc9d3eceee640005bb19418792ac21afbc5cfe27a496d0b67f5c14e035"
-original_class_hash = "0x7a6fc9d3eceee640005bb19418792ac21afbc5cfe27a496d0b67f5c14e035"
-base_class_hash = "0x0"
-abi = "manifests/dev/abis/base/contracts/bytebeastsbeta_systems_actions_actions.json"
-reads = []
-writes = []
-computed = []
-name = "bytebeastsbeta::systems::actions::actions"
