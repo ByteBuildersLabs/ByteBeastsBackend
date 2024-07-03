@@ -1,6 +1,7 @@
 use starknet::ContractAddress;
 
-#[derive(Model, Copy, Drop, Serde)]
+#[derive(Copy, Drop, Serde)]
+#[dojo::model]
 struct Beast {
     #[key]
     beast_id: u32,
@@ -24,11 +25,4 @@ enum BeastType {
     Legendary
 }
 
-impl BeastTypeIntoFelt252 of Into<BeastType, felt252> {
-    fn into(self: BeastType) -> felt252 {
-        match self {
-            BeastType::Normal => 0,
-            BeastType::Legendary => 1,
-        }
-    }
-}
+

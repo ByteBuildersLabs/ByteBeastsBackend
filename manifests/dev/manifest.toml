@@ -22,8 +22,8 @@ name = "dojo::base::base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x3610b797baec740e2fa25ae90b4a57d92b04f48a1fdbae1ae203eaf9723c1a0"
-class_hash = "0x1d444a6f37bfefa8766a53030c83243db236f4709cd33a91c58c13b773e544f"
-original_class_hash = "0x1d444a6f37bfefa8766a53030c83243db236f4709cd33a91c58c13b773e544f"
+class_hash = "0x62254e09a7226bef2d537974fb5338a153febfdb699218b26028eaecafe542b"
+original_class_hash = "0x62254e09a7226bef2d537974fb5338a153febfdb699218b26028eaecafe542b"
 base_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
 abi = "manifests/dev/abis/deployments/contracts/dojo_starter_systems_actions_actions.json"
 reads = []
@@ -35,6 +35,78 @@ writes = [
 computed = []
 init_calldata = []
 name = "dojo_starter::systems::actions::actions"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x68f7051deaeeee8db9adabd790cf1f83e27a00ac7d9988e2ed6dbfa9a63751"
+original_class_hash = "0x68f7051deaeeee8db9adabd790cf1f83e27a00ac7d9988e2ed6dbfa9a63751"
+abi = "manifests/dev/abis/deployments/models/dojo_starter_models_beast_beast.json"
+name = "dojo_starter::models::beast::beast"
+
+[[models.members]]
+name = "beast_id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "player_id"
+type = "ContractAddress"
+key = false
+
+[[models.members]]
+name = "beast_type"
+type = "BeastType"
+key = false
+
+[[models.members]]
+name = "hp"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "mp"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "strength"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "defense"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "equipped_weapon"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "wpn_power"
+type = "u8"
+key = false
+
+[[models.members]]
+name = "equipped_armor"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "armor_power"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "experience_to_nex_level"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "level"
+type = "u8"
+key = false
 
 [[models]]
 kind = "DojoModel"
