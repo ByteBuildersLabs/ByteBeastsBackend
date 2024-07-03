@@ -6,6 +6,7 @@ mod models {
     mod moves;
     mod position;
     mod user;
+    mod beast;
 }
 
 mod tests {
