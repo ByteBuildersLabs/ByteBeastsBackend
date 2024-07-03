@@ -10,6 +10,7 @@ sierra-replace-ids = true
 migrate = "sozo build && sozo migrate apply"
 spawn = "./scripts/spawn.sh"
 move = "./scripts/move.sh"
+player = "./scripts/player.sh"
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v0.7.1" }
