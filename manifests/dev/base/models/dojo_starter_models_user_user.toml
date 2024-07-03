@@ -1,0 +1,15 @@
+kind = "DojoModel"
+class_hash = "0x63059e8ec335b1632218371a88fbd633d4d7201e15d65920d0f054bd37b80a"
+original_class_hash = "0x63059e8ec335b1632218371a88fbd633d4d7201e15d65920d0f054bd37b80a"
+abi = "manifests/dev/abis/base/models/dojo_starter_models_user_user.json"
+name = "dojo_starter::models::user::user"
+
+[[members]]
+name = "user_id"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "name"
+type = "ContractAddress"
+key = false

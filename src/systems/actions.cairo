@@ -1,5 +1,6 @@
 use dojo_starter::models::moves::Direction;
 use dojo_starter::models::position::Position;
+use dojo_starter::models::user::User;
 
 // define the interface
 #[dojo::interface]
@@ -14,7 +15,7 @@ mod actions {
     use super::{IActions, next_position};
     use starknet::{ContractAddress, get_caller_address};
     use dojo_starter::models::{
-        position::{Position, Vec2}, moves::{Moves, Direction, DirectionsAvailable}
+        position::{Position, Vec2}, moves::{Moves, Direction, DirectionsAvailable}, user::{User}
     };
 
     #[derive(Copy, Drop, Serde)]
@@ -49,6 +50,9 @@ mod actions {
             set!(
                 world,
                 (
+                    User {
+                        user_id: player, name: player
+                    },
                     Moves {
                         player, remaining: 100, last_direction: Direction::None(()), can_move: true
                     },
