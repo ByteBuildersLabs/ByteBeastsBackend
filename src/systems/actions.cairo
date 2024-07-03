@@ -1,6 +1,7 @@
 use dojo_starter::models::moves::Direction;
 use dojo_starter::models::position::Position;
 use dojo_starter::models::user::User;
+use dojo_starter::models::beast::Beast;
 
 // define the interface
 #[dojo::interface]
@@ -15,7 +16,7 @@ mod actions {
     use super::{IActions, next_position};
     use starknet::{ContractAddress, get_caller_address};
     use dojo_starter::models::{
-        position::{Position, Vec2}, moves::{Moves, Direction, DirectionsAvailable}, user::{User}
+        position::{Position, Vec2}, moves::{Moves, Direction, DirectionsAvailable}, user::{User}, beast::{Beast, BeastType}
     };
 
     #[derive(Copy, Drop, Serde)]
@@ -47,6 +48,7 @@ mod actions {
                 ],
             };
 
+            // Set world
             set!(
                 world,
                 (
@@ -60,6 +62,29 @@ mod actions {
                         player, vec: Vec2 { x: position.vec.x + 10, y: position.vec.y + 10 }
                     },
                     directions_available
+                )
+            );
+
+            // Set Beasts
+            set!(
+                world,
+                (
+                    // Player's beast
+                    Beast {
+                        beast_id: 1, player_id: player, beast_type: BeastType::Normal, hp: 100, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2
+                    },
+                    Beast {
+                        beast_id: 2, player_id: player, beast_type: BeastType::Normal, hp: 100, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2,
+                    },
+                     Beast {
+                        beast_id: 3, player_id: player, beast_type: BeastType::Normal, hp: 90, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2,
+                    },
+                     Beast {
+                        beast_id: 4, player_id: player, beast_type: BeastType::Normal, hp: 80, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2,
+                    },
+                     Beast {
+                        beast_id: 5, player_id: player, beast_type: BeastType::Legendary, hp: 300, mp: 30, strength: 30, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 4,
+                    },
                 )
             );
         }

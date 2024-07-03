@@ -6,11 +6,6 @@ version = "0.7.0"
 [cairo]
 sierra-replace-ids = true
 
-[scripts]
-migrate = "sozo build && sozo migrate apply"
-spawn = "./scripts/spawn.sh"
-move = "./scripts/move.sh"
-
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v0.7.1" }
 
