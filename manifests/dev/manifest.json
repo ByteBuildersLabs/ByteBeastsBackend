@@ -1020,8 +1020,8 @@
     {
       "kind": "DojoContract",
       "address": "0x3610b797baec740e2fa25ae90b4a57d92b04f48a1fdbae1ae203eaf9723c1a0",
-      "class_hash": "0x62254e09a7226bef2d537974fb5338a153febfdb699218b26028eaecafe542b",
-      "original_class_hash": "0x62254e09a7226bef2d537974fb5338a153febfdb699218b26028eaecafe542b",
+      "class_hash": "0x49c5317c8538a00e32208013e29ae1bd977e1b137d984aac4bfc26a0688fe9f",
+      "original_class_hash": "0x49c5317c8538a00e32208013e29ae1bd977e1b137d984aac4bfc26a0688fe9f",
       "base_class_hash": "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46",
       "abi": [
         {
@@ -1129,6 +1129,13 @@
                   "type": "dojo_starter::models::moves::Direction"
                 }
               ],
+              "outputs": [],
+              "state_mutability": "external"
+            },
+            {
+              "type": "function",
+              "name": "attack",
+              "inputs": [],
               "outputs": [],
               "state_mutability": "external"
             }
@@ -1244,7 +1251,7 @@
         },
         {
           "name": "hp",
-          "type": "u64",
+          "type": "u32",
           "key": false
         },
         {
@@ -1293,8 +1300,8 @@
           "key": false
         }
       ],
-      "class_hash": "0x68f7051deaeeee8db9adabd790cf1f83e27a00ac7d9988e2ed6dbfa9a63751",
-      "original_class_hash": "0x68f7051deaeeee8db9adabd790cf1f83e27a00ac7d9988e2ed6dbfa9a63751",
+      "class_hash": "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab",
+      "original_class_hash": "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab",
       "abi": [
         {
           "type": "impl",
@@ -1651,7 +1658,7 @@
             },
             {
               "name": "hp",
-              "type": "core::integer::u64"
+              "type": "core::integer::u32"
             },
             {
               "name": "mp",
