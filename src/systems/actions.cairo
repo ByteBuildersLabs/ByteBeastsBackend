@@ -8,6 +8,7 @@ use dojo_starter::models::beast::Beast;
 trait IActions {
     fn spawn(ref world: IWorldDispatcher);
     fn move(ref world: IWorldDispatcher, direction: Direction);
+    fn attack(ref world: IWorldDispatcher);
 }
 
 // dojo decorator
@@ -87,6 +88,7 @@ mod actions {
                     },
                 )
             );
+
         }
 
         // Implementation of the move function for the ContractState struct.
@@ -110,6 +112,12 @@ mod actions {
             set!(world, (moves, next));
             // Emit an event to the world to notify about the player's move.
             emit!(world, (Moved { player, direction }));
+        }
+
+        fn attack(ref world: IWorldDispatcher, beast_id: Beast) {
+            let mut beast = get!(world, (beast_id), (Beast));
+            beast.hp = 50;
+            set!(world, (beast));
         }
     }
 }

@@ -7,7 +7,7 @@ struct Beast {
     beast_id: u32,
     player_id: ContractAddress,
     beast_type: BeastType,
-    hp: u64,
+    hp: u32,
     mp: u64,
     strength: u64,
     defense: u64,

@@ -354,7 +354,7 @@
       },
       {
         "name": "hp",
-        "type": "core::integer::u64"
+        "type": "core::integer::u32"
       },
       {
         "name": "mp",

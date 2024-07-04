@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x68f7051deaeeee8db9adabd790cf1f83e27a00ac7d9988e2ed6dbfa9a63751"
-original_class_hash = "0x68f7051deaeeee8db9adabd790cf1f83e27a00ac7d9988e2ed6dbfa9a63751"
+class_hash = "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab"
+original_class_hash = "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab"
 abi = "manifests/dev/abis/base/models/dojo_starter_models_beast_beast.json"
 name = "dojo_starter::models::beast::beast"
 
@@ -21,7 +21,7 @@ key = false
 
 [[members]]
 name = "hp"
-type = "u64"
+type = "u32"
 key = false
 
 [[members]]
