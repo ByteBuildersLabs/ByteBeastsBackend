@@ -22,8 +22,8 @@ name = "dojo::base::base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x3610b797baec740e2fa25ae90b4a57d92b04f48a1fdbae1ae203eaf9723c1a0"
-class_hash = "0x6bf7a132d5a36f7fc050340db2811066ae743ff2bf7f664aea266044414e083"
-original_class_hash = "0x6bf7a132d5a36f7fc050340db2811066ae743ff2bf7f664aea266044414e083"
+class_hash = "0x2f93ef02c13183550d5a6132cf31de73371f52670ad8cb9c3eaa5e2aeeabd43"
+original_class_hash = "0x2f93ef02c13183550d5a6132cf31de73371f52670ad8cb9c3eaa5e2aeeabd43"
 base_class_hash = "0x22f3e55b61d86c2ac5239fa3b3b8761f26b9a5c0b5f61ddbd5d756ced498b46"
 abi = "manifests/dev/abis/deployments/contracts/dojo_starter_systems_actions_actions.json"
 reads = []
@@ -38,8 +38,8 @@ name = "dojo_starter::systems::actions::actions"
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab"
-original_class_hash = "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab"
+class_hash = "0x73c0915d3d9cb8deb698e4a6018acdee182f104b2c3b57627f25ea5d103d0ce"
+original_class_hash = "0x73c0915d3d9cb8deb698e4a6018acdee182f104b2c3b57627f25ea5d103d0ce"
 abi = "manifests/dev/abis/deployments/models/dojo_starter_models_beast_beast.json"
 name = "dojo_starter::models::beast::beast"
 
@@ -55,7 +55,7 @@ key = false
 
 [[models.members]]
 name = "beast_type"
-type = "BeastType"
+type = "felt252"
 key = false
 
 [[models.members]]
@@ -64,7 +64,17 @@ type = "u32"
 key = false
 
 [[models.members]]
+name = "currentHp"
+type = "u32"
+key = false
+
+[[models.members]]
 name = "mp"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "currentMp"
 type = "u64"
 key = false
 
@@ -101,11 +111,6 @@ key = false
 [[models.members]]
 name = "experience_to_nex_level"
 type = "u64"
-key = false
-
-[[models.members]]
-name = "level"
-type = "u8"
 key = false
 
 [[models]]
@@ -167,23 +172,6 @@ key = true
 [[models.members]]
 name = "vec"
 type = "Vec2"
-key = false
-
-[[models]]
-kind = "DojoModel"
-class_hash = "0x63059e8ec335b1632218371a88fbd633d4d7201e15d65920d0f054bd37b80a"
-original_class_hash = "0x63059e8ec335b1632218371a88fbd633d4d7201e15d65920d0f054bd37b80a"
-abi = "manifests/dev/abis/deployments/models/dojo_starter_models_user_user.json"
-name = "dojo_starter::models::user::user"
-
-[[models.members]]
-name = "user_id"
-type = "ContractAddress"
-key = true
-
-[[models.members]]
-name = "name"
-type = "ContractAddress"
 key = false
 
 [[models]]

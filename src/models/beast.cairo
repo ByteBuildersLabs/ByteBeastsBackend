@@ -6,9 +6,11 @@ struct Beast {
     #[key]
     beast_id: u32,
     player_id: ContractAddress,
-    beast_type: BeastType,
+    beast_type: felt252,
     hp: u32,
+    currentHp: u32,
     mp: u64,
+    currentMp: u64,
     strength: u64,
     defense: u64,
     equipped_weapon: felt252,
@@ -16,13 +18,4 @@ struct Beast {
     equipped_armor: felt252,
     armor_power: u64,
     experience_to_nex_level: u64,
-    level: u8,
 }
-
-#[derive(Serde, Copy, Drop, Introspect)]
-enum BeastType {
-    Normal,
-    Legendary
-}
-
-

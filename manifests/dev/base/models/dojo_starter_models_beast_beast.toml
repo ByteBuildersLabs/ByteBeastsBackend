@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab"
-original_class_hash = "0x7e8eaf987baca059fe8822fb86bd596e9f00c2f72cb4e39d3f7a51cfd79a2ab"
+class_hash = "0x73c0915d3d9cb8deb698e4a6018acdee182f104b2c3b57627f25ea5d103d0ce"
+original_class_hash = "0x73c0915d3d9cb8deb698e4a6018acdee182f104b2c3b57627f25ea5d103d0ce"
 abi = "manifests/dev/abis/base/models/dojo_starter_models_beast_beast.json"
 name = "dojo_starter::models::beast::beast"
 
@@ -16,7 +16,7 @@ key = false
 
 [[members]]
 name = "beast_type"
-type = "BeastType"
+type = "felt252"
 key = false
 
 [[members]]
@@ -25,7 +25,17 @@ type = "u32"
 key = false
 
 [[members]]
+name = "currentHp"
+type = "u32"
+key = false
+
+[[members]]
 name = "mp"
+type = "u64"
+key = false
+
+[[members]]
+name = "currentMp"
 type = "u64"
 key = false
 
@@ -62,9 +72,4 @@ key = false
 [[members]]
 name = "experience_to_nex_level"
 type = "u64"
-key = false
-
-[[members]]
-name = "level"
-type = "u8"
 key = false

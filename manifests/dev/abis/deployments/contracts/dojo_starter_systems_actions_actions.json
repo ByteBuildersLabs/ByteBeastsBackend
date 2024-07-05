@@ -122,6 +122,66 @@
         ],
         "outputs": [],
         "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "createBeast",
+        "inputs": [
+          {
+            "name": "beast_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "beast_type",
+            "type": "core::felt252"
+          },
+          {
+            "name": "hp",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "currentHp",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "mp",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "currentMp",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "strength",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "defense",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "equipped_weapon",
+            "type": "core::felt252"
+          },
+          {
+            "name": "wpn_power",
+            "type": "core::integer::u8"
+          },
+          {
+            "name": "equipped_armor",
+            "type": "core::felt252"
+          },
+          {
+            "name": "armor_power",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "experience_to_nex_level",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
       }
     ]
   },

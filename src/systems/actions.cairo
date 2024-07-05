@@ -1,6 +1,5 @@
 use dojo_starter::models::moves::Direction;
 use dojo_starter::models::position::Position;
-use dojo_starter::models::user::User;
 use dojo_starter::models::beast::Beast;
 
 // define the interface
@@ -9,6 +8,7 @@ trait IActions {
     fn spawn(ref world: IWorldDispatcher);
     fn move(ref world: IWorldDispatcher, direction: Direction);
     fn attack(ref world: IWorldDispatcher, beast_id: u32, damage: u32);
+    fn createBeast(ref world: IWorldDispatcher, beast_id: u32, beast_type: felt252, hp: u32, currentHp: u32, mp: u64, currentMp: u64, strength: u64, defense: u64, equipped_weapon: felt252, wpn_power: u8, equipped_armor: felt252, armor_power: u64, experience_to_nex_level: u64);
 }
 
 // dojo decorator
@@ -17,7 +17,7 @@ mod actions {
     use super::{IActions, next_position};
     use starknet::{ContractAddress, get_caller_address};
     use dojo_starter::models::{
-        position::{Position, Vec2}, moves::{Moves, Direction, DirectionsAvailable}, user::{User}, beast::{Beast, BeastType}
+        position::{Position, Vec2}, moves::{Moves, Direction, DirectionsAvailable}, beast::{Beast}
     };
 
     #[derive(Copy, Drop, Serde)]
@@ -53,9 +53,6 @@ mod actions {
             set!(
                 world,
                 (
-                    User {
-                        user_id: player, name: player
-                    },
                     Moves {
                         player, remaining: 100, last_direction: Direction::None(()), can_move: true
                     },
@@ -65,30 +62,6 @@ mod actions {
                     directions_available
                 )
             );
-
-            // Set Beasts
-            set!(
-                world,
-                (
-                    // Player's beast
-                    Beast {
-                        beast_id: 1, player_id: player, beast_type: BeastType::Normal, hp: 100, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2
-                    },
-                    Beast {
-                        beast_id: 2, player_id: player, beast_type: BeastType::Normal, hp: 100, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2,
-                    },
-                     Beast {
-                        beast_id: 3, player_id: player, beast_type: BeastType::Normal, hp: 90, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2,
-                    },
-                     Beast {
-                        beast_id: 4, player_id: player, beast_type: BeastType::Normal, hp: 80, mp: 20, strength: 15, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 2,
-                    },
-                     Beast {
-                        beast_id: 5, player_id: player, beast_type: BeastType::Legendary, hp: 300, mp: 30, strength: 30, defense: 12, equipped_weapon: 'none', wpn_power: 0, equipped_armor: 'none', armor_power: 0, experience_to_nex_level: 300, level: 4,
-                    },
-                )
-            );
-
         }
 
         // Implementation of the move function for the ContractState struct.
@@ -118,6 +91,45 @@ mod actions {
             let mut beast = get!(world, (beast_id), (Beast));
             beast.hp = beast.hp - damage;
             set!(world, (beast));
+        }
+
+        fn createBeast(
+            ref world: IWorldDispatcher,
+            beast_id: u32,
+            beast_type: felt252,
+            hp: u32,
+            currentHp: u32,
+            mp: u64,
+            currentMp: u64,
+            strength: u64,
+            defense: u64,
+            equipped_weapon: felt252,
+            wpn_power: u8,
+            equipped_armor: felt252,
+            armor_power: u64,
+            experience_to_nex_level: u64,
+        ) {
+            set!(
+                world,
+                (
+                    Beast {
+                        beast_id,
+                        player_id: get_caller_address(),
+                        beast_type,
+                        hp,
+                        currentHp,
+                        mp,
+                        currentMp,
+                        strength,
+                        defense,
+                        equipped_weapon,
+                        wpn_power,
+                        equipped_armor,
+                        armor_power,
+                        experience_to_nex_level,
+                    }
+                )
+            );
         }
     }
 }

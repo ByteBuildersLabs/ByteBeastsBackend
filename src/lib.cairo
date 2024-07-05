@@ -5,7 +5,6 @@ mod systems {
 mod models {
     mod moves;
     mod position;
-    mod user;
     mod beast;
 }
 
