@@ -8,7 +8,7 @@ use dojo_starter::models::beast::Beast;
 trait IActions {
     fn spawn(ref world: IWorldDispatcher);
     fn move(ref world: IWorldDispatcher, direction: Direction);
-    fn attack(ref world: IWorldDispatcher);
+    fn attack(ref world: IWorldDispatcher, beast_id: u32, damage: u32);
 }
 
 // dojo decorator
@@ -114,9 +114,9 @@ mod actions {
             emit!(world, (Moved { player, direction }));
         }
 
-        fn attack(ref world: IWorldDispatcher, beast_id: Beast) {
+        fn attack(ref world: IWorldDispatcher, beast_id: u32, damage: u32) {
             let mut beast = get!(world, (beast_id), (Beast));
-            beast.hp = 50;
+            beast.hp = beast.hp - damage;
             set!(world, (beast));
         }
     }
