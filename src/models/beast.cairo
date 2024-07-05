@@ -4,7 +4,7 @@ use starknet::ContractAddress;
 #[dojo::model]
 struct Beast {
     #[key]
-    beast_id: u32,
+    beast_id: felt252,
     player_id: ContractAddress,
     beast_type: felt252,
     hp: u32,

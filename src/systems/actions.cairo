@@ -7,8 +7,8 @@ use dojo_starter::models::beast::Beast;
 trait IActions {
     fn spawn(ref world: IWorldDispatcher);
     fn move(ref world: IWorldDispatcher, direction: Direction);
-    fn attack(ref world: IWorldDispatcher, beast_id: u32, damage: u32);
-    fn createBeast(ref world: IWorldDispatcher, beast_id: u32, beast_type: felt252, hp: u32, currentHp: u32, mp: u64, currentMp: u64, strength: u64, defense: u64, equipped_weapon: felt252, wpn_power: u8, equipped_armor: felt252, armor_power: u64, experience_to_nex_level: u64);
+    fn attack(ref world: IWorldDispatcher, beast_id: felt252, damage: u32);
+    fn createBeast(ref world: IWorldDispatcher, beast_id: felt252, beast_type: felt252, hp: u32, currentHp: u32, mp: u64, currentMp: u64, strength: u64, defense: u64, equipped_weapon: felt252, wpn_power: u8, equipped_armor: felt252, armor_power: u64, experience_to_nex_level: u64);
 }
 
 // dojo decorator
@@ -87,7 +87,7 @@ mod actions {
             emit!(world, (Moved { player, direction }));
         }
 
-        fn attack(ref world: IWorldDispatcher, beast_id: u32, damage: u32) {
+        fn attack(ref world: IWorldDispatcher, beast_id: felt252, damage: u32) {
             let mut beast = get!(world, (beast_id), (Beast));
             beast.hp = beast.hp - damage;
             set!(world, (beast));
@@ -95,7 +95,7 @@ mod actions {
 
         fn createBeast(
             ref world: IWorldDispatcher,
-            beast_id: u32,
+            beast_id: felt252,
             beast_type: felt252,
             hp: u32,
             currentHp: u32,
