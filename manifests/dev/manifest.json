@@ -1000,12 +1000,12 @@
       }
     ],
     "address": "0xb4079627ebab1cd3cf9fd075dda1ad2454a7a448bf659591f259efa2519b18",
-    "transaction_hash": "0x4b6f028e019c8db1a07e76a6183b677fba9cac8d269220207da8b9c06514638",
+    "transaction_hash": "0x1b742662789fd8beacdbd09dffe71d20ffa0c630237849a85e4be476d2c1f45",
     "block_number": 3,
     "seed": "dojo_starter",
     "metadata": {
       "profile_name": "dev",
-      "rpc_url": "https://api.cartridge.gg/x/bytebeast/katana"
+      "rpc_url": "https://api.cartridge.gg/x/marco/katana"
     },
     "name": "dojo::world::world"
   },
