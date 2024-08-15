@@ -363,52 +363,30 @@
   },
   {
     "type": "impl",
-    "name": "directions_availableImpl",
-    "interface_name": "bytebeasts::models::Idirections_available"
-  },
-  {
-    "type": "enum",
-    "name": "bytebeasts::models::Direction",
-    "variants": [
-      {
-        "name": "None",
-        "type": "()"
-      },
-      {
-        "name": "Left",
-        "type": "()"
-      },
-      {
-        "name": "Right",
-        "type": "()"
-      },
-      {
-        "name": "Up",
-        "type": "()"
-      },
-      {
-        "name": "Down",
-        "type": "()"
-      }
-    ]
+    "name": "potionImpl",
+    "interface_name": "bytebeasts::models::Ipotion"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::DirectionsAvailable",
+    "name": "bytebeasts::models::Potion",
     "members": [
       {
-        "name": "player",
-        "type": "core::starknet::contract_address::ContractAddress"
+        "name": "potion_id",
+        "type": "core::integer::u32"
       },
       {
-        "name": "directions",
-        "type": "core::array::Array::<bytebeasts::models::Direction>"
+        "name": "potion_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "potion_effect",
+        "type": "core::integer::u32"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Idirections_available",
+    "name": "bytebeasts::models::Ipotion",
     "items": [
       {
         "type": "function",
@@ -416,7 +394,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::DirectionsAvailable"
+            "type": "bytebeasts::models::Potion"
           }
         ],
         "outputs": [],
@@ -426,7 +404,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::directions_available::Event",
+    "name": "bytebeasts::models::potion::Event",
     "kind": "enum",
     "variants": []
   }

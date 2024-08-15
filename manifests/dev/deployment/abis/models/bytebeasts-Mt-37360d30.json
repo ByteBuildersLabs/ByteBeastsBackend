@@ -363,52 +363,38 @@
   },
   {
     "type": "impl",
-    "name": "movedImpl",
-    "interface_name": "bytebeasts::systems::actions::actions::Imoved"
-  },
-  {
-    "type": "enum",
-    "name": "bytebeasts::models::Direction",
-    "variants": [
-      {
-        "name": "None",
-        "type": "()"
-      },
-      {
-        "name": "Left",
-        "type": "()"
-      },
-      {
-        "name": "Right",
-        "type": "()"
-      },
-      {
-        "name": "Up",
-        "type": "()"
-      },
-      {
-        "name": "Down",
-        "type": "()"
-      }
-    ]
+    "name": "mtImpl",
+    "interface_name": "bytebeasts::models::Imt"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::systems::actions::actions::Moved",
+    "name": "bytebeasts::models::Mt",
     "members": [
       {
-        "name": "player",
-        "type": "core::starknet::contract_address::ContractAddress"
+        "name": "mt_id",
+        "type": "core::integer::u32"
       },
       {
-        "name": "direction",
-        "type": "bytebeasts::models::Direction"
+        "name": "mt_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "mt_type",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_power",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_accuracy",
+        "type": "core::integer::u32"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::systems::actions::actions::Imoved",
+    "name": "bytebeasts::models::Imt",
     "items": [
       {
         "type": "function",
@@ -416,7 +402,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::systems::actions::actions::Moved"
+            "type": "bytebeasts::models::Mt"
           }
         ],
         "outputs": [],
@@ -426,7 +412,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::systems::actions::actions::moved::Event",
+    "name": "bytebeasts::models::mt::Event",
     "kind": "enum",
     "variants": []
   }

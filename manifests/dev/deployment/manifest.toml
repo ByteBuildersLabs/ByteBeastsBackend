@@ -24,8 +24,8 @@ manifest_name = "dojo-base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x4854bb6cc04b51e5adaed76afc0664091182fe44a9e5e68dc4f8f5f59ffd464"
-class_hash = "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5"
-original_class_hash = "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5"
+class_hash = "0x1c7fc6d32156a6ca1eb2cf46236cf84a820b475c3f9bbb22fdbfc70ba5d7270"
+original_class_hash = "0x1c7fc6d32156a6ca1eb2cf46236cf84a820b475c3f9bbb22fdbfc70ba5d7270"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/bytebeasts-actions-648ac931.json"
 reads = []
@@ -40,29 +40,94 @@ manifest_name = "bytebeasts-actions-648ac931"
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x753774dc80b9e6dbdd5939e356065e11745d14e14217fb69e4c35a7b93defd2"
-original_class_hash = "0x753774dc80b9e6dbdd5939e356065e11745d14e14217fb69e4c35a7b93defd2"
-abi = "manifests/dev/deployment/abis/models/bytebeasts-DirectionsAvailable-48430624.json"
-tag = "bytebeasts-DirectionsAvailable"
-manifest_name = "bytebeasts-DirectionsAvailable-48430624"
+class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
+original_class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Beast-27809d20.json"
+tag = "bytebeasts-Beast"
+manifest_name = "bytebeasts-Beast-27809d20"
 
 [[models.members]]
-name = "player"
-type = "ContractAddress"
+name = "beast_id"
+type = "u32"
 key = true
 
 [[models.members]]
-name = "directions"
-type = "Array<Direction>"
+name = "beast_name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "beast_type"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "beast_description"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "player_id"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "hp"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "current_hp"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "attack"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "defense"
+type = "u64"
+key = false
+
+[[models.members]]
+name = "mt1"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "mt2"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "mt3"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "mt4"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "level"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "experience_to_nex_level"
+type = "u64"
 key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x4832e8416049ae631fdf6d424b02a9fbf366810cfd1dd4d9d047b58809e138a"
-original_class_hash = "0x4832e8416049ae631fdf6d424b02a9fbf366810cfd1dd4d9d047b58809e138a"
-abi = "manifests/dev/deployment/abis/models/bytebeasts-Moved-2a5b60a4.json"
-tag = "bytebeasts-Moved"
-manifest_name = "bytebeasts-Moved-2a5b60a4"
+class_hash = "0x74fa5d0e4e909cd9ad439cc2efe9fb6bb33d848f4e7a4156674f44a0218ab13"
+original_class_hash = "0x74fa5d0e4e909cd9ad439cc2efe9fb6bb33d848f4e7a4156674f44a0218ab13"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Message-23adac1f.json"
+tag = "bytebeasts-Message"
+manifest_name = "bytebeasts-Message-23adac1f"
 
 [[models.members]]
 name = "player"
@@ -70,52 +135,105 @@ type = "ContractAddress"
 key = true
 
 [[models.members]]
-name = "direction"
-type = "Direction"
+name = "message"
+type = "felt252"
 key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x3eda97055345dbd80570f5264558b4f6e91ac0eeea273996cf8b986d984db2c"
-original_class_hash = "0x3eda97055345dbd80570f5264558b4f6e91ac0eeea273996cf8b986d984db2c"
-abi = "manifests/dev/deployment/abis/models/bytebeasts-Moves-b282ed29.json"
-tag = "bytebeasts-Moves"
-manifest_name = "bytebeasts-Moves-b282ed29"
+class_hash = "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923"
+original_class_hash = "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Mt-37360d30.json"
+tag = "bytebeasts-Mt"
+manifest_name = "bytebeasts-Mt-37360d30"
 
 [[models.members]]
-name = "player"
-type = "ContractAddress"
+name = "mt_id"
+type = "u32"
 key = true
 
 [[models.members]]
-name = "remaining"
-type = "u8"
+name = "mt_name"
+type = "felt252"
 key = false
 
 [[models.members]]
-name = "last_direction"
-type = "Direction"
+name = "mt_type"
+type = "u32"
 key = false
 
 [[models.members]]
-name = "can_move"
-type = "bool"
+name = "mt_power"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "mt_accuracy"
+type = "u32"
 key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x144b4dd55fa65d6e78e37571cee889759040f43772e7ee2d2eaa7b3c36b880c"
-original_class_hash = "0x144b4dd55fa65d6e78e37571cee889759040f43772e7ee2d2eaa7b3c36b880c"
-abi = "manifests/dev/deployment/abis/models/bytebeasts-Position-78f28df6.json"
-tag = "bytebeasts-Position"
-manifest_name = "bytebeasts-Position-78f28df6"
+class_hash = "0x6bfeffff027de9cb3d94085db3c9963e42a8173ae8211a83ae71b9e57bc800e"
+original_class_hash = "0x6bfeffff027de9cb3d94085db3c9963e42a8173ae8211a83ae71b9e57bc800e"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Player-14f5e45e.json"
+tag = "bytebeasts-Player"
+manifest_name = "bytebeasts-Player-14f5e45e"
 
 [[models.members]]
-name = "player"
-type = "ContractAddress"
+name = "player_id"
+type = "u32"
 key = true
 
 [[models.members]]
-name = "vec"
-type = "Vec2"
+name = "player_name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "beast_1"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "beast_2"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "beast_3"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "beast_4"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "potions"
+type = "u32"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d"
+original_class_hash = "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Potion-6a2114b0.json"
+tag = "bytebeasts-Potion"
+manifest_name = "bytebeasts-Potion-6a2114b0"
+
+[[models.members]]
+name = "potion_id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "potion_name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "potion_effect"
+type = "u32"
 key = false

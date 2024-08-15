@@ -132,51 +132,27 @@
     "interface_name": "bytebeasts::systems::actions::IActions"
   },
   {
-    "type": "enum",
-    "name": "bytebeasts::models::Direction",
-    "variants": [
-      {
-        "name": "None",
-        "type": "()"
-      },
-      {
-        "name": "Left",
-        "type": "()"
-      },
-      {
-        "name": "Right",
-        "type": "()"
-      },
-      {
-        "name": "Up",
-        "type": "()"
-      },
-      {
-        "name": "Down",
-        "type": "()"
-      }
-    ]
-  },
-  {
     "type": "interface",
     "name": "bytebeasts::systems::actions::IActions",
     "items": [
       {
         "type": "function",
-        "name": "spawn",
+        "name": "attack",
         "inputs": [],
         "outputs": [],
         "state_mutability": "external"
       },
       {
         "type": "function",
-        "name": "move",
-        "inputs": [
-          {
-            "name": "direction",
-            "type": "bytebeasts::models::Direction"
-          }
-        ],
+        "name": "usePotion",
+        "inputs": [],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "flee",
+        "inputs": [],
         "outputs": [],
         "state_mutability": "external"
       }

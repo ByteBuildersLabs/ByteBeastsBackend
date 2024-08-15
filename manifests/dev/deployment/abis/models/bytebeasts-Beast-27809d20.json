@@ -363,74 +363,78 @@
   },
   {
     "type": "impl",
-    "name": "movesImpl",
-    "interface_name": "bytebeasts::models::Imoves"
-  },
-  {
-    "type": "enum",
-    "name": "bytebeasts::models::Direction",
-    "variants": [
-      {
-        "name": "None",
-        "type": "()"
-      },
-      {
-        "name": "Left",
-        "type": "()"
-      },
-      {
-        "name": "Right",
-        "type": "()"
-      },
-      {
-        "name": "Up",
-        "type": "()"
-      },
-      {
-        "name": "Down",
-        "type": "()"
-      }
-    ]
-  },
-  {
-    "type": "enum",
-    "name": "core::bool",
-    "variants": [
-      {
-        "name": "False",
-        "type": "()"
-      },
-      {
-        "name": "True",
-        "type": "()"
-      }
-    ]
+    "name": "beastImpl",
+    "interface_name": "bytebeasts::models::Ibeast"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Moves",
+    "name": "bytebeasts::models::Beast",
     "members": [
       {
-        "name": "player",
-        "type": "core::starknet::contract_address::ContractAddress"
+        "name": "beast_id",
+        "type": "core::integer::u32"
       },
       {
-        "name": "remaining",
-        "type": "core::integer::u8"
+        "name": "beast_name",
+        "type": "core::felt252"
       },
       {
-        "name": "last_direction",
-        "type": "bytebeasts::models::Direction"
+        "name": "beast_type",
+        "type": "core::felt252"
       },
       {
-        "name": "can_move",
-        "type": "core::bool"
+        "name": "beast_description",
+        "type": "core::felt252"
+      },
+      {
+        "name": "player_id",
+        "type": "core::felt252"
+      },
+      {
+        "name": "hp",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "current_hp",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "attack",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "defense",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mt1",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt2",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt3",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt4",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "level",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "experience_to_nex_level",
+        "type": "core::integer::u64"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Imoves",
+    "name": "bytebeasts::models::Ibeast",
     "items": [
       {
         "type": "function",
@@ -438,7 +442,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Moves"
+            "type": "bytebeasts::models::Beast"
           }
         ],
         "outputs": [],
@@ -448,7 +452,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::moves::Event",
+    "name": "bytebeasts::models::beast::Event",
     "kind": "enum",
     "variants": []
   }

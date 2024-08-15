@@ -1251,8 +1251,8 @@
     {
       "kind": "DojoContract",
       "address": "0x4854bb6cc04b51e5adaed76afc0664091182fe44a9e5e68dc4f8f5f59ffd464",
-      "class_hash": "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5",
-      "original_class_hash": "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5",
+      "class_hash": "0x1c7fc6d32156a6ca1eb2cf46236cf84a820b475c3f9bbb22fdbfc70ba5d7270",
+      "original_class_hash": "0x1c7fc6d32156a6ca1eb2cf46236cf84a820b475c3f9bbb22fdbfc70ba5d7270",
       "base_class_hash": "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2",
       "abi": [
         {
@@ -1388,51 +1388,27 @@
           "interface_name": "bytebeasts::systems::actions::IActions"
         },
         {
-          "type": "enum",
-          "name": "bytebeasts::models::Direction",
-          "variants": [
-            {
-              "name": "None",
-              "type": "()"
-            },
-            {
-              "name": "Left",
-              "type": "()"
-            },
-            {
-              "name": "Right",
-              "type": "()"
-            },
-            {
-              "name": "Up",
-              "type": "()"
-            },
-            {
-              "name": "Down",
-              "type": "()"
-            }
-          ]
-        },
-        {
           "type": "interface",
           "name": "bytebeasts::systems::actions::IActions",
           "items": [
             {
               "type": "function",
-              "name": "spawn",
+              "name": "attack",
               "inputs": [],
               "outputs": [],
               "state_mutability": "external"
             },
             {
               "type": "function",
-              "name": "move",
-              "inputs": [
-                {
-                  "name": "direction",
-                  "type": "bytebeasts::models::Direction"
-                }
-              ],
+              "name": "usePotion",
+              "inputs": [],
+              "outputs": [],
+              "state_mutability": "external"
+            },
+            {
+              "type": "function",
+              "name": "flee",
+              "inputs": [],
               "outputs": [],
               "state_mutability": "external"
             }
@@ -1532,18 +1508,83 @@
       "kind": "DojoModel",
       "members": [
         {
-          "name": "player",
-          "type": "ContractAddress",
+          "name": "beast_id",
+          "type": "u32",
           "key": true
         },
         {
-          "name": "directions",
-          "type": "Array<Direction>",
+          "name": "beast_name",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "beast_type",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "beast_description",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "player_id",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "hp",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "current_hp",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "attack",
+          "type": "u64",
+          "key": false
+        },
+        {
+          "name": "defense",
+          "type": "u64",
+          "key": false
+        },
+        {
+          "name": "mt1",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "mt2",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "mt3",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "mt4",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "level",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "experience_to_nex_level",
+          "type": "u64",
           "key": false
         }
       ],
-      "class_hash": "0x753774dc80b9e6dbdd5939e356065e11745d14e14217fb69e4c35a7b93defd2",
-      "original_class_hash": "0x753774dc80b9e6dbdd5939e356065e11745d14e14217fb69e4c35a7b93defd2",
+      "class_hash": "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c",
+      "original_class_hash": "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c",
       "abi": [
         {
           "type": "impl",
@@ -1909,52 +1950,78 @@
         },
         {
           "type": "impl",
-          "name": "directions_availableImpl",
-          "interface_name": "bytebeasts::models::Idirections_available"
-        },
-        {
-          "type": "enum",
-          "name": "bytebeasts::models::Direction",
-          "variants": [
-            {
-              "name": "None",
-              "type": "()"
-            },
-            {
-              "name": "Left",
-              "type": "()"
-            },
-            {
-              "name": "Right",
-              "type": "()"
-            },
-            {
-              "name": "Up",
-              "type": "()"
-            },
-            {
-              "name": "Down",
-              "type": "()"
-            }
-          ]
+          "name": "beastImpl",
+          "interface_name": "bytebeasts::models::Ibeast"
         },
         {
           "type": "struct",
-          "name": "bytebeasts::models::DirectionsAvailable",
+          "name": "bytebeasts::models::Beast",
           "members": [
             {
-              "name": "player",
-              "type": "core::starknet::contract_address::ContractAddress"
+              "name": "beast_id",
+              "type": "core::integer::u32"
             },
             {
-              "name": "directions",
-              "type": "core::array::Array::<bytebeasts::models::Direction>"
+              "name": "beast_name",
+              "type": "core::felt252"
+            },
+            {
+              "name": "beast_type",
+              "type": "core::felt252"
+            },
+            {
+              "name": "beast_description",
+              "type": "core::felt252"
+            },
+            {
+              "name": "player_id",
+              "type": "core::felt252"
+            },
+            {
+              "name": "hp",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "current_hp",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "attack",
+              "type": "core::integer::u64"
+            },
+            {
+              "name": "defense",
+              "type": "core::integer::u64"
+            },
+            {
+              "name": "mt1",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "mt2",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "mt3",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "mt4",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "level",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "experience_to_nex_level",
+              "type": "core::integer::u64"
             }
           ]
         },
         {
           "type": "interface",
-          "name": "bytebeasts::models::Idirections_available",
+          "name": "bytebeasts::models::Ibeast",
           "items": [
             {
               "type": "function",
@@ -1962,7 +2029,7 @@
               "inputs": [
                 {
                   "name": "model",
-                  "type": "bytebeasts::models::DirectionsAvailable"
+                  "type": "bytebeasts::models::Beast"
                 }
               ],
               "outputs": [],
@@ -1972,13 +2039,13 @@
         },
         {
           "type": "event",
-          "name": "bytebeasts::models::directions_available::Event",
+          "name": "bytebeasts::models::beast::Event",
           "kind": "enum",
           "variants": []
         }
       ],
-      "tag": "bytebeasts-DirectionsAvailable",
-      "manifest_name": "bytebeasts-DirectionsAvailable-48430624"
+      "tag": "bytebeasts-Beast",
+      "manifest_name": "bytebeasts-Beast-27809d20"
     },
     {
       "kind": "DojoModel",
@@ -1989,13 +2056,13 @@
           "key": true
         },
         {
-          "name": "direction",
-          "type": "Direction",
+          "name": "message",
+          "type": "felt252",
           "key": false
         }
       ],
-      "class_hash": "0x4832e8416049ae631fdf6d424b02a9fbf366810cfd1dd4d9d047b58809e138a",
-      "original_class_hash": "0x4832e8416049ae631fdf6d424b02a9fbf366810cfd1dd4d9d047b58809e138a",
+      "class_hash": "0x74fa5d0e4e909cd9ad439cc2efe9fb6bb33d848f4e7a4156674f44a0218ab13",
+      "original_class_hash": "0x74fa5d0e4e909cd9ad439cc2efe9fb6bb33d848f4e7a4156674f44a0218ab13",
       "abi": [
         {
           "type": "impl",
@@ -2361,52 +2428,26 @@
         },
         {
           "type": "impl",
-          "name": "movedImpl",
-          "interface_name": "bytebeasts::systems::actions::actions::Imoved"
-        },
-        {
-          "type": "enum",
-          "name": "bytebeasts::models::Direction",
-          "variants": [
-            {
-              "name": "None",
-              "type": "()"
-            },
-            {
-              "name": "Left",
-              "type": "()"
-            },
-            {
-              "name": "Right",
-              "type": "()"
-            },
-            {
-              "name": "Up",
-              "type": "()"
-            },
-            {
-              "name": "Down",
-              "type": "()"
-            }
-          ]
+          "name": "messageImpl",
+          "interface_name": "bytebeasts::systems::actions::actions::Imessage"
         },
         {
           "type": "struct",
-          "name": "bytebeasts::systems::actions::actions::Moved",
+          "name": "bytebeasts::systems::actions::actions::Message",
           "members": [
             {
               "name": "player",
               "type": "core::starknet::contract_address::ContractAddress"
             },
             {
-              "name": "direction",
-              "type": "bytebeasts::models::Direction"
+              "name": "message",
+              "type": "core::felt252"
             }
           ]
         },
         {
           "type": "interface",
-          "name": "bytebeasts::systems::actions::actions::Imoved",
+          "name": "bytebeasts::systems::actions::actions::Imessage",
           "items": [
             {
               "type": "function",
@@ -2414,7 +2455,7 @@
               "inputs": [
                 {
                   "name": "model",
-                  "type": "bytebeasts::systems::actions::actions::Moved"
+                  "type": "bytebeasts::systems::actions::actions::Message"
                 }
               ],
               "outputs": [],
@@ -2424,40 +2465,45 @@
         },
         {
           "type": "event",
-          "name": "bytebeasts::systems::actions::actions::moved::Event",
+          "name": "bytebeasts::systems::actions::actions::message::Event",
           "kind": "enum",
           "variants": []
         }
       ],
-      "tag": "bytebeasts-Moved",
-      "manifest_name": "bytebeasts-Moved-2a5b60a4"
+      "tag": "bytebeasts-Message",
+      "manifest_name": "bytebeasts-Message-23adac1f"
     },
     {
       "kind": "DojoModel",
       "members": [
         {
-          "name": "player",
-          "type": "ContractAddress",
+          "name": "mt_id",
+          "type": "u32",
           "key": true
         },
         {
-          "name": "remaining",
-          "type": "u8",
+          "name": "mt_name",
+          "type": "felt252",
           "key": false
         },
         {
-          "name": "last_direction",
-          "type": "Direction",
+          "name": "mt_type",
+          "type": "u32",
           "key": false
         },
         {
-          "name": "can_move",
-          "type": "bool",
+          "name": "mt_power",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "mt_accuracy",
+          "type": "u32",
           "key": false
         }
       ],
-      "class_hash": "0x3eda97055345dbd80570f5264558b4f6e91ac0eeea273996cf8b986d984db2c",
-      "original_class_hash": "0x3eda97055345dbd80570f5264558b4f6e91ac0eeea273996cf8b986d984db2c",
+      "class_hash": "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923",
+      "original_class_hash": "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923",
       "abi": [
         {
           "type": "impl",
@@ -2823,74 +2869,38 @@
         },
         {
           "type": "impl",
-          "name": "movesImpl",
-          "interface_name": "bytebeasts::models::Imoves"
-        },
-        {
-          "type": "enum",
-          "name": "bytebeasts::models::Direction",
-          "variants": [
-            {
-              "name": "None",
-              "type": "()"
-            },
-            {
-              "name": "Left",
-              "type": "()"
-            },
-            {
-              "name": "Right",
-              "type": "()"
-            },
-            {
-              "name": "Up",
-              "type": "()"
-            },
-            {
-              "name": "Down",
-              "type": "()"
-            }
-          ]
-        },
-        {
-          "type": "enum",
-          "name": "core::bool",
-          "variants": [
-            {
-              "name": "False",
-              "type": "()"
-            },
-            {
-              "name": "True",
-              "type": "()"
-            }
-          ]
+          "name": "mtImpl",
+          "interface_name": "bytebeasts::models::Imt"
         },
         {
           "type": "struct",
-          "name": "bytebeasts::models::Moves",
+          "name": "bytebeasts::models::Mt",
           "members": [
             {
-              "name": "player",
-              "type": "core::starknet::contract_address::ContractAddress"
+              "name": "mt_id",
+              "type": "core::integer::u32"
             },
             {
-              "name": "remaining",
-              "type": "core::integer::u8"
+              "name": "mt_name",
+              "type": "core::felt252"
             },
             {
-              "name": "last_direction",
-              "type": "bytebeasts::models::Direction"
+              "name": "mt_type",
+              "type": "core::integer::u32"
             },
             {
-              "name": "can_move",
-              "type": "core::bool"
+              "name": "mt_power",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "mt_accuracy",
+              "type": "core::integer::u32"
             }
           ]
         },
         {
           "type": "interface",
-          "name": "bytebeasts::models::Imoves",
+          "name": "bytebeasts::models::Imt",
           "items": [
             {
               "type": "function",
@@ -2898,7 +2908,7 @@
               "inputs": [
                 {
                   "name": "model",
-                  "type": "bytebeasts::models::Moves"
+                  "type": "bytebeasts::models::Mt"
                 }
               ],
               "outputs": [],
@@ -2908,30 +2918,55 @@
         },
         {
           "type": "event",
-          "name": "bytebeasts::models::moves::Event",
+          "name": "bytebeasts::models::mt::Event",
           "kind": "enum",
           "variants": []
         }
       ],
-      "tag": "bytebeasts-Moves",
-      "manifest_name": "bytebeasts-Moves-b282ed29"
+      "tag": "bytebeasts-Mt",
+      "manifest_name": "bytebeasts-Mt-37360d30"
     },
     {
       "kind": "DojoModel",
       "members": [
         {
-          "name": "player",
-          "type": "ContractAddress",
+          "name": "player_id",
+          "type": "u32",
           "key": true
         },
         {
-          "name": "vec",
-          "type": "Vec2",
+          "name": "player_name",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "beast_1",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "beast_2",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "beast_3",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "beast_4",
+          "type": "u32",
+          "key": false
+        },
+        {
+          "name": "potions",
+          "type": "u32",
           "key": false
         }
       ],
-      "class_hash": "0x144b4dd55fa65d6e78e37571cee889759040f43772e7ee2d2eaa7b3c36b880c",
-      "original_class_hash": "0x144b4dd55fa65d6e78e37571cee889759040f43772e7ee2d2eaa7b3c36b880c",
+      "class_hash": "0x6bfeffff027de9cb3d94085db3c9963e42a8173ae8211a83ae71b9e57bc800e",
+      "original_class_hash": "0x6bfeffff027de9cb3d94085db3c9963e42a8173ae8211a83ae71b9e57bc800e",
       "abi": [
         {
           "type": "impl",
@@ -3297,40 +3332,46 @@
         },
         {
           "type": "impl",
-          "name": "positionImpl",
-          "interface_name": "bytebeasts::models::Iposition"
+          "name": "playerImpl",
+          "interface_name": "bytebeasts::models::Iplayer"
         },
         {
           "type": "struct",
-          "name": "bytebeasts::models::Vec2",
+          "name": "bytebeasts::models::Player",
           "members": [
             {
-              "name": "x",
+              "name": "player_id",
               "type": "core::integer::u32"
             },
             {
-              "name": "y",
-              "type": "core::integer::u32"
-            }
-          ]
-        },
-        {
-          "type": "struct",
-          "name": "bytebeasts::models::Position",
-          "members": [
-            {
-              "name": "player",
-              "type": "core::starknet::contract_address::ContractAddress"
+              "name": "player_name",
+              "type": "core::felt252"
             },
             {
-              "name": "vec",
-              "type": "bytebeasts::models::Vec2"
+              "name": "beast_1",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "beast_2",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "beast_3",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "beast_4",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "potions",
+              "type": "core::integer::u32"
             }
           ]
         },
         {
           "type": "interface",
-          "name": "bytebeasts::models::Iposition",
+          "name": "bytebeasts::models::Iplayer",
           "items": [
             {
               "type": "function",
@@ -3338,7 +3379,7 @@
               "inputs": [
                 {
                   "name": "model",
-                  "type": "bytebeasts::models::Position"
+                  "type": "bytebeasts::models::Player"
                 }
               ],
               "outputs": [],
@@ -3348,13 +3389,448 @@
         },
         {
           "type": "event",
-          "name": "bytebeasts::models::position::Event",
+          "name": "bytebeasts::models::player::Event",
           "kind": "enum",
           "variants": []
         }
       ],
-      "tag": "bytebeasts-Position",
-      "manifest_name": "bytebeasts-Position-78f28df6"
+      "tag": "bytebeasts-Player",
+      "manifest_name": "bytebeasts-Player-14f5e45e"
+    },
+    {
+      "kind": "DojoModel",
+      "members": [
+        {
+          "name": "potion_id",
+          "type": "u32",
+          "key": true
+        },
+        {
+          "name": "potion_name",
+          "type": "felt252",
+          "key": false
+        },
+        {
+          "name": "potion_effect",
+          "type": "u32",
+          "key": false
+        }
+      ],
+      "class_hash": "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d",
+      "original_class_hash": "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d",
+      "abi": [
+        {
+          "type": "impl",
+          "name": "DojoModelImpl",
+          "interface_name": "dojo::model::model::IModel"
+        },
+        {
+          "type": "struct",
+          "name": "core::byte_array::ByteArray",
+          "members": [
+            {
+              "name": "data",
+              "type": "core::array::Array::<core::bytes_31::bytes31>"
+            },
+            {
+              "name": "pending_word",
+              "type": "core::felt252"
+            },
+            {
+              "name": "pending_word_len",
+              "type": "core::integer::u32"
+            }
+          ]
+        },
+        {
+          "type": "enum",
+          "name": "core::option::Option::<core::integer::u32>",
+          "variants": [
+            {
+              "name": "Some",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "None",
+              "type": "()"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<core::integer::u8>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<core::integer::u8>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "dojo::model::layout::FieldLayout",
+          "members": [
+            {
+              "name": "selector",
+              "type": "core::felt252"
+            },
+            {
+              "name": "layout",
+              "type": "dojo::model::layout::Layout"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<dojo::model::layout::FieldLayout>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<dojo::model::layout::FieldLayout>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<dojo::model::layout::Layout>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<dojo::model::layout::Layout>"
+            }
+          ]
+        },
+        {
+          "type": "enum",
+          "name": "dojo::model::layout::Layout",
+          "variants": [
+            {
+              "name": "Fixed",
+              "type": "core::array::Span::<core::integer::u8>"
+            },
+            {
+              "name": "Struct",
+              "type": "core::array::Span::<dojo::model::layout::FieldLayout>"
+            },
+            {
+              "name": "Tuple",
+              "type": "core::array::Span::<dojo::model::layout::Layout>"
+            },
+            {
+              "name": "Array",
+              "type": "core::array::Span::<dojo::model::layout::Layout>"
+            },
+            {
+              "name": "ByteArray",
+              "type": "()"
+            },
+            {
+              "name": "Enum",
+              "type": "core::array::Span::<dojo::model::layout::FieldLayout>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<core::felt252>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<core::felt252>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "dojo::model::introspect::Member",
+          "members": [
+            {
+              "name": "name",
+              "type": "core::felt252"
+            },
+            {
+              "name": "attrs",
+              "type": "core::array::Span::<core::felt252>"
+            },
+            {
+              "name": "ty",
+              "type": "dojo::model::introspect::Ty"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<dojo::model::introspect::Member>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<dojo::model::introspect::Member>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "dojo::model::introspect::Struct",
+          "members": [
+            {
+              "name": "name",
+              "type": "core::felt252"
+            },
+            {
+              "name": "attrs",
+              "type": "core::array::Span::<core::felt252>"
+            },
+            {
+              "name": "children",
+              "type": "core::array::Span::<dojo::model::introspect::Member>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<(core::felt252, dojo::model::introspect::Ty)>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<(core::felt252, dojo::model::introspect::Ty)>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "dojo::model::introspect::Enum",
+          "members": [
+            {
+              "name": "name",
+              "type": "core::felt252"
+            },
+            {
+              "name": "attrs",
+              "type": "core::array::Span::<core::felt252>"
+            },
+            {
+              "name": "children",
+              "type": "core::array::Span::<(core::felt252, dojo::model::introspect::Ty)>"
+            }
+          ]
+        },
+        {
+          "type": "struct",
+          "name": "core::array::Span::<dojo::model::introspect::Ty>",
+          "members": [
+            {
+              "name": "snapshot",
+              "type": "@core::array::Array::<dojo::model::introspect::Ty>"
+            }
+          ]
+        },
+        {
+          "type": "enum",
+          "name": "dojo::model::introspect::Ty",
+          "variants": [
+            {
+              "name": "Primitive",
+              "type": "core::felt252"
+            },
+            {
+              "name": "Struct",
+              "type": "dojo::model::introspect::Struct"
+            },
+            {
+              "name": "Enum",
+              "type": "dojo::model::introspect::Enum"
+            },
+            {
+              "name": "Tuple",
+              "type": "core::array::Span::<dojo::model::introspect::Ty>"
+            },
+            {
+              "name": "Array",
+              "type": "core::array::Span::<dojo::model::introspect::Ty>"
+            },
+            {
+              "name": "ByteArray",
+              "type": "()"
+            }
+          ]
+        },
+        {
+          "type": "interface",
+          "name": "dojo::model::model::IModel",
+          "items": [
+            {
+              "type": "function",
+              "name": "name",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::byte_array::ByteArray"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "namespace",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::byte_array::ByteArray"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "tag",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::byte_array::ByteArray"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "version",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::integer::u8"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "selector",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::felt252"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "name_hash",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::felt252"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "namespace_hash",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::felt252"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "unpacked_size",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::option::Option::<core::integer::u32>"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "packed_size",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "core::option::Option::<core::integer::u32>"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "layout",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "dojo::model::layout::Layout"
+                }
+              ],
+              "state_mutability": "view"
+            },
+            {
+              "type": "function",
+              "name": "schema",
+              "inputs": [],
+              "outputs": [
+                {
+                  "type": "dojo::model::introspect::Ty"
+                }
+              ],
+              "state_mutability": "view"
+            }
+          ]
+        },
+        {
+          "type": "impl",
+          "name": "potionImpl",
+          "interface_name": "bytebeasts::models::Ipotion"
+        },
+        {
+          "type": "struct",
+          "name": "bytebeasts::models::Potion",
+          "members": [
+            {
+              "name": "potion_id",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "potion_name",
+              "type": "core::felt252"
+            },
+            {
+              "name": "potion_effect",
+              "type": "core::integer::u32"
+            }
+          ]
+        },
+        {
+          "type": "interface",
+          "name": "bytebeasts::models::Ipotion",
+          "items": [
+            {
+              "type": "function",
+              "name": "ensure_abi",
+              "inputs": [
+                {
+                  "name": "model",
+                  "type": "bytebeasts::models::Potion"
+                }
+              ],
+              "outputs": [],
+              "state_mutability": "view"
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "name": "bytebeasts::models::potion::Event",
+          "kind": "enum",
+          "variants": []
+        }
+      ],
+      "tag": "bytebeasts-Potion",
+      "manifest_name": "bytebeasts-Potion-6a2114b0"
     }
   ]
 }
