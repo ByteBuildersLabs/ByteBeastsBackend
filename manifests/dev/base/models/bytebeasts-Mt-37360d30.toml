@@ -1,0 +1,31 @@
+kind = "DojoModel"
+class_hash = "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923"
+original_class_hash = "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923"
+abi = "manifests/dev/base/abis/models/bytebeasts-Mt-37360d30.json"
+tag = "bytebeasts-Mt"
+manifest_name = "bytebeasts-Mt-37360d30"
+
+[[members]]
+name = "mt_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "mt_name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "mt_type"
+type = "u32"
+key = false
+
+[[members]]
+name = "mt_power"
+type = "u32"
+key = false
+
+[[members]]
+name = "mt_accuracy"
+type = "u32"
+key = false

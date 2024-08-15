@@ -1,0 +1,21 @@
+kind = "DojoModel"
+class_hash = "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d"
+original_class_hash = "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d"
+abi = "manifests/dev/base/abis/models/bytebeasts-Potion-6a2114b0.json"
+tag = "bytebeasts-Potion"
+manifest_name = "bytebeasts-Potion-6a2114b0"
+
+[[members]]
+name = "potion_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "potion_name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "potion_effect"
+type = "u32"
+key = false

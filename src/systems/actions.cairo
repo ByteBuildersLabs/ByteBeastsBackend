@@ -1,5 +1,9 @@
 use bytebeasts::models::Direction;
 use bytebeasts::models::Position;
+use bytebeasts::models::Beast;
+use bytebeasts::models::Mt;
+use bytebeasts::models::Player;
+use bytebeasts::models::Potion;
 
 // define the interface
 #[dojo::interface]

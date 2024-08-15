@@ -1,0 +1,81 @@
+kind = "DojoModel"
+class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
+original_class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
+abi = "manifests/dev/base/abis/models/bytebeasts-Beast-27809d20.json"
+tag = "bytebeasts-Beast"
+manifest_name = "bytebeasts-Beast-27809d20"
+
+[[members]]
+name = "beast_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "beast_name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "beast_type"
+type = "felt252"
+key = false
+
+[[members]]
+name = "beast_description"
+type = "felt252"
+key = false
+
+[[members]]
+name = "player_id"
+type = "felt252"
+key = false
+
+[[members]]
+name = "hp"
+type = "u32"
+key = false
+
+[[members]]
+name = "current_hp"
+type = "u32"
+key = false
+
+[[members]]
+name = "attack"
+type = "u64"
+key = false
+
+[[members]]
+name = "defense"
+type = "u64"
+key = false
+
+[[members]]
+name = "mt1"
+type = "u32"
+key = false
+
+[[members]]
+name = "mt2"
+type = "u32"
+key = false
+
+[[members]]
+name = "mt3"
+type = "u32"
+key = false
+
+[[members]]
+name = "mt4"
+type = "u32"
+key = false
+
+[[members]]
+name = "level"
+type = "u32"
+key = false
+
+[[members]]
+name = "experience_to_nex_level"
+type = "u64"
+key = false
