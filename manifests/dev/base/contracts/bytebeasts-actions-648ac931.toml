@@ -1,0 +1,10 @@
+kind = "DojoContract"
+class_hash = "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5"
+original_class_hash = "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5"
+base_class_hash = "0x0"
+abi = "manifests/dev/base/abis/contracts/bytebeasts-actions-648ac931.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "bytebeasts-actions"
+manifest_name = "bytebeasts-actions-648ac931"

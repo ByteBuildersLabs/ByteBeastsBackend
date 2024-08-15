@@ -1,5 +1,5 @@
-use dojo_starter::models::Direction;
-use dojo_starter::models::Position;
+use bytebeasts::models::Direction;
+use bytebeasts::models::Position;
 
 // define the interface
 #[dojo::interface]
@@ -13,7 +13,7 @@ trait IActions {
 mod actions {
     use super::{IActions, next_position};
     use starknet::{ContractAddress, get_caller_address};
-    use dojo_starter::models::{Position, Vec2, Moves, Direction, DirectionsAvailable};
+    use bytebeasts::models::{Position, Vec2, Moves, Direction, DirectionsAvailable};
 
     #[derive(Copy, Drop, Serde)]
     #[dojo::model]

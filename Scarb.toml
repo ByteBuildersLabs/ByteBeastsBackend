@@ -1,6 +1,6 @@
 [package]
 cairo-version = "=2.7.0"
-name = "dojo_starter"
+name = "bytebeasts"
 version = "0.1.0"
 
 [cairo]

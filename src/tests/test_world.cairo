@@ -5,7 +5,7 @@ mod tests {
     // import test utils
     use dojo::utils::test::{spawn_test_world, deploy_contract};
     // import test utils
-    use dojo_starter::{
+    use bytebeasts::{
         systems::{actions::{actions, IActionsDispatcher, IActionsDispatcherTrait}},
         models::{{Position, Vec2, position, Moves, Direction, moves}}
     };
@@ -19,14 +19,14 @@ mod tests {
         let mut models = array![position::TEST_CLASS_HASH, moves::TEST_CLASS_HASH];
 
         // deploy world with models
-        let world = spawn_test_world("dojo_starter", models);
+        let world = spawn_test_world("bytebeasts", models);
 
         // deploy systems contract
         let contract_address = world
             .deploy_contract('salt', actions::TEST_CLASS_HASH.try_into().unwrap());
         let actions_system = IActionsDispatcher { contract_address };
 
-        world.grant_writer(dojo::utils::bytearray_hash(@"dojo_starter"), contract_address);
+        world.grant_writer(dojo::utils::bytearray_hash(@"bytebeasts"), contract_address);
 
         // call spawn()
         actions_system.spawn();

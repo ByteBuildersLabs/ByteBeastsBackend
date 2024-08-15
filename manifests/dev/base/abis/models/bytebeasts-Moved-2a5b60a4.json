@@ -364,11 +364,11 @@
   {
     "type": "impl",
     "name": "movedImpl",
-    "interface_name": "dojo_starter::systems::actions::actions::Imoved"
+    "interface_name": "bytebeasts::systems::actions::actions::Imoved"
   },
   {
     "type": "enum",
-    "name": "dojo_starter::models::Direction",
+    "name": "bytebeasts::models::Direction",
     "variants": [
       {
         "name": "None",
@@ -394,7 +394,7 @@
   },
   {
     "type": "struct",
-    "name": "dojo_starter::systems::actions::actions::Moved",
+    "name": "bytebeasts::systems::actions::actions::Moved",
     "members": [
       {
         "name": "player",
@@ -402,13 +402,13 @@
       },
       {
         "name": "direction",
-        "type": "dojo_starter::models::Direction"
+        "type": "bytebeasts::models::Direction"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "dojo_starter::systems::actions::actions::Imoved",
+    "name": "bytebeasts::systems::actions::actions::Imoved",
     "items": [
       {
         "type": "function",
@@ -416,7 +416,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "dojo_starter::systems::actions::actions::Moved"
+            "type": "bytebeasts::systems::actions::actions::Moved"
           }
         ],
         "outputs": [],
@@ -426,7 +426,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::systems::actions::actions::moved::Event",
+    "name": "bytebeasts::systems::actions::actions::moved::Event",
     "kind": "enum",
     "variants": []
   }

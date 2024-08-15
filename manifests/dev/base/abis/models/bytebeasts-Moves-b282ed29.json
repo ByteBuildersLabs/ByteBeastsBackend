@@ -363,40 +363,74 @@
   },
   {
     "type": "impl",
-    "name": "positionImpl",
-    "interface_name": "dojo_starter::models::Iposition"
+    "name": "movesImpl",
+    "interface_name": "bytebeasts::models::Imoves"
   },
   {
-    "type": "struct",
-    "name": "dojo_starter::models::Vec2",
-    "members": [
+    "type": "enum",
+    "name": "bytebeasts::models::Direction",
+    "variants": [
       {
-        "name": "x",
-        "type": "core::integer::u32"
+        "name": "None",
+        "type": "()"
       },
       {
-        "name": "y",
-        "type": "core::integer::u32"
+        "name": "Left",
+        "type": "()"
+      },
+      {
+        "name": "Right",
+        "type": "()"
+      },
+      {
+        "name": "Up",
+        "type": "()"
+      },
+      {
+        "name": "Down",
+        "type": "()"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
       }
     ]
   },
   {
     "type": "struct",
-    "name": "dojo_starter::models::Position",
+    "name": "bytebeasts::models::Moves",
     "members": [
       {
         "name": "player",
         "type": "core::starknet::contract_address::ContractAddress"
       },
       {
-        "name": "vec",
-        "type": "dojo_starter::models::Vec2"
+        "name": "remaining",
+        "type": "core::integer::u8"
+      },
+      {
+        "name": "last_direction",
+        "type": "bytebeasts::models::Direction"
+      },
+      {
+        "name": "can_move",
+        "type": "core::bool"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "dojo_starter::models::Iposition",
+    "name": "bytebeasts::models::Imoves",
     "items": [
       {
         "type": "function",
@@ -404,7 +438,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "dojo_starter::models::Position"
+            "type": "bytebeasts::models::Moves"
           }
         ],
         "outputs": [],
@@ -414,7 +448,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::models::position::Event",
+    "name": "bytebeasts::models::moves::Event",
     "kind": "enum",
     "variants": []
   }
