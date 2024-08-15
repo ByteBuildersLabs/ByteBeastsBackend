@@ -2,9 +2,9 @@
 set -euo pipefail
 pushd $(dirname "$0")/..
 
-export RPC_URL="http://localhost:5050";
+export RPC_URL="http://0.0.0.0:5050";
 
 export WORLD_ADDRESS=$(cat ./manifests/dev/manifest.json | jq -r '.world.address')
 
 # sozo execute --world <WORLD_ADDRESS> <CONTRACT> <ENTRYPOINT>
-sozo execute --world $WORLD_ADDRESS bytebeasts::systems::actions::actions spawn --wait
+sozo execute --world $WORLD_ADDRESS bytebeasts::systems::actions::actions setWorld --wait

@@ -5,10 +5,10 @@ use starknet::ContractAddress;
 pub struct Beast {
     #[key]
     pub beast_id: u32,
-    pub beast_name: felt252,
-    pub beast_type: felt252,
-    pub beast_description: felt252,
-    pub player_id: felt252,
+    pub beast_name: u32,
+    pub beast_type: u32,
+    pub beast_description: u32,
+    pub player_id: u32,
     pub hp: u32,
     pub current_hp: u32,
     pub attack: u64,

@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
-original_class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
+class_hash = "0x2edfc0419e5dc0630fe45e0d983b8273119c14ac89e544926c34f48c6f5605e"
+original_class_hash = "0x2edfc0419e5dc0630fe45e0d983b8273119c14ac89e544926c34f48c6f5605e"
 abi = "manifests/dev/base/abis/models/bytebeasts-Beast-27809d20.json"
 tag = "bytebeasts-Beast"
 manifest_name = "bytebeasts-Beast-27809d20"
@@ -12,22 +12,22 @@ key = true
 
 [[members]]
 name = "beast_name"
-type = "felt252"
+type = "u32"
 key = false
 
 [[members]]
 name = "beast_type"
-type = "felt252"
+type = "u32"
 key = false
 
 [[members]]
 name = "beast_description"
-type = "felt252"
+type = "u32"
 key = false
 
 [[members]]
 name = "player_id"
-type = "felt252"
+type = "u32"
 key = false
 
 [[members]]

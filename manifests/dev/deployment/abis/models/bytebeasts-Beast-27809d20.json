@@ -376,19 +376,19 @@
       },
       {
         "name": "beast_name",
-        "type": "core::felt252"
+        "type": "core::integer::u32"
       },
       {
         "name": "beast_type",
-        "type": "core::felt252"
+        "type": "core::integer::u32"
       },
       {
         "name": "beast_description",
-        "type": "core::felt252"
+        "type": "core::integer::u32"
       },
       {
         "name": "player_id",
-        "type": "core::felt252"
+        "type": "core::integer::u32"
       },
       {
         "name": "hp",

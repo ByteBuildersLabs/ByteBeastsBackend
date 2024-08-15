@@ -24,8 +24,8 @@ manifest_name = "dojo-base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x4854bb6cc04b51e5adaed76afc0664091182fe44a9e5e68dc4f8f5f59ffd464"
-class_hash = "0x1c7fc6d32156a6ca1eb2cf46236cf84a820b475c3f9bbb22fdbfc70ba5d7270"
-original_class_hash = "0x1c7fc6d32156a6ca1eb2cf46236cf84a820b475c3f9bbb22fdbfc70ba5d7270"
+class_hash = "0x67da38ec020e7951f00fe7d3adf8315bb0d4ee1c3b7eb509e464bce3f1f1173"
+original_class_hash = "0x67da38ec020e7951f00fe7d3adf8315bb0d4ee1c3b7eb509e464bce3f1f1173"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/bytebeasts-actions-648ac931.json"
 reads = []
@@ -40,8 +40,8 @@ manifest_name = "bytebeasts-actions-648ac931"
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
-original_class_hash = "0x468c333475cf5c8ae8c17c6404672f5a58eaea92497e856808068cb0bb1214c"
+class_hash = "0x2edfc0419e5dc0630fe45e0d983b8273119c14ac89e544926c34f48c6f5605e"
+original_class_hash = "0x2edfc0419e5dc0630fe45e0d983b8273119c14ac89e544926c34f48c6f5605e"
 abi = "manifests/dev/deployment/abis/models/bytebeasts-Beast-27809d20.json"
 tag = "bytebeasts-Beast"
 manifest_name = "bytebeasts-Beast-27809d20"
@@ -53,22 +53,22 @@ key = true
 
 [[models.members]]
 name = "beast_name"
-type = "felt252"
+type = "u32"
 key = false
 
 [[models.members]]
 name = "beast_type"
-type = "felt252"
+type = "u32"
 key = false
 
 [[models.members]]
 name = "beast_description"
-type = "felt252"
+type = "u32"
 key = false
 
 [[models.members]]
 name = "player_id"
-type = "felt252"
+type = "u32"
 key = false
 
 [[models.members]]

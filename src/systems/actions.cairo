@@ -9,6 +9,7 @@ trait IActions {
     fn attack(ref world: IWorldDispatcher);
     fn usePotion(ref world: IWorldDispatcher);
     fn flee(ref world: IWorldDispatcher);
+    fn setWorld(ref world: IWorldDispatcher);
 }
 
 // dojo decorator
@@ -42,5 +43,26 @@ mod actions {
         fn flee(ref world: IWorldDispatcher) {
             let player = get_caller_address();
         }
+
+    fn setWorld(ref world: IWorldDispatcher) {
+    let beast = Beast {
+        beast_id: 1,
+        beast_name: 1,
+        beast_type: 1,
+        beast_description: 1,
+        player_id: 1,
+        hp: 1,
+        current_hp: 1,
+        attack: 1,
+        defense: 1,
+        mt1: 1,
+        mt2: 1,
+        mt3: 1,
+        mt4: 1,
+        level: 1,
+        experience_to_next_level: 1,
+    };
+    set!(world, beast);
+}
     }
 }
