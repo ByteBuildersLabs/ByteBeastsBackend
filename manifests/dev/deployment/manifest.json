@@ -1235,7 +1235,7 @@
     "seed": "bytebeasts",
     "metadata": {
       "profile_name": "dev",
-      "rpc_url": "http://localhost:5050/"
+      "rpc_url": "http://0.0.0.0:5050/"
     },
     "manifest_name": "dojo-world"
   },

@@ -44,25 +44,13 @@ mod actions {
             let player = get_caller_address();
         }
 
-    fn setWorld(ref world: IWorldDispatcher) {
-    let beast = Beast {
-        beast_id: 1,
-        beast_name: 1,
-        beast_type: 1,
-        beast_description: 1,
-        player_id: 1,
-        hp: 1,
-        current_hp: 1,
-        attack: 1,
-        defense: 1,
-        mt1: 1,
-        mt2: 1,
-        mt3: 1,
-        mt4: 1,
-        level: 1,
-        experience_to_next_level: 1,
-    };
-    set!(world, beast);
-}
+        fn setWorld(ref world: IWorldDispatcher) {
+            set!(
+                world,
+                (
+                    Beast { beast_id: 1, beast_name: 1, beast_type: 1, beast_description: 1, player_id: 1, hp: 1, current_hp: 1, attack: 1, defense: 1, mt1: 1, mt2: 1, mt3: 1, mt4: 1, level: 1, experience_to_nex_level: 1  }
+                )
+            );
+        }
     }
 }

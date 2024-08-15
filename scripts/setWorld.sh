@@ -4,7 +4,9 @@ pushd $(dirname "$0")/..
 
 export RPC_URL="http://0.0.0.0:5050";
 
-export WORLD_ADDRESS=$(cat ./manifests/dev/manifest.json | jq -r '.world.address')
+export WORLD_ADDRESS=$(cat ./manifests/dev/deployment/manifest.json | jq -r '.world.address')
+
+echo $WORLD_ADDRESS
 
 # sozo execute --world <WORLD_ADDRESS> <CONTRACT> <ENTRYPOINT>
-sozo execute --world $WORLD_ADDRESS bytebeasts::systems::actions::actions setWorld --wait
+sozo execute --world $WORLD_ADDRESS actions setWorld --wait
