@@ -1,16 +1,7 @@
 [world]
 name = "Bytebeasts"
 description = "The official Byte Beasts guide, the quickest and most streamlined way to get your Dojo Autonomous World up and running. This guide will assist you with the initial setup, from cloning the repository to deploying your world."
-cover_uri = "file://assets/cover.png"
-icon_uri = "file://assets/icon.png"
-website = "https://github.com/dojoengine/dojo-starter"
 seed = "bytebeasts"
-
-[world.socials]
-x = "https://x.com/ohayo_dojo"
-discord = "https://discord.gg/FB2wR6uF"
-github = "https://github.com/dojoengine/dojo-starter"
-telegram = "https://t.me/dojoengine"
 
 [namespace]
 default = "bytebeasts"
