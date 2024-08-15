@@ -1,0 +1,121 @@
+[world]
+kind = "WorldContract"
+class_hash = "0x76ced5a15cb43c7be7176cff4779cd57c56638a46ddf2c9da709d22298c5e5a"
+original_class_hash = "0x76ced5a15cb43c7be7176cff4779cd57c56638a46ddf2c9da709d22298c5e5a"
+abi = "manifests/dev/deployment/abis/dojo-world.json"
+address = "0x644001b28f89e7ae8a39f9c48eb4961cc4f817dc40b4b527f851a56fe703652"
+transaction_hash = "0x1f1c658f1b3de98e21e98839833fb636773cf806eb7d2e3d3ec52e35c35a78"
+block_number = 3
+seed = "bytebeasts"
+manifest_name = "dojo-world"
+
+[world.metadata]
+profile_name = "dev"
+rpc_url = "http://localhost:5050/"
+
+[base]
+kind = "Class"
+class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+original_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/dev/deployment/abis/dojo-base.json"
+tag = "dojo-base"
+manifest_name = "dojo-base"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x4854bb6cc04b51e5adaed76afc0664091182fe44a9e5e68dc4f8f5f59ffd464"
+class_hash = "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5"
+original_class_hash = "0x6b58151d32ced624d9660c8b584b1bbd58ae4e3365a269354e769d38eccc2e5"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/dev/deployment/abis/contracts/bytebeasts-actions-648ac931.json"
+reads = []
+writes = [
+    "bytebeasts-Moves",
+    "bytebeasts-Position",
+    "bytebeasts-DirectionsAvailable",
+]
+init_calldata = []
+tag = "bytebeasts-actions"
+manifest_name = "bytebeasts-actions-648ac931"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x753774dc80b9e6dbdd5939e356065e11745d14e14217fb69e4c35a7b93defd2"
+original_class_hash = "0x753774dc80b9e6dbdd5939e356065e11745d14e14217fb69e4c35a7b93defd2"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-DirectionsAvailable-48430624.json"
+tag = "bytebeasts-DirectionsAvailable"
+manifest_name = "bytebeasts-DirectionsAvailable-48430624"
+
+[[models.members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "directions"
+type = "Array<Direction>"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x4832e8416049ae631fdf6d424b02a9fbf366810cfd1dd4d9d047b58809e138a"
+original_class_hash = "0x4832e8416049ae631fdf6d424b02a9fbf366810cfd1dd4d9d047b58809e138a"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Moved-2a5b60a4.json"
+tag = "bytebeasts-Moved"
+manifest_name = "bytebeasts-Moved-2a5b60a4"
+
+[[models.members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "direction"
+type = "Direction"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x3eda97055345dbd80570f5264558b4f6e91ac0eeea273996cf8b986d984db2c"
+original_class_hash = "0x3eda97055345dbd80570f5264558b4f6e91ac0eeea273996cf8b986d984db2c"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Moves-b282ed29.json"
+tag = "bytebeasts-Moves"
+manifest_name = "bytebeasts-Moves-b282ed29"
+
+[[models.members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "remaining"
+type = "u8"
+key = false
+
+[[models.members]]
+name = "last_direction"
+type = "Direction"
+key = false
+
+[[models.members]]
+name = "can_move"
+type = "bool"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x144b4dd55fa65d6e78e37571cee889759040f43772e7ee2d2eaa7b3c36b880c"
+original_class_hash = "0x144b4dd55fa65d6e78e37571cee889759040f43772e7ee2d2eaa7b3c36b880c"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Position-78f28df6.json"
+tag = "bytebeasts-Position"
+manifest_name = "bytebeasts-Position-78f28df6"
+
+[[models.members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "vec"
+type = "Vec2"
+key = false
