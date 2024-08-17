@@ -1501,9 +1501,7 @@
       ],
       "reads": [],
       "writes": [
-        "bytebeasts-Moves",
-        "bytebeasts-Position",
-        "bytebeasts-DirectionsAvailable"
+        "ns::bytebeasts"
       ],
       "init_calldata": [],
       "tag": "bytebeasts-actions",

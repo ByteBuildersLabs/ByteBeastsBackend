@@ -128,17 +128,26 @@
   },
   {
     "type": "impl",
-    "name": "ActionsImpl",
-    "interface_name": "bytebeasts::systems::actions::IActions"
+    "name": "BattleActionsImpl",
+    "interface_name": "bytebeasts::systems::battle::IBattleActions"
   },
   {
     "type": "interface",
-    "name": "bytebeasts::systems::actions::IActions",
+    "name": "bytebeasts::systems::battle::IBattleActions",
     "items": [
       {
         "type": "function",
-        "name": "setWorld",
-        "inputs": [],
+        "name": "init_battle",
+        "inputs": [
+          {
+            "name": "player_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "opponent_id",
+            "type": "core::integer::u32"
+          }
+        ],
         "outputs": [],
         "state_mutability": "external"
       }
@@ -147,11 +156,11 @@
   {
     "type": "impl",
     "name": "IDojoInitImpl",
-    "interface_name": "bytebeasts::systems::actions::actions::IDojoInit"
+    "interface_name": "bytebeasts::systems::battle::battle_system::IDojoInit"
   },
   {
     "type": "interface",
-    "name": "bytebeasts::systems::actions::actions::IDojoInit",
+    "name": "bytebeasts::systems::battle::battle_system::IDojoInit",
     "items": [
       {
         "type": "function",
@@ -211,7 +220,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::systems::actions::actions::Event",
+    "name": "bytebeasts::systems::battle::battle_system::Event",
     "kind": "enum",
     "variants": [
       {

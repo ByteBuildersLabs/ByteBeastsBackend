@@ -1,6 +1,2 @@
 tag = "bytebeasts-actions"
-writes = [
-    "bytebeasts-Moves",
-    "bytebeasts-Position",
-    "bytebeasts-DirectionsAvailable",
-]
+writes = [ "ns::bytebeasts"]

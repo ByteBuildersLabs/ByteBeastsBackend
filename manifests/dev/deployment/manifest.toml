@@ -29,11 +29,7 @@ original_class_hash = "0x67da38ec020e7951f00fe7d3adf8315bb0d4ee1c3b7eb509e464bce
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/bytebeasts-actions-648ac931.json"
 reads = []
-writes = [
-    "bytebeasts-Moves",
-    "bytebeasts-Position",
-    "bytebeasts-DirectionsAvailable",
-]
+writes = ["ns::bytebeasts"]
 init_calldata = []
 tag = "bytebeasts-actions"
 manifest_name = "bytebeasts-actions-648ac931"
