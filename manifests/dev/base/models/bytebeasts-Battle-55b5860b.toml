@@ -1,0 +1,41 @@
+kind = "DojoModel"
+class_hash = "0x1279ba311b8f42dceefdfc2f10b1e8d524a9df7f08a0716eccc3bedf6e235da"
+original_class_hash = "0x1279ba311b8f42dceefdfc2f10b1e8d524a9df7f08a0716eccc3bedf6e235da"
+abi = "manifests/dev/base/abis/models/bytebeasts-Battle-55b5860b.json"
+tag = "bytebeasts-Battle"
+manifest_name = "bytebeasts-Battle-55b5860b"
+
+[[members]]
+name = "battle_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "player_id"
+type = "u32"
+key = false
+
+[[members]]
+name = "opponent_id"
+type = "u32"
+key = false
+
+[[members]]
+name = "active_beast_player"
+type = "u32"
+key = false
+
+[[members]]
+name = "active_beast_opponent"
+type = "u32"
+key = false
+
+[[members]]
+name = "battle_active"
+type = "u32"
+key = false
+
+[[members]]
+name = "turn"
+type = "u32"
+key = false
