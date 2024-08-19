@@ -376,7 +376,7 @@
       },
       {
         "name": "beast_name",
-        "type": "core::integer::u32"
+        "type": "core::felt252"
       },
       {
         "name": "beast_type",
@@ -384,7 +384,7 @@
       },
       {
         "name": "beast_description",
-        "type": "core::integer::u32"
+        "type": "core::felt252"
       },
       {
         "name": "player_id",
@@ -427,7 +427,7 @@
         "type": "core::integer::u32"
       },
       {
-        "name": "experience_to_nex_level",
+        "name": "experience_to_next_level",
         "type": "core::integer::u64"
       }
     ]

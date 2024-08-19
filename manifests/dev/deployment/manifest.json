@@ -1251,8 +1251,8 @@
     {
       "kind": "DojoContract",
       "address": "0x4854bb6cc04b51e5adaed76afc0664091182fe44a9e5e68dc4f8f5f59ffd464",
-      "class_hash": "0xb5372e1739d610fe27521a9203c77c7ff3fea6040627bee239502bdfcce147",
-      "original_class_hash": "0xb5372e1739d610fe27521a9203c77c7ff3fea6040627bee239502bdfcce147",
+      "class_hash": "0x4b192794775dc6ff0267fd1a9ed531908e7a661e73fe596707af46c8719b587",
+      "original_class_hash": "0x4b192794775dc6ff0267fd1a9ed531908e7a661e73fe596707af46c8719b587",
       "base_class_hash": "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2",
       "abi": [
         {
@@ -1480,7 +1480,10 @@
       ],
       "reads": [],
       "writes": [
-        "bytebeasts-Beast"
+        "bytebeasts-Beast",
+        "bytebeasts-Mt",
+        "bytebeasts-Player",
+        "bytebeasts-Potion"
       ],
       "init_calldata": [],
       "tag": "bytebeasts-actions",
@@ -1489,8 +1492,8 @@
     {
       "kind": "DojoContract",
       "address": "0x612b684f6b34356ad9a07ac3e1924f9dfa54235d0a513095b0d12695ace8b68",
-      "class_hash": "0x153d3b6c19c130e1f6028634213cdc5f9f9236db13f9d03afe371c4163bbbd6",
-      "original_class_hash": "0x153d3b6c19c130e1f6028634213cdc5f9f9236db13f9d03afe371c4163bbbd6",
+      "class_hash": "0x56093b60a0b0aa8902f1dd09a888754a910967e4029bb70d8983ee846d4f488",
+      "original_class_hash": "0x56093b60a0b0aa8902f1dd09a888754a910967e4029bb70d8983ee846d4f488",
       "base_class_hash": "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2",
       "abi": [
         {
@@ -1743,7 +1746,7 @@
         },
         {
           "name": "beast_name",
-          "type": "u32",
+          "type": "felt252",
           "key": false
         },
         {
@@ -1753,7 +1756,7 @@
         },
         {
           "name": "beast_description",
-          "type": "u32",
+          "type": "felt252",
           "key": false
         },
         {
@@ -1807,13 +1810,13 @@
           "key": false
         },
         {
-          "name": "experience_to_nex_level",
+          "name": "experience_to_next_level",
           "type": "u64",
           "key": false
         }
       ],
-      "class_hash": "0x2edfc0419e5dc0630fe45e0d983b8273119c14ac89e544926c34f48c6f5605e",
-      "original_class_hash": "0x2edfc0419e5dc0630fe45e0d983b8273119c14ac89e544926c34f48c6f5605e",
+      "class_hash": "0x1ae435e73e2ccb909d2fc7ea7ac0def65e0e2df5cb9496caa4e08d54f2c428c",
+      "original_class_hash": "0x1ae435e73e2ccb909d2fc7ea7ac0def65e0e2df5cb9496caa4e08d54f2c428c",
       "abi": [
         {
           "type": "impl",
@@ -2192,7 +2195,7 @@
             },
             {
               "name": "beast_name",
-              "type": "core::integer::u32"
+              "type": "core::felt252"
             },
             {
               "name": "beast_type",
@@ -2200,7 +2203,7 @@
             },
             {
               "name": "beast_description",
-              "type": "core::integer::u32"
+              "type": "core::felt252"
             },
             {
               "name": "player_id",
@@ -2243,7 +2246,7 @@
               "type": "core::integer::u32"
             },
             {
-              "name": "experience_to_nex_level",
+              "name": "experience_to_next_level",
               "type": "core::integer::u64"
             }
           ]

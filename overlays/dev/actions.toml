@@ -1,2 +1,2 @@
 tag = "bytebeasts-actions"
-writes = [ "bytebeasts-Beast"]
+writes = [ "bytebeasts-Beast", "bytebeasts-Mt", "bytebeasts-Player", "bytebeasts-Potion"]
