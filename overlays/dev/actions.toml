@@ -1,2 +1,2 @@
 tag = "bytebeasts-actions"
-writes = [ "ns::bytebeasts"]
+writes = [ "bytebeasts-Beast"]

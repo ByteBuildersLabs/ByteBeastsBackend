@@ -24,15 +24,28 @@ manifest_name = "dojo-base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x4854bb6cc04b51e5adaed76afc0664091182fe44a9e5e68dc4f8f5f59ffd464"
-class_hash = "0x67da38ec020e7951f00fe7d3adf8315bb0d4ee1c3b7eb509e464bce3f1f1173"
-original_class_hash = "0x67da38ec020e7951f00fe7d3adf8315bb0d4ee1c3b7eb509e464bce3f1f1173"
+class_hash = "0xb5372e1739d610fe27521a9203c77c7ff3fea6040627bee239502bdfcce147"
+original_class_hash = "0xb5372e1739d610fe27521a9203c77c7ff3fea6040627bee239502bdfcce147"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/bytebeasts-actions-648ac931.json"
 reads = []
-writes = ["ns::bytebeasts"]
+writes = ["bytebeasts-Beast"]
 init_calldata = []
 tag = "bytebeasts-actions"
 manifest_name = "bytebeasts-actions-648ac931"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x612b684f6b34356ad9a07ac3e1924f9dfa54235d0a513095b0d12695ace8b68"
+class_hash = "0x153d3b6c19c130e1f6028634213cdc5f9f9236db13f9d03afe371c4163bbbd6"
+original_class_hash = "0x153d3b6c19c130e1f6028634213cdc5f9f9236db13f9d03afe371c4163bbbd6"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/dev/deployment/abis/contracts/bytebeasts-battle_system-461868ac.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "bytebeasts-battle_system"
+manifest_name = "bytebeasts-battle_system-461868ac"
 
 [[models]]
 kind = "DojoModel"
@@ -115,24 +128,6 @@ key = false
 [[models.members]]
 name = "experience_to_nex_level"
 type = "u64"
-key = false
-
-[[models]]
-kind = "DojoModel"
-class_hash = "0x74fa5d0e4e909cd9ad439cc2efe9fb6bb33d848f4e7a4156674f44a0218ab13"
-original_class_hash = "0x74fa5d0e4e909cd9ad439cc2efe9fb6bb33d848f4e7a4156674f44a0218ab13"
-abi = "manifests/dev/deployment/abis/models/bytebeasts-Message-23adac1f.json"
-tag = "bytebeasts-Message"
-manifest_name = "bytebeasts-Message-23adac1f"
-
-[[models.members]]
-name = "player"
-type = "ContractAddress"
-key = true
-
-[[models.members]]
-name = "message"
-type = "felt252"
 key = false
 
 [[models]]
