@@ -10,6 +10,7 @@ use bytebeasts::models::Battle;
 trait IBattleActions {
     fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
     fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252;
+    fn apply_item_effect(potion: Potion, target: Beast);
 }
 
 #[dojo::contract]
@@ -41,12 +42,21 @@ mod battle_system {
             // Try to send a message to the player (emit)
         }
 
+        fn apply_item_effect(potion: Potion, mut target: Beast) {
+            if potion.potion_effect == 1 {
+                target.current_hp += 20_u32;
+                if target.current_hp > target.hp {
+                    target.current_hp = target.hp;
+                }
+            }
+        }
+
         fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252 {
-          if player_beast.level > opponent_beast.level {
-              1 // Success
-          } else {
-              0 // Fail
-          }
-      }
+            if player_beast.level > opponent_beast.level {
+                1 // Success
+            } else {
+                0 // Fail
+            }
+        }
     }
 }
