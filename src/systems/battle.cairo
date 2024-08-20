@@ -9,6 +9,7 @@ use bytebeasts::models::Battle;
 #[dojo::interface]
 trait IBattleActions {
     fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
+    fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252;
 }
 
 #[dojo::contract]
@@ -37,6 +38,15 @@ mod battle_system {
                     turn: 0,
                 })
             );
+            // Try to send a message to the player (emit)
         }
+
+        fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252 {
+          if player_beast.level > opponent_beast.level {
+              1 // Success
+          } else {
+              0 // Fail
+          }
+      }
     }
 }
