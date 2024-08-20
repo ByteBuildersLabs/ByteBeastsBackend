@@ -165,11 +165,11 @@
       },
       {
         "name": "attack",
-        "type": "core::integer::u64"
+        "type": "core::integer::u32"
       },
       {
         "name": "defense",
-        "type": "core::integer::u64"
+        "type": "core::integer::u32"
       },
       {
         "name": "mt1",
@@ -211,6 +211,32 @@
       },
       {
         "name": "potion_effect",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "bytebeasts::models::Mt",
+    "members": [
+      {
+        "name": "mt_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "mt_type",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_power",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_accuracy",
         "type": "core::integer::u32"
       }
     ]
@@ -269,6 +295,30 @@
           }
         ],
         "outputs": [],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "calculate_damage",
+        "inputs": [
+          {
+            "name": "mt",
+            "type": "bytebeasts::models::Mt"
+          },
+          {
+            "name": "attacker",
+            "type": "bytebeasts::models::Beast"
+          },
+          {
+            "name": "defender",
+            "type": "bytebeasts::models::Beast"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u32"
+          }
+        ],
         "state_mutability": "view"
       }
     ]

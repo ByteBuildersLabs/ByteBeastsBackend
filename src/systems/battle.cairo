@@ -11,6 +11,7 @@ trait IBattleActions {
     fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
     fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252;
     fn apply_item_effect(potion: Potion, target: Beast);
+    fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32;
 }
 
 #[dojo::contract]
@@ -40,6 +41,24 @@ mod battle_system {
                 })
             );
             // Try to send a message to the player (emit)
+        }
+
+        fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
+            let base_damage = mt.mt_power * attacker.attack / defender.defense;
+
+            // Aplicar efectividad y otros modificadores (simplificado)
+            let effective_damage =
+                base_damage; // Extender con efectividad por tipo, aleatoriedad, etc.
+
+            // Considerar precisión (simplificado)
+            // let hit_chance = random_felt252() % 100_u32;
+
+            let hit_chance = 50_u32; // Hardcoded for now
+            if hit_chance > mt.mt_accuracy {
+                return 0_u32; // Ataque fallido
+            }
+
+            effective_damage
         }
 
         fn apply_item_effect(potion: Potion, mut target: Beast) {
