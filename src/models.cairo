@@ -98,7 +98,7 @@ impl BeastImpl of BeastTrait {
 }
 #[cfg(test)]
 mod tests {
-    use super::{Beast, BeastTrait, WorldElements};
+    use super::{Beast, Player, BeastTrait, WorldElements};
 
     #[test]
     fn test_beast_exist() {
@@ -120,5 +120,22 @@ mod tests {
             experience_to_next_level: 1000,
         };
         assert(beast.exist(), 'Beast is alive');
+        assert_eq!(beast.hp, 100, "HP should be initialized to 100");
+    }
+
+    #[test]
+    fn test_player_initialization() {
+        let player = Player {
+            player_id: 1,
+            player_name: 'Hero',
+            beast_1: 1,
+            beast_2: 2,
+            beast_3: 3,
+            beast_4: 4,
+            potions: 5,
+        };
+
+        assert_eq!(player.player_name, 'Hero', "Player name should be 'Hero'");
+        assert_eq!(player.potions, 5, "Player should have 5 potions");
     }
 }
