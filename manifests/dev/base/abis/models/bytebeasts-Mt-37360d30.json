@@ -367,6 +367,32 @@
     "interface_name": "bytebeasts::models::Imt"
   },
   {
+    "type": "enum",
+    "name": "bytebeasts::models::WorldElements",
+    "variants": [
+      {
+        "name": "Crystal",
+        "type": "()"
+      },
+      {
+        "name": "Draconic",
+        "type": "()"
+      },
+      {
+        "name": "Shadow",
+        "type": "()"
+      },
+      {
+        "name": "Light",
+        "type": "()"
+      },
+      {
+        "name": "Titanium",
+        "type": "()"
+      }
+    ]
+  },
+  {
     "type": "struct",
     "name": "bytebeasts::models::Mt",
     "members": [
@@ -380,7 +406,7 @@
       },
       {
         "name": "mt_type",
-        "type": "core::integer::u32"
+        "type": "bytebeasts::models::WorldElements"
       },
       {
         "name": "mt_power",

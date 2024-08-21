@@ -2,6 +2,7 @@ use bytebeasts::models::Beast;
 use bytebeasts::models::Mt;
 use bytebeasts::models::Player;
 use bytebeasts::models::Potion;
+use bytebeasts::models::WorldElements;
 
 // define the interface
 #[dojo::interface]
@@ -15,7 +16,7 @@ mod actions {
     use super::{IActions};
 
     use starknet::{ContractAddress, get_caller_address};
-    use bytebeasts::models::{Beast, Mt, Player, Potion};
+    use bytebeasts::models::{Beast, Mt, Player, Potion, WorldElements};
 
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {
@@ -26,7 +27,7 @@ mod actions {
                 (Beast {
                     beast_id: 1,
                     beast_name: 'Firebeast',
-                    beast_type: 1, // 1: Fire, 2: Water, etc.
+                    beast_type: WorldElements::Draconic(()),
                     beast_description: 'A fiery beast.',
                     player_id: 1,
                     hp: 100,
@@ -47,7 +48,7 @@ mod actions {
                 (Beast {
                     beast_id: 2,
                     beast_name: 'Aqua',
-                    beast_type: 2, // 1: Fire, 2: Water, etc.
+                    beast_type: WorldElements::Crystal(()),
                     beast_description: 'A water beast',
                     player_id: 2,
                     hp: 110,
@@ -94,14 +95,14 @@ mod actions {
             set!(
                 world,
                 (Potion {
-                    potion_id: 1, potion_name: 'Health Potion', potion_effect: 50 // Restores 50 HP
+                    potion_id: 1, potion_name: 'Health Potion', potion_effect: 50
                 })
             );
 
             set!(
                 world,
                 (Potion {
-                    potion_id: 2, potion_name: 'Super Potion', potion_effect: 100 // Restores 100 HP
+                    potion_id: 2, potion_name: 'Super Potion', potion_effect: 100
                 })
             );
 
@@ -111,7 +112,7 @@ mod actions {
                 (Mt {
                     mt_id: 1,
                     mt_name: 'Fire Blast',
-                    mt_type: 1, // Fire type
+                    mt_type: WorldElements::Draconic(()),
                     mt_power: 90,
                     mt_accuracy: 85
                 })
@@ -122,7 +123,7 @@ mod actions {
                 (Mt {
                     mt_id: 2,
                     mt_name: 'Ember',
-                    mt_type: 1, // Fire type
+                    mt_type: WorldElements::Crystal(()),
                     mt_power: 40,
                     mt_accuracy: 100
                 })
@@ -133,7 +134,7 @@ mod actions {
                 (Mt {
                     mt_id: 3,
                     mt_name: 'Flame Wheel',
-                    mt_type: 1, // Fire type
+                    mt_type: WorldElements::Draconic(()),
                     mt_power: 60,
                     mt_accuracy: 95
                 })
@@ -144,7 +145,7 @@ mod actions {
                 (Mt {
                     mt_id: 4,
                     mt_name:'Fire Punch',
-                    mt_type: 1, // Fire type
+                    mt_type: WorldElements::Crystal(()),
                     mt_power: 75,
                     mt_accuracy: 100
                 })
@@ -155,7 +156,7 @@ mod actions {
                 (Mt {
                     mt_id: 5,
                     mt_name: 'Water Gun',
-                    mt_type: 2, // Water type
+                    mt_type: WorldElements::Crystal(()),
                     mt_power: 40,
                     mt_accuracy: 100
                 })
@@ -166,7 +167,7 @@ mod actions {
                 (Mt {
                     mt_id: 6,
                     mt_name: 'Bubble',
-                    mt_type: 2, // Water type
+                    mt_type: WorldElements::Draconic(()),
                     mt_power: 20,
                     mt_accuracy: 100
                 })
@@ -177,7 +178,7 @@ mod actions {
                 (Mt {
                     mt_id: 7,
                     mt_name: 'Aqua Tail',
-                    mt_type: 2, // Water type
+                    mt_type: WorldElements::Crystal(()),
                     mt_power: 90,
                     mt_accuracy: 90
                 })
@@ -188,7 +189,7 @@ mod actions {
                 (Mt {
                     mt_id: 8,
                     mt_name: 'Hydro Pump',
-                    mt_type: 2, // Water type
+                    mt_type: WorldElements::Crystal(()),
                     mt_power: 110,
                     mt_accuracy: 80
                 })

@@ -1,16 +1,24 @@
 use starknet::ContractAddress;
 
-#[derive(Copy, Drop, Serde)]
-#[dojo::model]
-pub struct Battle {
-    #[key]
-    pub battle_id: u32,
-    pub player_id: u32,
-    pub opponent_id: u32,
-    pub active_beast_player: u32,
-    pub active_beast_opponent: u32,
-    pub battle_active: u32,
-    pub turn: u32,
+#[derive(Serde, Copy, Drop, Introspect)]
+pub enum WorldElements {
+    Crystal,
+    Draconic,
+    Shadow,
+    Light,
+    Titanium,
+}
+
+impl WorldElementsIntoFelt252 of Into<WorldElements, felt252> {
+    fn into(self: WorldElements) -> felt252 {
+        match self {
+            WorldElements::Crystal => 0,
+            WorldElements::Draconic => 1,
+            WorldElements::Shadow => 2,
+            WorldElements::Light => 3,
+            WorldElements::Titanium => 4,
+        }
+    }
 }
 
 #[derive(Copy, Drop, Serde)]
@@ -19,7 +27,7 @@ pub struct Beast {
     #[key]
     pub beast_id: u32,
     pub beast_name: felt252,
-    pub beast_type: u32,
+    pub beast_type: WorldElements,
     pub beast_description: felt252,
     pub player_id: u32,
     pub hp: u32,
@@ -36,11 +44,24 @@ pub struct Beast {
 
 #[derive(Copy, Drop, Serde)]
 #[dojo::model]
+pub struct Battle {
+    #[key]
+    pub battle_id: u32,
+    pub player_id: u32,
+    pub opponent_id: u32,
+    pub active_beast_player: u32,
+    pub active_beast_opponent: u32,
+    pub battle_active: u32,
+    pub turn: u32,
+}
+
+#[derive(Copy, Drop, Serde)]
+#[dojo::model]
 pub struct Mt {
     #[key]
     pub mt_id: u32,
     pub mt_name: felt252,
-    pub mt_type: u32,
+    pub mt_type: WorldElements,
     pub mt_power: u32,
     pub mt_accuracy: u32,
 }

@@ -132,6 +132,32 @@
     "interface_name": "bytebeasts::systems::battle::IBattleActions"
   },
   {
+    "type": "enum",
+    "name": "bytebeasts::models::WorldElements",
+    "variants": [
+      {
+        "name": "Crystal",
+        "type": "()"
+      },
+      {
+        "name": "Draconic",
+        "type": "()"
+      },
+      {
+        "name": "Shadow",
+        "type": "()"
+      },
+      {
+        "name": "Light",
+        "type": "()"
+      },
+      {
+        "name": "Titanium",
+        "type": "()"
+      }
+    ]
+  },
+  {
     "type": "struct",
     "name": "bytebeasts::models::Beast",
     "members": [
@@ -145,7 +171,7 @@
       },
       {
         "name": "beast_type",
-        "type": "core::integer::u32"
+        "type": "bytebeasts::models::WorldElements"
       },
       {
         "name": "beast_description",
@@ -229,7 +255,7 @@
       },
       {
         "name": "mt_type",
-        "type": "core::integer::u32"
+        "type": "bytebeasts::models::WorldElements"
       },
       {
         "name": "mt_power",

@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923"
-original_class_hash = "0x4382e91986019f8da68643f9db2564598ab2c919fce4e62c2d860d86a868923"
+class_hash = "0x670dab07ef39272526781fcbdcccbcbd18d6735f8639b62a576053d50527601"
+original_class_hash = "0x670dab07ef39272526781fcbdcccbcbd18d6735f8639b62a576053d50527601"
 abi = "manifests/dev/base/abis/models/bytebeasts-Mt-37360d30.json"
 tag = "bytebeasts-Mt"
 manifest_name = "bytebeasts-Mt-37360d30"
@@ -17,7 +17,7 @@ key = false
 
 [[members]]
 name = "mt_type"
-type = "u32"
+type = "WorldElements"
 key = false
 
 [[members]]
