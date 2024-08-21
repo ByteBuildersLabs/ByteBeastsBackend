@@ -130,7 +130,12 @@ mod battle_system {
             let mt = get!(world, mt_id, (Mt));
 
             let damage = self.calculate_damage(mt, player_beast, opponent_beast);
-            opponent_beast.current_hp -= damage;
+            
+            if damage >= opponent_beast.current_hp {
+                opponent_beast.current_hp = 0;
+            } else {
+                opponent_beast.current_hp -= damage;
+            }
 
             if opponent_beast.current_hp <= 0_u32 {
                 let message = 'Opponent\'s Beast Knocked Out!';

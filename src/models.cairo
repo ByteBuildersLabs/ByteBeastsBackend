@@ -138,4 +138,37 @@ mod tests {
         assert_eq!(player.player_name, 'Hero', "Player name should be 'Hero'");
         assert_eq!(player.potions, 5, "Player should have 5 potions");
     }
+
+    #[test]
+    #[available_gas(200000)]
+    fn test_beast_defeat() {
+        let mut beast = Beast {
+            beast_id: 1,
+            beast_name: 'Dragon',
+            beast_type: WorldElements::Draconic,
+            beast_description: 'A mighty dragon',
+            player_id: 1,
+            hp: 100,
+            current_hp: 10, // Bestia cerca de ser derrotada
+            attack: 50,
+            defense: 40,
+            mt1: 1,
+            mt2: 2,
+            mt3: 3,
+            mt4: 4,
+            level: 5,
+            experience_to_next_level: 1000,
+        };
+
+        // Simulate an attack that would defeat the beast
+        let damage = 20;
+        if damage >= beast.current_hp {
+            beast.current_hp = 0;
+        } else {
+            beast.current_hp -= damage;
+        }
+
+        assert_eq!(beast.current_hp, 0, "Beast should have 0 HP after being defeated");
+        // assert!(!beast.exist(), "Beast should be defeated");
+    }
 }
