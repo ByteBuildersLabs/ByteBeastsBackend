@@ -89,7 +89,6 @@ struct Potion {
     pub potion_effect: u32,
 }
 
-// Testing side
 #[generate_trait]
 impl BeastImpl of BeastTrait {
     fn exist(self: Beast) -> bool {
@@ -99,7 +98,7 @@ impl BeastImpl of BeastTrait {
 
 #[cfg(test)]
 mod tests {
-    use super::{Beast, Player, Potion, BeastTrait, WorldElements};
+    use super::{Battle, Beast, Player, Mt, Potion, BeastTrait, WorldElements};
 
     #[test]
     fn test_beast_exist() {
@@ -141,119 +140,48 @@ mod tests {
     }
 
     #[test]
-    fn test_beast_defeat() {
-        let mut beast = Beast {
-            beast_id: 1,
-            beast_name: 'Dragon',
-            beast_type: WorldElements::Draconic,
-            beast_description: 'A mighty dragon',
+    fn test_battle_initialization() {
+        let battle = Battle {
+            battle_id: 1,
             player_id: 1,
-            hp: 100,
-            current_hp: 10, // Bestia cerca de ser derrotada
-            attack: 50,
-            defense: 40,
-            mt1: 1,
-            mt2: 2,
-            mt3: 3,
-            mt4: 4,
-            level: 5,
-            experience_to_next_level: 1000,
+            opponent_id: 2,
+            active_beast_player: 1,
+            active_beast_opponent: 2,
+            battle_active: 1,
+            turn: 1,
         };
 
-        // Simulate an attack that would defeat the beast
-        let damage = 20;
-        if damage >= beast.current_hp {
-            beast.current_hp = 0;
-        } else {
-            beast.current_hp -= damage;
-        }
-
-        assert_eq!(beast.current_hp, 0, "Beast should have 0 HP after being defeated");
+        assert_eq!(battle.battle_id, 1, "Battle ID should be 1");
+        assert_eq!(battle.player_id, 1, "Player ID should be 1");
+        assert_eq!(battle.opponent_id, 2, "Opponent ID should be 2");
+        assert_eq!(battle.battle_active, 1, "Battle should be active");
+        assert_eq!(battle.turn, 1, "Turn should be 1");
     }
 
     #[test]
-    fn test_apply_potion_effect() {
-        let mut beast = Beast {
-            beast_id: 1,
-            beast_name: 'Dragon',
-            beast_type: WorldElements::Draconic,
-            beast_description: 'A mighty dragon',
-            player_id: 1,
-            hp: 100,
-            current_hp: 50, // La bestia está dañada
-            attack: 50,
-            defense: 40,
-            mt1: 1,
-            mt2: 2,
-            mt3: 3,
-            mt4: 4,
-            level: 5,
-            experience_to_next_level: 1000,
+    fn test_mt_initialization() {
+        let mt = Mt {
+            mt_id: 1,
+            mt_name: 0, // Assume mt_name is felt252 type
+            mt_type: WorldElements::Light,
+            mt_power: 75,
+            mt_accuracy: 90,
         };
 
-        let potion = Potion {
-            potion_id: 1, potion_name: 'Healing Potion', potion_effect: 1, // Efecto de curación
-        };
-        // Aplicar el efecto de la poción
-    // bytebeasts::systems::battle::IBattleActions::use_potion(potion, mut beast);
-
-        // assert_eq!(beast.current_hp, 70, "Beast should have 70 HP after using the potion");
+        assert_eq!(mt.mt_id, 1, "MT ID should be 1");
+        assert_eq!(mt.mt_power, 75, "MT power should be 75");
+        assert_eq!(mt.mt_accuracy, 90, "MT accuracy should be 90");
     }
 
     #[test]
-    fn test_complete_battle() {
-        let mut player_beast = Beast {
-            beast_id: 1,
-            beast_name: 'Dragon',
-            beast_type: WorldElements::Draconic,
-            beast_description: 'A mighty dragon',
-            player_id: 1,
-            hp: 100,
-            current_hp: 100,
-            attack: 50,
-            defense: 40,
-            mt1: 1,
-            mt2: 2,
-            mt3: 3,
-            mt4: 4,
-            level: 5,
-            experience_to_next_level: 1000,
-        };
+    fn test_potion_initialization() {
+      let potion = Potion {
+          potion_id: 1,
+          potion_name: 0, // Assume potion_name is felt252 type
+          potion_effect: 50, // Heals 50 HP
+      };
 
-        let mut opponent_beast = Beast {
-            beast_id: 2,
-            beast_name: 'Wolf',
-            beast_type: WorldElements::Shadow,
-            beast_description: 'A fierce wolf',
-            player_id: 2,
-            hp: 80,
-            current_hp: 80,
-            attack: 40,
-            defense: 30,
-            mt1: 2,
-            mt2: 3,
-            mt3: 4,
-            mt4: 5,
-            level: 4,
-            experience_to_next_level: 800,
-        };
-
-        // Simulación de ataques
-        while player_beast.current_hp > 0 && opponent_beast.current_hp > 0 {
-            // El jugador ataca
-            let damage = player_beast.attack - opponent_beast.defense;
-            opponent_beast.current_hp -= damage;
-
-            if opponent_beast.current_hp <= 0 {
-                break;
-            }
-
-            // El oponente ataca
-            let damage = opponent_beast.attack - player_beast.defense;
-            player_beast.current_hp -= damage;
-        };
-
-        assert!(player_beast.current_hp > 0, "Player should win the battle");
-        assert!(opponent_beast.current_hp <= 0, "Opponent should lose the battle");
+      assert_eq!(potion.potion_id, 1, "Potion ID should be 1");
+      assert_eq!(potion.potion_effect, 50, "Potion effect should be 50");
     }
 }
