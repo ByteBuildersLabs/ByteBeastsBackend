@@ -8,7 +8,10 @@ use bytebeasts::models::Battle;
 
 #[dojo::interface]
 trait IBattleActions {
-    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
+    // fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
+    // fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32);
+    // fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32);
+    // fn flee(ref world: IWorldDispatcher);
     fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252;
     fn apply_item_effect(potion: Potion, target: Beast);
     fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32;
@@ -22,27 +25,27 @@ mod battle_system {
 
     #[abi(embed_v0)]
     impl BattleActionsImpl of IBattleActions<ContractState> {
-        fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) {
-            let player = get!(world, player_id, (Player));
-            let opponent = get!(world, opponent_id, (Player));
-            let active_beast_player = get!(world, player.beast_1, (Beast));
-            let active_beast_opponent = get!(world, opponent.beast_1, (Beast));
 
-            set!(
-                world,
-                (Battle {
-                    battle_id: 1,
-                    player_id: player_id,
-                    opponent_id: opponent_id,
-                    active_beast_player: active_beast_player.beast_id,
-                    active_beast_opponent: active_beast_opponent.beast_id,
-                    battle_active: 1,
-                    turn: 0,
-                })
-            );
-            // Try to send a message to the player (emit)
+        // Función para comprobar si se ha conseguido huir
+        fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252 {
+            if player_beast.level > opponent_beast.level {
+                1 // Success
+            } else {
+                0 // Fail
+            }
         }
 
+        // Función para aplicar el efecto de una poción
+        fn apply_item_effect(potion: Potion, mut target: Beast) {
+            if potion.potion_effect == 1 {
+                target.current_hp += 20_u32;
+                if target.current_hp > target.hp {
+                    target.current_hp = target.hp;
+                }
+            }
+        }
+
+        // Funcion para calcular el daño de un ataque
         fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
             let base_damage = mt.mt_power * attacker.attack / defender.defense;
 
@@ -50,7 +53,7 @@ mod battle_system {
             let effective_damage =
                 base_damage; // Extender con efectividad por tipo, aleatoriedad, etc.
 
-            // Considerar precisión (simplificado)
+            // how can we make It random
             // let hit_chance = random_felt252() % 100_u32;
 
             let hit_chance = 50_u32; // Hardcoded for now
@@ -61,21 +64,99 @@ mod battle_system {
             effective_damage
         }
 
-        fn apply_item_effect(potion: Potion, mut target: Beast) {
-            if potion.potion_effect == 1 {
-                target.current_hp += 20_u32;
-                if target.current_hp > target.hp {
-                    target.current_hp = target.hp;
-                }
-            }
-        }
+        // // Lógica del turno del oponente
+        // fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32) {
+        //     let mut battle = get!(world, battle_id, (Battle));
 
-        fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252 {
-            if player_beast.level > opponent_beast.level {
-                1 // Success
-            } else {
-                0 // Fail
-            }
-        }
+        //     let player_id = battle.player_id;
+        //     let opponent_id = battle.opponent_id;
+
+        //     let mut player_beast = get!(world, battle.active_beast_player, (Beast));
+        //     let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        //     let opponent_attack = get!(world, opponent_beast.mt1, (Mt));
+
+        //     let damage = calculate_damage(opponent_attack, opponent_beast, player_beast);
+        //     player_beast.current_hp -= damage;
+
+        //     if player_beast.current_hp <= 0_u32 {
+        //         battle.battle_active = 0;
+        //     }
+        // }
+
+        // // Función para inicializar una batalla
+        // fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) {
+        //     let player = get!(world, player_id, (Player));
+        //     let opponent = get!(world, opponent_id, (Player));
+        //     let active_beast_player = get!(world, player.beast_1, (Beast));
+        //     let active_beast_opponent = get!(world, opponent.beast_1, (Beast));
+
+        //     set!(
+        //         world,
+        //         (Battle {
+        //             battle_id: 1,
+        //             player_id: player_id,
+        //             opponent_id: opponent_id,
+        //             active_beast_player: active_beast_player.beast_id,
+        //             active_beast_opponent: active_beast_opponent.beast_id,
+        //             battle_active: 1,
+        //             turn: 0,
+        //         })
+        //     );
+        //     // Try to send a message to the player (emit)
+        // }
+
+        // // Función para realizar una acción
+        // fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
+        //     let mut battle = get!(world, battle_id, (Battle));
+
+        //     let player_id = battle.player_id;
+        //     let opponent_id = battle.opponent_id;
+
+        //     let player_beast = get!(world, battle.active_beast_player, (Beast));
+        //     let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        //     let mt = get!(world, mt_id, (Mt));
+
+        //     let damage = calculate_damage(mt, player_beast, opponent_beast);
+        //     opponent_beast.current_hp -= damage;
+
+        //     if opponent_beast.current_hp <= 0_u32 {
+        //         battle.battle_active = 0;
+        //     } else {
+        //         opponent_turn(world, battle_id);
+        //     }
+        // }
+
+        // // Función para usar una poción
+        // fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
+        //     let mut battle = get!(world, battle_id, (Battle));
+
+        //     let player_id = battle.player_id;
+        //     let player_beast = get!(world, battle.active_beast_player, (Beast));
+        //     let potion = get!(world, potion_id, (Potion));
+
+        //     apply_item_effect(potion, player_beast);
+
+        //     // Turno del oponente
+        //     opponent_turn(world, battle_id);
+        // }
+
+        // // Función para huir
+        // fn flee(ref world: IWorldDispatcher) {
+        //     let mut battle = get!(world, battle_id, (Battle));
+
+        //     let player_id = battle.player_id;
+        //     let opponent_id = battle.opponent_id;
+
+        //     let player_beast = get!(world, battle.active_beast_player, (Beast));
+        //     let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+
+        //     let flee_success = check_flee_success(player_beast, opponent_beast);
+        //     if flee_success == 1 {
+        //         battle.battle_active = 0;
+        //     } else {
+        //         // Turno del oponente
+        //         opponent_turn(world);
+        //     }
+        // }
     }
 }

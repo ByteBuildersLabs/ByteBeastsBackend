@@ -247,22 +247,6 @@
     "items": [
       {
         "type": "function",
-        "name": "init_battle",
-        "inputs": [
-          {
-            "name": "player_id",
-            "type": "core::integer::u32"
-          },
-          {
-            "name": "opponent_id",
-            "type": "core::integer::u32"
-          }
-        ],
-        "outputs": [],
-        "state_mutability": "external"
-      },
-      {
-        "type": "function",
         "name": "check_flee_success",
         "inputs": [
           {
