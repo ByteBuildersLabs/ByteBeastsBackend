@@ -132,9 +132,191 @@
     "interface_name": "bytebeasts::systems::battle::IBattleActions"
   },
   {
+    "type": "struct",
+    "name": "bytebeasts::models::Beast",
+    "members": [
+      {
+        "name": "beast_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "beast_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "beast_type",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "beast_description",
+        "type": "core::felt252"
+      },
+      {
+        "name": "player_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "hp",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "current_hp",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "attack",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "defense",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt1",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt2",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt3",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt4",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "level",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "experience_to_next_level",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "bytebeasts::models::Potion",
+    "members": [
+      {
+        "name": "potion_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "potion_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "potion_effect",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "bytebeasts::models::Mt",
+    "members": [
+      {
+        "name": "mt_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "mt_type",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_power",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "mt_accuracy",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
     "type": "interface",
     "name": "bytebeasts::systems::battle::IBattleActions",
     "items": [
+      {
+        "type": "function",
+        "name": "check_flee_success",
+        "inputs": [
+          {
+            "name": "player_beast",
+            "type": "bytebeasts::models::Beast"
+          },
+          {
+            "name": "opponent_beast",
+            "type": "bytebeasts::models::Beast"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::felt252"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "apply_item_effect",
+        "inputs": [
+          {
+            "name": "potion",
+            "type": "bytebeasts::models::Potion"
+          },
+          {
+            "name": "target",
+            "type": "bytebeasts::models::Beast"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "calculate_damage",
+        "inputs": [
+          {
+            "name": "mt",
+            "type": "bytebeasts::models::Mt"
+          },
+          {
+            "name": "attacker",
+            "type": "bytebeasts::models::Beast"
+          },
+          {
+            "name": "defender",
+            "type": "bytebeasts::models::Beast"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u32"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "opponent_turn",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
       {
         "type": "function",
         "name": "init_battle",
@@ -145,6 +327,50 @@
           },
           {
             "name": "opponent_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "attack",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "mt_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "use_potion",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "potion_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "flee",
+        "inputs": [
+          {
+            "name": "battle_id",
             "type": "core::integer::u32"
           }
         ],

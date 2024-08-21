@@ -24,6 +24,24 @@ mod battle_system {
     use starknet::{ContractAddress, get_caller_address};
     use bytebeasts::models::{Beast, Mt, Player, Potion, Battle};
 
+    #[derive(Copy, Drop, Serde)]
+    #[dojo::model]
+    #[dojo::event]
+    struct StatusBattle {
+        #[key]
+        battle_id: u32,
+        message: felt252,
+    }
+
+    #[derive(Copy, Drop, Serde)]
+    #[dojo::model]
+    #[dojo::event]
+    struct Status {
+        #[key]
+        player_id: u32,
+        message: felt252,
+    }
+
     #[abi(embed_v0)]
     impl BattleActionsImpl of IBattleActions<ContractState> {
         // Función para comprobar si se ha conseguido huir
@@ -99,7 +117,8 @@ mod battle_system {
                     turn: 0,
                 })
             );
-            // Try to send a message to the player (emit)
+            let message = 'Battle started';
+            emit!(world, (Status { player_id,  message }));
         }
 
         // Función para realizar una acción
@@ -114,8 +133,12 @@ mod battle_system {
             opponent_beast.current_hp -= damage;
 
             if opponent_beast.current_hp <= 0_u32 {
+                let message = 'Opponent\'s Beast Knocked Out!';
+                emit!(world, (StatusBattle { battle_id,  message }));
                 battle.battle_active = 0;
             } else {
+                let message = 'Attack Performed!';
+                emit!(world, (StatusBattle { battle_id,  message }));
                 self.opponent_turn(battle_id);
             }
         }
@@ -129,9 +152,13 @@ mod battle_system {
 
             self.apply_item_effect(potion, player_beast);
 
+            let message = 'Item Used!';
+            emit!(world, (StatusBattle { battle_id,  message }));
+
             // Turno del oponente
             self.opponent_turn(battle_id);
         }
+
         // Función para huir
         fn flee(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
@@ -142,8 +169,11 @@ mod battle_system {
             let flee_success = self.check_flee_success(player_beast, opponent_beast);
             if flee_success == 1 {
                 battle.battle_active = 0;
+                let message = 'Player Fled!';
+                emit!(world, (StatusBattle { battle_id,  message }));
             } else {
-                // Turno del oponente
+                let message = 'Flee failed!';
+                emit!(world, (StatusBattle { battle_id,  message }));
                 self.opponent_turn(battle_id);
             }
         }

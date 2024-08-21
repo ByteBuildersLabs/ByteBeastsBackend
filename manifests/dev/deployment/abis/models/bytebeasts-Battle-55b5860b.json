@@ -363,78 +363,46 @@
   },
   {
     "type": "impl",
-    "name": "beastImpl",
-    "interface_name": "bytebeasts::models::Ibeast"
+    "name": "battleImpl",
+    "interface_name": "bytebeasts::models::Ibattle"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Beast",
+    "name": "bytebeasts::models::Battle",
     "members": [
       {
-        "name": "beast_id",
+        "name": "battle_id",
         "type": "core::integer::u32"
-      },
-      {
-        "name": "beast_name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "beast_type",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "beast_description",
-        "type": "core::felt252"
       },
       {
         "name": "player_id",
         "type": "core::integer::u32"
       },
       {
-        "name": "hp",
+        "name": "opponent_id",
         "type": "core::integer::u32"
       },
       {
-        "name": "current_hp",
+        "name": "active_beast_player",
         "type": "core::integer::u32"
       },
       {
-        "name": "attack",
+        "name": "active_beast_opponent",
         "type": "core::integer::u32"
       },
       {
-        "name": "defense",
+        "name": "battle_active",
         "type": "core::integer::u32"
       },
       {
-        "name": "mt1",
+        "name": "turn",
         "type": "core::integer::u32"
-      },
-      {
-        "name": "mt2",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "mt3",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "mt4",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "level",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "experience_to_next_level",
-        "type": "core::integer::u64"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Ibeast",
+    "name": "bytebeasts::models::Ibattle",
     "items": [
       {
         "type": "function",
@@ -442,7 +410,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::Battle"
           }
         ],
         "outputs": [],
@@ -452,7 +420,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::beast::Event",
+    "name": "bytebeasts::models::battle::Event",
     "kind": "enum",
     "variants": []
   }
