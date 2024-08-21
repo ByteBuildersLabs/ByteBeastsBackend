@@ -98,7 +98,7 @@ impl BeastImpl of BeastTrait {
 }
 #[cfg(test)]
 mod tests {
-    use super::{Beast, Player, BeastTrait, WorldElements};
+    use super::{Beast, Player, Potion, BeastTrait, WorldElements};
 
     #[test]
     fn test_beast_exist() {
@@ -140,7 +140,6 @@ mod tests {
     }
 
     #[test]
-    #[available_gas(200000)]
     fn test_beast_defeat() {
         let mut beast = Beast {
             beast_id: 1,
@@ -169,6 +168,5 @@ mod tests {
         }
 
         assert_eq!(beast.current_hp, 0, "Beast should have 0 HP after being defeated");
-        // assert!(!beast.exist(), "Beast should be defeated");
     }
 }
