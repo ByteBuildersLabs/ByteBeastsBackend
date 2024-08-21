@@ -8,13 +8,14 @@ use bytebeasts::models::Battle;
 
 #[dojo::interface]
 trait IBattleActions {
-    // fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
-    // fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32);
-    // fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32);
-    // fn flee(ref world: IWorldDispatcher);
     fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252;
     fn apply_item_effect(potion: Potion, target: Beast);
     fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32;
+    fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32);
+    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32);
+    fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32);
+    fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32);
+    fn flee(ref world: IWorldDispatcher, battle_id: u32);
 }
 
 #[dojo::contract]
@@ -25,7 +26,6 @@ mod battle_system {
 
     #[abi(embed_v0)]
     impl BattleActionsImpl of IBattleActions<ContractState> {
-
         // Función para comprobar si se ha conseguido huir
         fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252 {
             if player_beast.level > opponent_beast.level {
@@ -64,99 +64,88 @@ mod battle_system {
             effective_damage
         }
 
-        // // Lógica del turno del oponente
-        // fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32) {
-        //     let mut battle = get!(world, battle_id, (Battle));
+        // Lógica del turno del oponente
+        fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32) {
+            let mut battle = get!(world, battle_id, (Battle));
 
-        //     let player_id = battle.player_id;
-        //     let opponent_id = battle.opponent_id;
+            let mut player_beast = get!(world, battle.active_beast_player, (Beast));
+            let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+            let opponent_attack = get!(world, opponent_beast.mt1, (Mt));
 
-        //     let mut player_beast = get!(world, battle.active_beast_player, (Beast));
-        //     let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
-        //     let opponent_attack = get!(world, opponent_beast.mt1, (Mt));
+            let damage = self.calculate_damage(opponent_attack, opponent_beast, player_beast);
+            player_beast.current_hp -= damage;
 
-        //     let damage = calculate_damage(opponent_attack, opponent_beast, player_beast);
-        //     player_beast.current_hp -= damage;
+            if player_beast.current_hp <= 0_u32 {
+                battle.battle_active = 0;
+            }
+        }
 
-        //     if player_beast.current_hp <= 0_u32 {
-        //         battle.battle_active = 0;
-        //     }
-        // }
+        // Función para inicializar una batalla
+        fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) {
+            let player = get!(world, player_id, (Player));
+            let opponent = get!(world, opponent_id, (Player));
+            let active_beast_player = get!(world, player.beast_1, (Beast));
+            let active_beast_opponent = get!(world, opponent.beast_1, (Beast));
 
-        // // Función para inicializar una batalla
-        // fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) {
-        //     let player = get!(world, player_id, (Player));
-        //     let opponent = get!(world, opponent_id, (Player));
-        //     let active_beast_player = get!(world, player.beast_1, (Beast));
-        //     let active_beast_opponent = get!(world, opponent.beast_1, (Beast));
+            set!(
+                world,
+                (Battle {
+                    battle_id: 1,
+                    player_id: player_id,
+                    opponent_id: opponent_id,
+                    active_beast_player: active_beast_player.beast_id,
+                    active_beast_opponent: active_beast_opponent.beast_id,
+                    battle_active: 1,
+                    turn: 0,
+                })
+            );
+            // Try to send a message to the player (emit)
+        }
 
-        //     set!(
-        //         world,
-        //         (Battle {
-        //             battle_id: 1,
-        //             player_id: player_id,
-        //             opponent_id: opponent_id,
-        //             active_beast_player: active_beast_player.beast_id,
-        //             active_beast_opponent: active_beast_opponent.beast_id,
-        //             battle_active: 1,
-        //             turn: 0,
-        //         })
-        //     );
-        //     // Try to send a message to the player (emit)
-        // }
+        // Función para realizar una acción
+        fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
+            let mut battle = get!(world, battle_id, (Battle));
 
-        // // Función para realizar una acción
-        // fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
-        //     let mut battle = get!(world, battle_id, (Battle));
+            let player_beast = get!(world, battle.active_beast_player, (Beast));
+            let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+            let mt = get!(world, mt_id, (Mt));
 
-        //     let player_id = battle.player_id;
-        //     let opponent_id = battle.opponent_id;
+            let damage = self.calculate_damage(mt, player_beast, opponent_beast);
+            opponent_beast.current_hp -= damage;
 
-        //     let player_beast = get!(world, battle.active_beast_player, (Beast));
-        //     let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
-        //     let mt = get!(world, mt_id, (Mt));
+            if opponent_beast.current_hp <= 0_u32 {
+                battle.battle_active = 0;
+            } else {
+                self.opponent_turn(battle_id);
+            }
+        }
 
-        //     let damage = calculate_damage(mt, player_beast, opponent_beast);
-        //     opponent_beast.current_hp -= damage;
+        // Función para usar una poción
+        fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
+            let mut battle = get!(world, battle_id, (Battle));
 
-        //     if opponent_beast.current_hp <= 0_u32 {
-        //         battle.battle_active = 0;
-        //     } else {
-        //         opponent_turn(world, battle_id);
-        //     }
-        // }
+            let player_beast = get!(world, battle.active_beast_player, (Beast));
+            let potion = get!(world, potion_id, (Potion));
 
-        // // Función para usar una poción
-        // fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
-        //     let mut battle = get!(world, battle_id, (Battle));
+            self.apply_item_effect(potion, player_beast);
 
-        //     let player_id = battle.player_id;
-        //     let player_beast = get!(world, battle.active_beast_player, (Beast));
-        //     let potion = get!(world, potion_id, (Potion));
+            // Turno del oponente
+            self.opponent_turn(battle_id);
+        }
+        // Función para huir
+        fn flee(ref world: IWorldDispatcher, battle_id: u32) {
+            let mut battle = get!(world, battle_id, (Battle));
 
-        //     apply_item_effect(potion, player_beast);
+            let player_beast = get!(world, battle.active_beast_player, (Beast));
+            let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
 
-        //     // Turno del oponente
-        //     opponent_turn(world, battle_id);
-        // }
-
-        // // Función para huir
-        // fn flee(ref world: IWorldDispatcher) {
-        //     let mut battle = get!(world, battle_id, (Battle));
-
-        //     let player_id = battle.player_id;
-        //     let opponent_id = battle.opponent_id;
-
-        //     let player_beast = get!(world, battle.active_beast_player, (Beast));
-        //     let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
-
-        //     let flee_success = check_flee_success(player_beast, opponent_beast);
-        //     if flee_success == 1 {
-        //         battle.battle_active = 0;
-        //     } else {
-        //         // Turno del oponente
-        //         opponent_turn(world);
-        //     }
-        // }
+            let flee_success = self.check_flee_success(player_beast, opponent_beast);
+            if flee_success == 1 {
+                battle.battle_active = 0;
+            } else {
+                // Turno del oponente
+                self.opponent_turn(battle_id);
+            }
+        }
     }
 }

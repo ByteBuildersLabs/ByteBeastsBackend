@@ -304,6 +304,78 @@
           }
         ],
         "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "opponent_turn",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "init_battle",
+        "inputs": [
+          {
+            "name": "player_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "opponent_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "attack",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "mt_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "use_potion",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "potion_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "flee",
+        "inputs": [
+          {
+            "name": "battle_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
       }
     ]
   },
