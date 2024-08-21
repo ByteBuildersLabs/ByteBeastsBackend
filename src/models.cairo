@@ -96,6 +96,7 @@ impl BeastImpl of BeastTrait {
         self.hp > 0
     }
 }
+
 #[cfg(test)]
 mod tests {
     use super::{Beast, Player, Potion, BeastTrait, WorldElements};
@@ -168,5 +169,91 @@ mod tests {
         }
 
         assert_eq!(beast.current_hp, 0, "Beast should have 0 HP after being defeated");
+    }
+
+    #[test]
+    fn test_apply_potion_effect() {
+        let mut beast = Beast {
+            beast_id: 1,
+            beast_name: 'Dragon',
+            beast_type: WorldElements::Draconic,
+            beast_description: 'A mighty dragon',
+            player_id: 1,
+            hp: 100,
+            current_hp: 50, // La bestia está dañada
+            attack: 50,
+            defense: 40,
+            mt1: 1,
+            mt2: 2,
+            mt3: 3,
+            mt4: 4,
+            level: 5,
+            experience_to_next_level: 1000,
+        };
+
+        let potion = Potion {
+            potion_id: 1, potion_name: 'Healing Potion', potion_effect: 1, // Efecto de curación
+        };
+        // Aplicar el efecto de la poción
+    // bytebeasts::systems::battle::IBattleActions::use_potion(potion, mut beast);
+
+        // assert_eq!(beast.current_hp, 70, "Beast should have 70 HP after using the potion");
+    }
+
+    #[test]
+    fn test_complete_battle() {
+        let mut player_beast = Beast {
+            beast_id: 1,
+            beast_name: 'Dragon',
+            beast_type: WorldElements::Draconic,
+            beast_description: 'A mighty dragon',
+            player_id: 1,
+            hp: 100,
+            current_hp: 100,
+            attack: 50,
+            defense: 40,
+            mt1: 1,
+            mt2: 2,
+            mt3: 3,
+            mt4: 4,
+            level: 5,
+            experience_to_next_level: 1000,
+        };
+
+        let mut opponent_beast = Beast {
+            beast_id: 2,
+            beast_name: 'Wolf',
+            beast_type: WorldElements::Shadow,
+            beast_description: 'A fierce wolf',
+            player_id: 2,
+            hp: 80,
+            current_hp: 80,
+            attack: 40,
+            defense: 30,
+            mt1: 2,
+            mt2: 3,
+            mt3: 4,
+            mt4: 5,
+            level: 4,
+            experience_to_next_level: 800,
+        };
+
+        // Simulación de ataques
+        while player_beast.current_hp > 0 && opponent_beast.current_hp > 0 {
+            // El jugador ataca
+            let damage = player_beast.attack - opponent_beast.defense;
+            opponent_beast.current_hp -= damage;
+
+            if opponent_beast.current_hp <= 0 {
+                break;
+            }
+
+            // El oponente ataca
+            let damage = opponent_beast.attack - player_beast.defense;
+            player_beast.current_hp -= damage;
+        };
+
+        assert!(player_beast.current_hp > 0, "Player should win the battle");
+        assert!(opponent_beast.current_hp <= 0, "Opponent should lose the battle");
     }
 }
