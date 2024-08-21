@@ -1,5 +1,6 @@
 use starknet::ContractAddress;
 
+
 #[derive(Serde, Copy, Drop, Introspect)]
 pub enum WorldElements {
     Crystal,
@@ -86,4 +87,38 @@ struct Potion {
     pub potion_id: u32,
     pub potion_name: felt252,
     pub potion_effect: u32,
+}
+
+// Testing side
+#[generate_trait]
+impl BeastImpl of BeastTrait {
+    fn exist(self: Beast) -> bool {
+        self.hp > 0
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::{Beast, BeastTrait, WorldElements};
+
+    #[test]
+    fn test_beast_exist() {
+        let beast = Beast {
+            beast_id: 1,
+            beast_name: 0,
+            beast_type: WorldElements::Crystal,
+            beast_description: 0,
+            player_id: 1,
+            hp: 100,
+            current_hp: 100,
+            attack: 50,
+            defense: 40,
+            mt1: 1, // Fire Blast
+            mt2: 2, // Ember
+            mt3: 3, // Flame Wheel
+            mt4: 4, // Fire Punch
+            level: 5,
+            experience_to_next_level: 1000,
+        };
+        assert(beast.exist(), 'Beast is alive');
+    }
 }
