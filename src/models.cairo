@@ -89,6 +89,28 @@ struct Potion {
     pub potion_effect: u32,
 }
 
+#[derive(Copy, Drop, Serde)]
+#[dojo::model]
+struct Moves {
+    #[key]
+    player: Player,
+    remaining: u8,
+}
+
+#[derive(Drop, Copy, Serde)]
+#[dojo::model]
+struct Position {
+    #[key]
+    player: Player,
+    coordinates: Coordinates,
+}
+
+#[derive(Drop, Copy, Serde, Introspect)]
+struct Coordinates {
+    x: u32,
+    y: u32
+}
+
 #[generate_trait]
 impl BeastImpl of BeastTrait {
     fn exist(self: Beast) -> bool {
