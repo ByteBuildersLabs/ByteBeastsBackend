@@ -8,8 +8,8 @@ use bytebeasts::models::WorldElements;
 #[dojo::interface]
 trait IActions {
     fn setWorld(ref world: IWorldDispatcher);
-    fn spawn(ref world: IWorldDispatcher);
-    fn move(ref world: IWorldDispatcher, direction: Direction);
+    fn spawn(ref world: IWorldDispatcher, player_id: u32);
+    fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y: u32);
 }
 
 // dojo decorator
@@ -198,33 +198,27 @@ mod actions {
             );
         }
 
-        fn spawn(ref world: IWorldDispatcher) {
-            let player = get_caller_address(); // How are we handling players if we are not using address?
-        
-            let position = get!(world, player, (Position));
+        fn spawn(ref world: IWorldDispatcher, player_id: u32) {
+            let player = get!(world, player_id, (Player));
         
             set!(
                 world,
                 (
-                    Moves { player, remaining: 100, last_direction: Direction::None },
                     Position {
-                        player, vec: Vec2 { x: position.vec.x + 10, y: position.vec.y + 10 }
+                        player, coordinates: Coordinates { x: 10, y: 10 }
                     },
                 )
             );
         }
 
-        fn move(ref world: IWorldDispatcher, direction: Direction) {
-            let player = get_caller_address(); //TODO: How are we handling players if we are not using address?
-        
-            let position = get!(world, player, (Position));
+        fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y:u32) {
+            let player = get!(world, player_id, (Player));
         
             set!(
                 world,
                 (
-                    Moves { player, remaining: 100, last_direction: Direction::None }, //TODO: How are setting the last_direction if Moves does not have that attribute
                     Position {
-                        player, vec: Vec2 { x: position.vec.x + 10, y: position.vec.y + 10 }
+                        player, coordinates: coordinates { x: new_x, y: new_y }
                     },
                 )
             );
