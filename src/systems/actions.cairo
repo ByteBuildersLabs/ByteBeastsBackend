@@ -1,6 +1,8 @@
 use bytebeasts::models::Beast;
 use bytebeasts::models::Mt;
 use bytebeasts::models::Player;
+use bytebeasts::models::Coordinates;
+use bytebeasts::models::Position;
 use bytebeasts::models::Potion;
 use bytebeasts::models::WorldElements;
 
@@ -18,7 +20,7 @@ mod actions {
     use super::{IActions};
 
     use starknet::{ContractAddress, get_caller_address};
-    use bytebeasts::models::{Beast, Mt, Player, Potion, WorldElements};
+    use bytebeasts::models::{Beast, Mt, Player, Coordinates, Position, Potion, WorldElements};
 
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {
@@ -199,26 +201,26 @@ mod actions {
         }
 
         fn spawn(ref world: IWorldDispatcher, player_id: u32) {
-            let player = get!(world, player_id, (Player));
+            let player_from_world = get!(world, player_id, (Player));
         
             set!(
                 world,
-                (
-                    Position {
-                        player, coordinates: Coordinates { x: 10, y: 10 }
+                (Position {
+                        player: player_from_world,
+                        coordinates: Coordinates { x: 10, y: 10 }
                     },
                 )
             );
         }
 
         fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y:u32) {
-            let player = get!(world, player_id, (Player));
+            let player_from_world = get!(world, player_id, (Player));
         
             set!(
                 world,
-                (
-                    Position {
-                        player, coordinates: coordinates { x: new_x, y: new_y }
+                (Position {
+                        player: player_from_world,
+                        coordinates: Coordinates { x: new_x, y: new_y }
                     },
                 )
             );
