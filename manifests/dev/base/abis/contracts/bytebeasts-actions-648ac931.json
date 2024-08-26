@@ -141,6 +141,38 @@
         "inputs": [],
         "outputs": [],
         "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "spawn",
+        "inputs": [
+          {
+            "name": "player_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "move",
+        "inputs": [
+          {
+            "name": "player_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "new_x",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "new_y",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
       }
     ]
   },
