@@ -89,6 +89,20 @@ struct Potion {
     pub potion_effect: u32,
 }
 
+#[derive(Drop, Copy, Serde)]
+#[dojo::model]
+struct Position {
+    #[key]
+    player: Player,
+    coordinates: Coordinates,
+}
+
+#[derive(Drop, Copy, Serde, Introspect)]
+struct Coordinates {
+    x: u32,
+    y: u32
+}
+
 #[generate_trait]
 impl BeastImpl of BeastTrait {
     fn exist(self: Beast) -> bool {
@@ -98,7 +112,7 @@ impl BeastImpl of BeastTrait {
 
 #[cfg(test)]
 mod tests {
-    use super::{Battle, Beast, Player, Mt, Potion, BeastTrait, WorldElements};
+    use super::{Battle, Beast, Player, Coordinates, Position, Mt, Potion, BeastTrait, WorldElements};
 
     #[test]
     fn test_beast_exist() {
@@ -137,6 +151,33 @@ mod tests {
 
         assert_eq!(player.player_name, 'Hero', "Player name should be 'Hero'");
         assert_eq!(player.potions, 5, "Player should have 5 potions");
+    }
+
+    #[test]
+    fn test_position_initialization() {
+        let player = Player {
+            player_id: 1,
+            player_name: 'Hero',
+            beast_1: 1,
+            beast_2: 2,
+            beast_3: 3,
+            beast_4: 4,
+            potions: 5,
+        };
+
+        let coordinates = Coordinates{
+            x: 10,
+            y: 10,
+        };
+
+        let position = Position {
+            player: player,
+            coordinates: coordinates
+        };
+
+        assert_eq!(position.player.player_id, 1, "Player ID should be 1");
+        assert_eq!(position.coordinates.x, 10, "Player X coordinate should be 10");
+        assert_eq!(position.coordinates.y, 10, "Player Y coordinate should be 10");
     }
 
     #[test]
