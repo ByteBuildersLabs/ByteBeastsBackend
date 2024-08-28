@@ -1,5 +1,4 @@
 use starknet::ContractAddress;
-
 use bytebeasts::models::Beast;
 use bytebeasts::models::Mt;
 use bytebeasts::models::Player;
@@ -8,7 +7,7 @@ use bytebeasts::models::Battle;
 
 #[dojo::interface]
 trait IBattleActions {
-    fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252;
+    fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool;
     fn apply_item_effect(potion: Potion, target: Beast);
     fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32;
     fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32);
@@ -44,17 +43,15 @@ mod battle_system {
 
     #[abi(embed_v0)]
     impl BattleActionsImpl of IBattleActions<ContractState> {
-        // Función para comprobar si se ha conseguido huir
-        fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> felt252 {
+        fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool {
             if player_beast.level > opponent_beast.level {
-                1 // Success
+                true
             } else {
-                0 // Fail
+                false
             }
         }
 
-        // Función para aplicar el efecto de una poción
-        fn apply_item_effect(potion: Potion, mut target: Beast) {
+        fn apply_item_effect(potion: Potion, ref target: Beast) {
             if potion.potion_effect == 1 {
                 target.current_hp += 20_u32;
                 if target.current_hp > target.hp {
@@ -63,26 +60,23 @@ mod battle_system {
             }
         }
 
-        // Funcion para calcular el daño de un ataque
         fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
             let base_damage = mt.mt_power * attacker.attack / defender.defense;
 
-            // Aplicar efectividad y otros modificadores (simplificado)
-            let effective_damage =
-                base_damage; // Extender con efectividad por tipo, aleatoriedad, etc.
+            //TODO: extend with effectivity by type, randomness, etc
+            let effective_damage = base_damage; 
 
-            // how can we make It random
+            // TODO: investigate how can we make It random
             // let hit_chance = random_felt252() % 100_u32;
 
-            let hit_chance = 50_u32; // Hardcoded for now
+            let hit_chance = 80_u32; // Hardcoded for now
             if hit_chance > mt.mt_accuracy {
-                return 0_u32; // Ataque fallido
+                return 0_u32; 
             }
 
             effective_damage
         }
 
-        // Lógica del turno del oponente
         fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
 
@@ -98,7 +92,6 @@ mod battle_system {
             }
         }
 
-        // Función para inicializar una batalla
         fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) {
             let player = get!(world, player_id, (Player));
             let opponent = get!(world, opponent_id, (Player));
@@ -121,7 +114,6 @@ mod battle_system {
             emit!(world, (Status { player_id,  message }));
         }
 
-        // Función para realizar una acción
         fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
 
@@ -148,7 +140,6 @@ mod battle_system {
             }
         }
 
-        // Función para usar una poción
         fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
 
@@ -160,11 +151,9 @@ mod battle_system {
             let message = 'Item Used!';
             emit!(world, (StatusBattle { battle_id,  message }));
 
-            // Turno del oponente
             self.opponent_turn(battle_id);
         }
 
-        // Función para huir
         fn flee(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
 
