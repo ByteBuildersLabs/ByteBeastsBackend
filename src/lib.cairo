@@ -3,8 +3,14 @@ mod systems {
     mod battle;
 }
 
-mod models;
-
-// mod tests {
-//     mod test_beast;
-// }
+mod models {
+    mod battle;
+    mod beast;
+    mod coordinates;
+    mod mt;
+    mod player;
+    mod position;
+    mod potion;
+    mod world_elements;
+    mod tests;
+}
