@@ -1,0 +1,16 @@
+kind = "DojoModel"
+class_hash = "0x6a3b296e3483766bd71a615fe01cf34ec0300356ed2971289fa54b236f47958"
+original_class_hash = "0x6a3b296e3483766bd71a615fe01cf34ec0300356ed2971289fa54b236f47958"
+abi = "manifests/dev/base/abis/models/bytebeasts-GameId-344511d3.json"
+tag = "bytebeasts-GameId"
+manifest_name = "bytebeasts-GameId-344511d3"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "game_id"
+type = "u128"
+key = false
