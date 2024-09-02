@@ -1,13 +1,13 @@
 #[cfg(test)]
 mod tests {
-    use super::battle::Battle;
-    use super::beast::{Beast, BeastTrait};
-    use super::player::Player;
-    use super::coordinates::Coordinates;
-    use super::position::Position;
-    use super::mt::Mt;
-    use super::potion::Potion;
-    use super::world_elements::WorldElements;
+    use bytebeasts::models::battle::Battle;
+    use bytebeasts::models::beast::{Beast, BeastTrait};
+    use bytebeasts::models::player::Player;
+    use bytebeasts::models::coordinates::Coordinates;
+    use bytebeasts::models::position::Position;
+    use bytebeasts::models::mt::Mt;
+    use bytebeasts::models::potion::Potion;
+    use bytebeasts::models::world_elements::WorldElements;
 
     #[test]
     fn test_beast_exist() {
