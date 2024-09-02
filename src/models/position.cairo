@@ -11,9 +11,9 @@ struct Position {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::models::player::Player;
-    use bytebeasts::models::coordinates::Coordinates;
-    use bytebeasts::models::position::Position;
+    use bytebeasts::{
+        models::{position::Position, coordinates::Coordinates, player::Player},
+    };
 
     #[test]
     fn test_position_initialization() {

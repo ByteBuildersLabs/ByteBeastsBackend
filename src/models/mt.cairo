@@ -13,8 +13,9 @@ pub struct Mt {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::models::mt::Mt;
-    use bytebeasts::models::world_elements::WorldElements;
+    use bytebeasts::{
+        models::{mt::Mt, world_elements::WorldElements},
+    };
 
     #[test]
     fn test_mt_initialization() {

@@ -13,7 +13,9 @@ pub struct Battle {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::models::battle::Battle;
+    use bytebeasts::{
+        models::{battle::Battle},
+    };
 
     #[test]
     fn test_battle_initialization() {

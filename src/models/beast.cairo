@@ -32,8 +32,9 @@ impl BeastImpl of BeastTrait {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::models::beast::{Beast, BeastTrait};
-    use bytebeasts::models::world_elements::WorldElements;
+    use bytebeasts::{
+        models::{beast::{Beast, BeastTrait}, world_elements::WorldElements},
+    };
 
     #[test]
     fn test_beast_exist() {

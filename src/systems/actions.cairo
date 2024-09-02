@@ -1,10 +1,6 @@
-use bytebeasts::models::beast::Beast;
-use bytebeasts::models::mt::Mt;
-use bytebeasts::models::player::Player;
-use bytebeasts::models::coordinates::Coordinates;
-use bytebeasts::models::position::Position;
-use bytebeasts::models::potion::Potion;
-use bytebeasts::models::world_elements::WorldElements;
+use bytebeasts::{
+    models::{beast::Beast, mt::Mt, player::Player, coordinates::Coordinates, position::Position, potion::Potion, world_elements::WorldElements},
+};
 
 
 // define the interface
@@ -21,13 +17,9 @@ mod actions {
     use super::{IActions};
 
     use starknet::{ContractAddress, get_caller_address};
-    use bytebeasts::models::beast::Beast;
-    use bytebeasts::models::mt::Mt;
-    use bytebeasts::models::player::Player;
-    use bytebeasts::models::coordinates::Coordinates;
-    use bytebeasts::models::position::Position;
-    use bytebeasts::models::potion::Potion;
-    use bytebeasts::models::world_elements::WorldElements;
+    use bytebeasts::{
+        models::{beast::Beast, mt::Mt, player::Player, coordinates::Coordinates, position::Position, potion::Potion, world_elements::WorldElements},
+    };
 
 
     #[abi(embed_v0)]

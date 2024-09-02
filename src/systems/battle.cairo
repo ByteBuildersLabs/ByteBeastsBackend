@@ -1,9 +1,7 @@
 use starknet::ContractAddress;
-use bytebeasts::models::beast::Beast;
-use bytebeasts::models::mt::Mt;
-use bytebeasts::models::player::Player;
-use bytebeasts::models::potion::Potion;
-use bytebeasts::models::battle::Battle;
+use bytebeasts::{
+    models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
+};
 
 
 #[dojo::interface]
@@ -22,11 +20,9 @@ trait IBattleActions {
 mod battle_system {
     use super::{IBattleActions};
     use starknet::{ContractAddress, get_caller_address};
-    use bytebeasts::models::beast::Beast;
-    use bytebeasts::models::mt::Mt;
-    use bytebeasts::models::player::Player;
-    use bytebeasts::models::potion::Potion;
-    use bytebeasts::models::battle::Battle;
+    use bytebeasts::{
+        models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
+    };
 
     #[derive(Copy, Drop, Serde)]
     #[dojo::model]

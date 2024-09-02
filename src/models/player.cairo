@@ -13,7 +13,9 @@ struct Player {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::models::player::Player;
+    use bytebeasts::{
+        models::{player::Player},
+    };
 
     #[test]
     fn test_player_initialization() {
