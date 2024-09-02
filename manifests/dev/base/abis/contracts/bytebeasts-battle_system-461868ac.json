@@ -133,7 +133,7 @@
   },
   {
     "type": "enum",
-    "name": "bytebeasts::models::WorldElements",
+    "name": "bytebeasts::models::world_elements::WorldElements",
     "variants": [
       {
         "name": "Crystal",
@@ -159,7 +159,7 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Beast",
+    "name": "bytebeasts::models::beast::Beast",
     "members": [
       {
         "name": "beast_id",
@@ -171,7 +171,7 @@
       },
       {
         "name": "beast_type",
-        "type": "bytebeasts::models::WorldElements"
+        "type": "bytebeasts::models::world_elements::WorldElements"
       },
       {
         "name": "beast_description",
@@ -225,7 +225,7 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Potion",
+    "name": "bytebeasts::models::potion::Potion",
     "members": [
       {
         "name": "potion_id",
@@ -243,7 +243,7 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Mt",
+    "name": "bytebeasts::models::mt::Mt",
     "members": [
       {
         "name": "mt_id",
@@ -255,7 +255,7 @@
       },
       {
         "name": "mt_type",
-        "type": "bytebeasts::models::WorldElements"
+        "type": "bytebeasts::models::world_elements::WorldElements"
       },
       {
         "name": "mt_power",
@@ -277,11 +277,11 @@
         "inputs": [
           {
             "name": "player_beast",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::beast::Beast"
           },
           {
             "name": "opponent_beast",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::beast::Beast"
           }
         ],
         "outputs": [
@@ -297,11 +297,11 @@
         "inputs": [
           {
             "name": "potion",
-            "type": "bytebeasts::models::Potion"
+            "type": "bytebeasts::models::potion::Potion"
           },
           {
             "name": "target",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::beast::Beast"
           }
         ],
         "outputs": [],
@@ -313,15 +313,15 @@
         "inputs": [
           {
             "name": "mt",
-            "type": "bytebeasts::models::Mt"
+            "type": "bytebeasts::models::mt::Mt"
           },
           {
             "name": "attacker",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::beast::Beast"
           },
           {
             "name": "defender",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::beast::Beast"
           }
         ],
         "outputs": [

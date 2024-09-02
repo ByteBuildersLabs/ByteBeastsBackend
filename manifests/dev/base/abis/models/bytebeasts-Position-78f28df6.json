@@ -364,11 +364,11 @@
   {
     "type": "impl",
     "name": "positionImpl",
-    "interface_name": "bytebeasts::models::Iposition"
+    "interface_name": "bytebeasts::models::position::Iposition"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Player",
+    "name": "bytebeasts::models::player::Player",
     "members": [
       {
         "name": "player_id",
@@ -402,7 +402,7 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Coordinates",
+    "name": "bytebeasts::models::coordinates::Coordinates",
     "members": [
       {
         "name": "x",
@@ -416,21 +416,21 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Position",
+    "name": "bytebeasts::models::position::Position",
     "members": [
       {
         "name": "player",
-        "type": "bytebeasts::models::Player"
+        "type": "bytebeasts::models::player::Player"
       },
       {
         "name": "coordinates",
-        "type": "bytebeasts::models::Coordinates"
+        "type": "bytebeasts::models::coordinates::Coordinates"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Iposition",
+    "name": "bytebeasts::models::position::Iposition",
     "items": [
       {
         "type": "function",
@@ -438,7 +438,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Position"
+            "type": "bytebeasts::models::position::Position"
           }
         ],
         "outputs": [],
@@ -448,7 +448,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::position::Event",
+    "name": "bytebeasts::models::position::position::Event",
     "kind": "enum",
     "variants": []
   }
