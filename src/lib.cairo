@@ -12,5 +12,4 @@ mod models {
     mod position;
     mod potion;
     mod world_elements;
-    mod tests;
 }
