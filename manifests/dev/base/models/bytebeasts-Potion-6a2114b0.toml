@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d"
-original_class_hash = "0x164879a36700032b1af24f1b5bcc6f8cd74c90fc259090049877a09b0dac57d"
+class_hash = "0x4eac23f35a0e71954b8f000d9d8999579ba49ffc918e8b78924562449bdf8d4"
+original_class_hash = "0x4eac23f35a0e71954b8f000d9d8999579ba49ffc918e8b78924562449bdf8d4"
 abi = "manifests/dev/base/abis/models/bytebeasts-Potion-6a2114b0.json"
 tag = "bytebeasts-Potion"
 manifest_name = "bytebeasts-Potion-6a2114b0"

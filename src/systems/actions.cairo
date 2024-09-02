@@ -1,10 +1,11 @@
-use bytebeasts::models::Beast;
-use bytebeasts::models::Mt;
-use bytebeasts::models::Player;
-use bytebeasts::models::Coordinates;
-use bytebeasts::models::Position;
-use bytebeasts::models::Potion;
-use bytebeasts::models::WorldElements;
+use bytebeasts::models::beast::Beast;
+use bytebeasts::models::mt::Mt;
+use bytebeasts::models::player::Player;
+use bytebeasts::models::coordinates::Coordinates;
+use bytebeasts::models::position::Position;
+use bytebeasts::models::potion::Potion;
+use bytebeasts::models::world_elements::WorldElements;
+
 
 // define the interface
 #[dojo::interface]
@@ -20,7 +21,14 @@ mod actions {
     use super::{IActions};
 
     use starknet::{ContractAddress, get_caller_address};
-    use bytebeasts::models::{Beast, Mt, Player, Coordinates, Position, Potion, WorldElements};
+    use bytebeasts::models::beast::Beast;
+    use bytebeasts::models::mt::Mt;
+    use bytebeasts::models::player::Player;
+    use bytebeasts::models::coordinates::Coordinates;
+    use bytebeasts::models::position::Position;
+    use bytebeasts::models::potion::Potion;
+    use bytebeasts::models::world_elements::WorldElements;
+
 
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {

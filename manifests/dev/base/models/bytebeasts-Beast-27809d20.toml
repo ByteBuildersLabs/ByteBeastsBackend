@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x411a204805c72d97abeedf76014e906cb29cce6c92b1d52fc4644fa5631ff18"
-original_class_hash = "0x411a204805c72d97abeedf76014e906cb29cce6c92b1d52fc4644fa5631ff18"
+class_hash = "0x7bef5c17e52dab476cd7ae664bbb0f0024aae955ed8b12592e2d6faf7ff6a3c"
+original_class_hash = "0x7bef5c17e52dab476cd7ae664bbb0f0024aae955ed8b12592e2d6faf7ff6a3c"
 abi = "manifests/dev/base/abis/models/bytebeasts-Beast-27809d20.json"
 tag = "bytebeasts-Beast"
 manifest_name = "bytebeasts-Beast-27809d20"
