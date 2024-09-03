@@ -364,11 +364,11 @@
   {
     "type": "impl",
     "name": "potionImpl",
-    "interface_name": "bytebeasts::models::Ipotion"
+    "interface_name": "bytebeasts::models::potion::Ipotion"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Potion",
+    "name": "bytebeasts::models::potion::Potion",
     "members": [
       {
         "name": "potion_id",
@@ -386,7 +386,7 @@
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Ipotion",
+    "name": "bytebeasts::models::potion::Ipotion",
     "items": [
       {
         "type": "function",
@@ -394,7 +394,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Potion"
+            "type": "bytebeasts::models::potion::Potion"
           }
         ],
         "outputs": [],
@@ -404,7 +404,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::potion::Event",
+    "name": "bytebeasts::models::potion::potion::Event",
     "kind": "enum",
     "variants": []
   }

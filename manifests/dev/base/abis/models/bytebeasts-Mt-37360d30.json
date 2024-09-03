@@ -364,11 +364,11 @@
   {
     "type": "impl",
     "name": "mtImpl",
-    "interface_name": "bytebeasts::models::Imt"
+    "interface_name": "bytebeasts::models::mt::Imt"
   },
   {
     "type": "enum",
-    "name": "bytebeasts::models::WorldElements",
+    "name": "bytebeasts::models::world_elements::WorldElements",
     "variants": [
       {
         "name": "Crystal",
@@ -394,7 +394,7 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Mt",
+    "name": "bytebeasts::models::mt::Mt",
     "members": [
       {
         "name": "mt_id",
@@ -406,7 +406,7 @@
       },
       {
         "name": "mt_type",
-        "type": "bytebeasts::models::WorldElements"
+        "type": "bytebeasts::models::world_elements::WorldElements"
       },
       {
         "name": "mt_power",
@@ -420,7 +420,7 @@
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Imt",
+    "name": "bytebeasts::models::mt::Imt",
     "items": [
       {
         "type": "function",
@@ -428,7 +428,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Mt"
+            "type": "bytebeasts::models::mt::Mt"
           }
         ],
         "outputs": [],
@@ -438,7 +438,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::mt::Event",
+    "name": "bytebeasts::models::mt::mt::Event",
     "kind": "enum",
     "variants": []
   }
