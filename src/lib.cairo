@@ -12,4 +12,7 @@ mod models {
     mod position;
     mod potion;
     mod world_elements;
+    mod mission_status;
+    mod npc;
+    mod role;
 }
