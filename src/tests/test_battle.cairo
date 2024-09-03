@@ -7,7 +7,14 @@ mod tests {
 
     use bytebeasts::{
         systems::{battle::{battle_system, IBattleActionsDispatcher, IBattleActionsDispatcherTrait}},
-        models::{{Battle, battle, Player, player, Beast, beast, Mt, mt, Potion, potion}}
+    };
+
+    use bytebeasts::{
+        models::battle::{{Battle, battle}},
+        models::beast::{{Beast, beast}},
+        models::mt::{{Mt, mt}},
+        models::player::{{Player, player}},
+        models::potion::{{Potion, potion}},
     };
 
 
