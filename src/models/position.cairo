@@ -11,9 +11,7 @@ struct Position {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::{
-        models::{position::Position, coordinates::Coordinates, player::Player},
-    };
+    use bytebeasts::{models::{position::Position, coordinates::Coordinates, player::Player},};
 
     #[test]
     fn test_position_initialization() {
@@ -27,19 +25,12 @@ mod tests {
             potions: 5,
         };
 
-        let coordinates = Coordinates{
-            x: 10,
-            y: 10,
-        };
+        let coordinates = Coordinates { x: 10, y: 10, };
 
-        let position = Position {
-            player: player,
-            coordinates: coordinates
-        };
+        let position = Position { player: player, coordinates: coordinates };
 
         assert_eq!(position.player.player_id, 1, "Player ID should be 1");
         assert_eq!(position.coordinates.x, 10, "Player X coordinate should be 10");
         assert_eq!(position.coordinates.y, 10, "Player Y coordinate should be 10");
     }
-
 }

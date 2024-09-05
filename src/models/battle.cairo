@@ -13,9 +13,7 @@ pub struct Battle {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::{
-        models::{battle::Battle},
-    };
+    use bytebeasts::{models::{battle::Battle},};
 
     #[test]
     fn test_battle_initialization() {
@@ -35,5 +33,4 @@ mod tests {
         assert_eq!(battle.battle_active, 1, "Battle should be active");
         assert_eq!(battle.turn, 1, "Turn should be 1");
     }
-
 }

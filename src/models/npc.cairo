@@ -1,21 +1,19 @@
-use bytebeasts::{
-    models::{role::Role, coordinates::Coordinates, mission_status::MissionStatus},
-};
+use bytebeasts::{models::{role::Role, coordinates::Coordinates, mission_status::MissionStatus},};
 
 #[derive(Drop, Serde)]
 #[dojo::model]
 pub struct NPC {
     #[key]
-    pub npc_id: u32,                // Unique identifier for the NPC
-    pub npc_name: felt252,          // Name of the NPC
-    pub npc_description: felt252,   // Description of the NPC
-    pub npc_role: Role,             // Role of the NPC, defined by the Role enum
-    pub dialogue: ByteArray,        // Default dialogue for the NPC
-    pub is_active: bool,            // Whether the NPC is currently active in the game
-    pub location: Coordinates,      // Fixed location of the NPC on the map
-    pub importance_level: u8,       // Level of importance of the NPC in the game
-    pub mission_status: MissionStatus,    // Status of the mission associated with the NPC
-    pub reward: u16,        // Fixed reward given by the NPC
+    pub npc_id: u32, // Unique identifier for the NPC
+    pub npc_name: felt252, // Name of the NPC
+    pub npc_description: felt252, // Description of the NPC
+    pub npc_role: Role, // Role of the NPC, defined by the Role enum
+    pub dialogue: ByteArray, // Default dialogue for the NPC
+    pub is_active: bool, // Whether the NPC is currently active in the game
+    pub location: Coordinates, // Fixed location of the NPC on the map
+    pub importance_level: u8, // Level of importance of the NPC in the game
+    pub mission_status: MissionStatus, // Status of the mission associated with the NPC
+    pub reward: u16, // Fixed reward given by the NPC
     pub experience_points: u16, // Experience points given by the NPC
 }
 
@@ -73,4 +71,3 @@ mod tests {
         assert_eq!(status_completed, 2);
     }
 }
-

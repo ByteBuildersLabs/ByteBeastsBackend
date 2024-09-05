@@ -13,9 +13,7 @@ pub struct Mt {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::{
-        models::{mt::Mt, world_elements::WorldElements},
-    };
+    use bytebeasts::{models::{mt::Mt, world_elements::WorldElements},};
 
     #[test]
     fn test_mt_initialization() {
@@ -31,5 +29,4 @@ mod tests {
         assert_eq!(mt.mt_power, 75, "MT power should be 75");
         assert_eq!(mt.mt_accuracy, 90, "MT accuracy should be 90");
     }
-
 }
