@@ -1,0 +1,61 @@
+kind = "DojoModel"
+class_hash = "0x55ecd947ecdaf70c5e78ba1297ced3412418866c577b58a58fdabeef1accfd8"
+original_class_hash = "0x55ecd947ecdaf70c5e78ba1297ced3412418866c577b58a58fdabeef1accfd8"
+abi = "manifests/dev/base/abis/models/bytebeasts-NPC-4c5239ac.json"
+tag = "bytebeasts-NPC"
+manifest_name = "bytebeasts-NPC-4c5239ac"
+
+[[members]]
+name = "npc_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "npc_name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "npc_description"
+type = "felt252"
+key = false
+
+[[members]]
+name = "npc_role"
+type = "Role"
+key = false
+
+[[members]]
+name = "dialogue"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "is_active"
+type = "bool"
+key = false
+
+[[members]]
+name = "location"
+type = "Coordinates"
+key = false
+
+[[members]]
+name = "importance_level"
+type = "u8"
+key = false
+
+[[members]]
+name = "mission_status"
+type = "MissionStatus"
+key = false
+
+[[members]]
+name = "reward"
+type = "u16"
+key = false
+
+[[members]]
+name = "experience_points"
+type = "u16"
+key = false
