@@ -1,5 +1,4 @@
 use starknet::ContractAddress;
-use dojo::model::Model;
 
 #[derive(Drop, Serde, Debug)]
 #[dojo::model]
@@ -11,7 +10,7 @@ pub struct GamePlayer {
     pub beast_1: u8,
     pub beast_2: u8,
     pub beast_3: u8,
-    pub beast_3: u8,
+    pub beast_4: u8,
     pub bag_id: u8,
     pub active_mount: u8,
     pub mounts: Array<u8>,

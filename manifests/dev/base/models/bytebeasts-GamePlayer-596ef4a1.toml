@@ -1,0 +1,56 @@
+kind = "DojoModel"
+class_hash = "0x52df62dec799bbf7ba4725f74e32e579dec2d90a7a995638761646157bb7e18"
+original_class_hash = "0x52df62dec799bbf7ba4725f74e32e579dec2d90a7a995638761646157bb7e18"
+abi = "manifests/dev/base/abis/models/bytebeasts-GamePlayer-596ef4a1.json"
+tag = "bytebeasts-GamePlayer"
+manifest_name = "bytebeasts-GamePlayer-596ef4a1"
+
+[[members]]
+name = "address"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "game_id"
+type = "u128"
+key = true
+
+[[members]]
+name = "beast_1"
+type = "u8"
+key = false
+
+[[members]]
+name = "beast_2"
+type = "u8"
+key = false
+
+[[members]]
+name = "beast_3"
+type = "u8"
+key = false
+
+[[members]]
+name = "beast_4"
+type = "u8"
+key = false
+
+[[members]]
+name = "bag_id"
+type = "u8"
+key = false
+
+[[members]]
+name = "active_mount"
+type = "u8"
+key = false
+
+[[members]]
+name = "mounts"
+type = "Array<u8>"
+key = false
+
+[[members]]
+name = "position"
+type = "Array<u8>"
+key = false

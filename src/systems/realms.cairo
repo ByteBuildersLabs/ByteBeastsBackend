@@ -1,10 +1,10 @@
 use starknet::ContractAddress;
 use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
 
-use bytebeasts::models::GameId
-use bytebeasts::models::GameStatus
-use bytebeasts::models::Game
-use bytebeasts::models::GamePlayer
+use bytebeasts::models::GameId;
+use bytebeasts::models::GameStatus;
+use bytebeasts::models::Game;
+use bytebeasts::models::GamePlayer;
 
 #[dojo::interface]
 trait IActions {

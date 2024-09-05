@@ -1,4 +1,6 @@
-use bytebeasts::{models::{role::Role, coordinates::Coordinates, mission_status::MissionStatus},};
+use super::role::Role;
+use super::coordinates::Coordinates;
+use super::mission_status::MissionStatus;
 
 #[derive(Drop, Serde)]
 #[dojo::model]
