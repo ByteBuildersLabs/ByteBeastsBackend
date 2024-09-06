@@ -1,25 +1,21 @@
-use starknet::ContractAddress;
 use bytebeasts::{
     models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
 };
 
-
 #[dojo::interface]
 trait IBattleActions {
+    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32;
     fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool;
-    // fn apply_item_effect(ref world: IWorldDispatcher, player_id: u32 ,target: Beast, potion: Potion);
     fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32;
     fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32);
-    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32;
     fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32);
-    // fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32);
+    fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32);
     fn flee(ref world: IWorldDispatcher, battle_id: u32);
 }
 
 #[dojo::contract]
 mod battle_system {
     use super::{IBattleActions};
-    use starknet::{ContractAddress, get_caller_address};
     use bytebeasts::{
         models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
     };
@@ -44,22 +40,41 @@ mod battle_system {
 
     #[abi(embed_v0)]
     impl BattleActionsImpl of IBattleActions<ContractState> {
+        fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32 {
+            let player = get!(world, player_id, (Player));
+            let opponent = get!(world, opponent_id, (Player));
+            let active_beast_player = get!(world, player.beast_1, (Beast));
+            let active_beast_opponent = get!(world, opponent.beast_1, (Beast));
+
+            let battle_created_id = 1; // Hardcoded for now
+            set!(
+                world,
+                (Battle {
+                    battle_id: battle_created_id,
+                    player_id: player_id,
+                    opponent_id: opponent_id,
+                    active_beast_player: active_beast_player.beast_id,
+                    active_beast_opponent: active_beast_opponent.beast_id,
+                    battle_active: 1,
+                    turn: 0,
+                })
+            );
+
+            let message = 'Battle started';
+            emit!(world, (Status { player_id: player_id,  message: message }));
+
+            emit!(world, (StatusBattle { battle_id: battle_created_id,  message: message }));
+
+            return battle_created_id;
+        }
+
         fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool {
             if player_beast.level > opponent_beast.level {
                 true
             } else {
                 false
             }
-        }
-
-        // fn apply_item_effect(ref world: IWorldDispatcher, player_id: u32 ,target: Beast, potion: Potion) {
-        //     if potion.potion_effect == 1 {
-        //         target.current_hp += 20_u32;
-        //         if target.current_hp > target.hp {
-        //             target.current_hp = target.hp;
-        //         }
-        //     }
-        // }
+        }  
 
         fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
             let base_damage = mt.mt_power * attacker.attack / defender.defense;
@@ -93,34 +108,6 @@ mod battle_system {
             }
         }
 
-        fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32 {
-            let player = get!(world, player_id, (Player));
-            let opponent = get!(world, opponent_id, (Player));
-            let active_beast_player = get!(world, player.beast_1, (Beast));
-            let active_beast_opponent = get!(world, opponent.beast_1, (Beast));
-
-            let battle_created_id = 1; // Hardcoded for now
-            set!(
-                world,
-                (Battle {
-                    battle_id: battle_created_id,
-                    player_id: player_id,
-                    opponent_id: opponent_id,
-                    active_beast_player: active_beast_player.beast_id,
-                    active_beast_opponent: active_beast_opponent.beast_id,
-                    battle_active: 1,
-                    turn: 0,
-                })
-            );
-
-            let message = 'Battle started';
-            emit!(world, (Status { player_id: player_id,  message: message }));
-
-            emit!(world, (StatusBattle { battle_id: battle_created_id,  message: message }));
-
-            return battle_created_id;
-        }
-
         fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
 
@@ -147,19 +134,24 @@ mod battle_system {
             }
         }
 
-        // fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
-        //     let mut battle = get!(world, battle_id, (Battle));
+        fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
+            let mut battle = get!(world, battle_id, (Battle));
 
-        //     let mut player_beast = get!(world, battle.active_beast_player, (Beast));
-        //     let potion = get!(world, potion_id, (Potion));
+            let mut player_beast = get!(world, battle.active_beast_player, (Beast));
+            let potion = get!(world, potion_id, (Potion));
 
-        //     // self.apply_item_effect(ref player_beast, potion);
+            if potion.potion_effect == 1 {
+                player_beast.current_hp += 20_u32;
+                if player_beast.current_hp > player_beast.hp {
+                    player_beast.current_hp = player_beast.hp;
+                }
+            }
 
-        //     let message = 'Item Used!';
-        //     emit!(world, (StatusBattle { battle_id,  message }));
+            let message = 'Item Used!';
+            emit!(world, (StatusBattle { battle_id,  message }));
 
-        //     self.opponent_turn(battle_id);
-        // }
+            self.opponent_turn(battle_id);
+        }
 
         fn flee(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));
