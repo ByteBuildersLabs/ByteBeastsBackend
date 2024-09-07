@@ -1,0 +1,41 @@
+kind = "DojoModel"
+class_hash = "0x57c477846284e274054c78c5b265af51f8815abbf0147828080c274b0639764"
+original_class_hash = "0x57c477846284e274054c78c5b265af51f8815abbf0147828080c274b0639764"
+abi = "manifests/dev/base/abis/models/bytebeasts-Game-e91217d7.json"
+tag = "bytebeasts-Game"
+manifest_name = "bytebeasts-Game-e91217d7"
+
+[[members]]
+name = "game_id"
+type = "u128"
+key = true
+
+[[members]]
+name = "player_1"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "player_2"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "player_3"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "player_4"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "status"
+type = "GameStatus"
+key = false
+
+[[members]]
+name = "is_private"
+type = "bool"
+key = false

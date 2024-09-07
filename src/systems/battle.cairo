@@ -120,7 +120,7 @@ mod battle_system {
             let mt = get!(world, mt_id, (Mt));
 
             let damage = self.calculate_damage(mt, player_beast, opponent_beast);
-            
+
             if damage >= opponent_beast.current_hp {
                 opponent_beast.current_hp = 0;
             } else {
@@ -170,7 +170,7 @@ mod battle_system {
                 battle.battle_active = 0;
                 set!(world, (battle));
                 let message = 'Player Fled!';
-                emit!(world, (StatusBattle { battle_id,  message }));
+                emit!(world, (StatusBattle { battle_id, message }));
             } else {
                 let message = 'Flee failed!';
                 emit!(world, (StatusBattle { battle_id,  message }));
