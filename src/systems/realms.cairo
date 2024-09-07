@@ -1,23 +1,36 @@
 use starknet::ContractAddress;
 use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
 
-use bytebeasts::models::GameId;
-use bytebeasts::models::GameStatus;
-use bytebeasts::models::Game;
-use bytebeasts::models::GamePlayer;
+use bytebeasts::{models::{
+    game_id::GameId, 
+    game::GameStatus, 
+    game::Game,
+    game::GameTrait,
+    game_player::GamePlayer,
+    game_player::GamePlayerTrait
+}};
 
 #[dojo::interface]
 trait IActions {
     fn create_initial_game_id(ref world: IWorldDispatcher);
     fn create_game(ref world: IWorldDispatcher) -> Game;
-    fn join_game(ref world: IWorldDispatcher, game_id: u128, player_two_address: ContractAddress);
+    fn join_game(ref world: IWorldDispatcher, game_id: u128, player_2_address: ContractAddress);
 }
 
 #[dojo::contract]
 mod actions {
     use starknet::{ContractAddress, get_caller_address, SyscallResultTrait};
     use starknet::{get_tx_info, get_block_number};
-    use bytebeasts::models::{GameId, GameStatus, Game, GamePlayer};
+    use bytebeasts::{
+        models::{
+            game_id::GameId, 
+            game::GameStatus, 
+            game::Game,
+            game::GameTrait,
+            game_player::GamePlayer,
+            game_player::GamePlayerTrait
+        },
+    };
 
     use super::IActions;
 
@@ -40,7 +53,7 @@ mod actions {
             game_id.game_id += 1;
             set!(world, (player_1, game, game_id));
             game
-        }
+        }       
 
         fn join_game(
             ref world: IWorldDispatcher, game_id: u128, player_2_address: ContractAddress
@@ -54,13 +67,6 @@ mod actions {
             game.join_game(player_2);
             let player_2 = GamePlayerTrait::new(game.game_id, player_2_address);
             set!(world, (player_2, game));
-        }
-
-        fn is_game_finished(ref world: IWorldDispatcher, game_id: u128) -> bool {
-            let mut game: Game = get!(world, game_id, (Game));
-            let player_1: GamePlayer = get!(world, (game.player_1, game.game_id), (GamePlayer));
-            let player_2: GamePlayer = get!(world, (game.player_2, game.game_id), (GamePlayer));
-            game.is_game_finished(player_1, player_2)
         }
     }
 }

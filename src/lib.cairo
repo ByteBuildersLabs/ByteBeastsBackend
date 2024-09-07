@@ -1,7 +1,7 @@
 mod systems {
     mod actions;
     mod battle;
-    // mod realms;
+    mod realms;
 }
 
 mod models {
