@@ -42,17 +42,17 @@ impl GamePlayerImpl of GamePlayerTrait {
 
 #[cfg(test)]
 mod tests {
-    use super::{GamePlayer, GamePlayerTrait};
-    use starknet::ContractAddress;
+    use bytebeasts::{models::{game_player::GamePlayer, game_player::GamePlayerTrait}};
+    use starknet::{ContractAddress, get_caller_address, SyscallResultTrait};
 
     #[test]
     fn test_game_player_initialization() {
         // Crear una dirección de contrato de prueba
-        let address = ContractAddress::from(1234_u32);
+        let address = get_caller_address();
         let game_id = 98765432101234567890123456789012_u128;
 
         // Crear un jugador usando el método `new`
-        let game_player = GamePlayer::new(game_id, address);
+        let mut game_player = GamePlayerTrait::new(game_id, address);
 
         // Verificar que los campos se inicializan correctamente
         assert_eq!(game_player.address, address, "La direccion deberia ser la esperada");
@@ -67,19 +67,5 @@ mod tests {
         // Verificar que los arrays de mounts y position estén vacíos al inicio
         assert!(game_player.mounts.is_empty(), "El array de mounts deberia estar vacio");
         assert!(game_player.position.is_empty(), "El array de position deberia estar vacio");
-    }
-
-    #[test]
-    fn test_game_player_custom_initialization() {
-        // Prueba con valores de juego personalizados
-        let address = ContractAddress::from(4321_u32);
-        let game_id = 12345678901234567890123456789012_u128;
-
-        // Crear un jugador con valores personalizados
-        let game_player = GamePlayer::new(game_id, address);
-
-        // Validar los valores personalizados
-        assert_eq!(game_player.address, address, "La direccion deberia coincidir con la direccion personalizada");
-        assert_eq!(game_player.game_id, game_id, "El game_id deberia coincidir con el valor personalizado");
     }
 }

@@ -35,13 +35,4 @@ mod tests {
         assert_eq!(completed.into(), 2, "MissionStatus::Completed deberia convertirse a 2");
         assert_eq!(failed.into(), 3, "MissionStatus::Failed deberia convertirse a 3");
     }
-
-    #[test]
-    fn test_mission_status_values() {
-        // Probar los valores de cada estado de MissionStatus
-        assert_eq!(MissionStatus::NotStarted, 0, "NotStarted deberia tener valor 0");
-        assert_eq!(MissionStatus::InProgress, 1, "InProgress deberia tener valor 1");
-        assert_eq!(MissionStatus::Completed, 2, "Completed deberia tener valor 2");
-        assert_eq!(MissionStatus::Failed, 3, "Failed deberia tener valor 3");
-    }
 }

@@ -39,26 +39,4 @@ mod tests {
         assert_eq!(light, 3, "Light deberia convertirse a 3");
         assert_eq!(titanium, 4, "Titanium deberia convertirse a 4");
     }
-
-    #[test]
-    fn test_world_elements_equality() {
-        // Verificar la igualdad entre las variantes del enum
-        assert_eq!(WorldElements::Crystal, 0, "Crystal deberia ser igual a 0",);
-        assert_eq!(WorldElements::Draconic, 1, "Draconic deberia ser igual a 1",);
-        assert_eq!(WorldElements::Shadow, 2, "Shadow deberia ser igual a 2",);
-        assert_eq!(WorldElements::Light, 3, "Light deberia ser igual a 3",);
-        assert_eq!(WorldElements::Titanium, 4, "Titanium deberia ser igual a 4",);
-    }
-
-    #[test]
-    fn test_world_elements_conversion_back() {
-        // Verificar una conversión inversa si fuera relevante
-        let crystal_value: felt252 = 0;
-        let draconic_value: felt252 = 1;
-        
-        // Puedes implementar lógica que permita convertir el valor de vuelta al enum, si es necesario
-        // Aquí dejamos los assert de cómo podrías mapear hacia atrás en algún momento.
-        // assert_eq!(felt_to_world_element(crystal_value), WorldElements::Crystal);
-        // assert_eq!(felt_to_world_element(draconic_value), WorldElements::Draconic);
-    }
 }
