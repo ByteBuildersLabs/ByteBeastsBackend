@@ -69,11 +69,7 @@ mod battle_system {
         }
 
         fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool {
-            if player_beast.level > opponent_beast.level {
-                true
-            } else {
-                false
-            }
+            player_beast.level > opponent_beast.level 
         }  
 
         fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
@@ -160,7 +156,7 @@ mod battle_system {
             let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
 
             let flee_success = self.check_flee_success(player_beast, opponent_beast);
-            if flee_success == true {
+            if flee_success {
                 battle.battle_active = 0;
                 let message = 'Player Fled!';
                 emit!(world, (StatusBattle { battle_id,  message }));

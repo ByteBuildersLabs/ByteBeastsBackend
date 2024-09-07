@@ -71,14 +71,14 @@ mod tests {
             mt2: 2, // Ember
             mt3: 3, // Flame Wheel
             mt4: 4, // Fire Punch
-            level: 5,
+            level: 10,
             experience_to_next_level: 1000
         };
 
         let opponent_red = Player {
             player_id: 2,
             player_name: 'Red',
-            beast_1: 1, // Beast 1 assigned
+            beast_1: 2, // Beast 1 assigned
             beast_2: 0, // No beast assigned
             beast_3: 0, // No beast assigned
             beast_4: 0, // No beast assigned
@@ -103,6 +103,12 @@ mod tests {
             experience_to_next_level: 1000
         };
 
+        let potion = Potion {
+            potion_id: 1,
+            potion_name: 'Restore everything',
+            potion_effect: 1
+        };
+
         set!(world,(player_ash));
 
         set!(world,(opponent_red));
@@ -110,6 +116,8 @@ mod tests {
         set!(world, (beast_1));
 
         set!(world, (beast_2));
+
+        set!(world, (potion));
         
         let _ = battle_system.init_battle(player_ash.player_id, opponent_red.player_id);
 
@@ -158,24 +166,37 @@ mod tests {
     }
 
     #[test]
-    fn test_battle(){
+    fn test_battle() {
         let (world, battle_system) = setup_battle();
 
         let battle = get!(world, 1, (Battle));
-
+        let battle_id = battle.battle_id;
         let player_beast = get!(world, battle.active_beast_player, (Beast));
         let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
         let mt_player_beast_id = player_beast.mt1;
         let mt_player_beast = get!(world, mt_player_beast_id,(Mt));
         let damage = battle_system.calculate_damage(mt_player_beast, player_beast, opponent_beast);
         
-        battle_system.attack(battle.battle_id, mt_player_beast_id);
 
-        assert!(player_beast.hp == player_beast.hp - damage, "Wrong beast health");
+        // attack 
+        battle_system.attack(battle_id, mt_player_beast_id);
+        assert!(player_beast.hp == player_beast.hp - damage, "Wrong player beast health");
+        assert!(opponent_beast.hp == opponent_beast.hp - damage, "Wrong opponent beast health");
+    
+        // use potion
+        let potion_id = 1;
+        battle_system.use_potion(battle_id, potion_id);
+        assert!(player_beast.hp == 10, "Wrong beast health after potion");
+
+        // flee
+        battle_system.flee(battle_id);
+        println!("status in test: {}", battle.battle_active);
+        assert!(battle.battle_active == 0, "Wrong battle status");
     }
 
     #[test]
     fn test_setup() {
         let (_, _,) = setup_world();
+        let (_, _,) = setup_battle();
     }
 }
