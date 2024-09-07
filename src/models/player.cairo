@@ -13,9 +13,7 @@ struct Player {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::{
-        models::{player::Player},
-    };
+    use bytebeasts::{models::{player::Player},};
 
     #[test]
     fn test_player_initialization() {
@@ -32,5 +30,4 @@ mod tests {
         assert_eq!(player.player_name, 'Hero', "Player name should be 'Hero'");
         assert_eq!(player.potions, 5, "Player should have 5 potions");
     }
-
 }

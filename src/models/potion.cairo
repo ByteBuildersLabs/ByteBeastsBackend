@@ -9,9 +9,7 @@ struct Potion {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::{
-        models::{potion::Potion},
-    };
+    use bytebeasts::{models::{potion::Potion},};
 
     #[test]
     fn test_potion_initialization() {

@@ -32,9 +32,7 @@ impl BeastImpl of BeastTrait {
 
 #[cfg(test)]
 mod tests {
-    use bytebeasts::{
-        models::{beast::{Beast, BeastTrait}, world_elements::WorldElements},
-    };
+    use bytebeasts::{models::{beast::{Beast, BeastTrait}, world_elements::WorldElements},};
 
     #[test]
     fn test_beast_exist() {
@@ -58,5 +56,4 @@ mod tests {
         assert(beast.exist(), 'Beast is alive');
         assert_eq!(beast.hp, 100, "HP should be initialized to 100");
     }
-
 }

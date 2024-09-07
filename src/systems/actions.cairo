@@ -1,5 +1,8 @@
 use bytebeasts::{
-    models::{beast::Beast, mt::Mt, player::Player, coordinates::Coordinates, position::Position, potion::Potion, world_elements::WorldElements},
+    models::{
+        beast::Beast, mt::Mt, player::Player, coordinates::Coordinates, position::Position,
+        potion::Potion, world_elements::WorldElements
+    },
 };
 
 
@@ -18,7 +21,10 @@ mod actions {
 
     use starknet::{ContractAddress, get_caller_address};
     use bytebeasts::{
-        models::{beast::Beast, mt::Mt, player::Player, coordinates::Coordinates, position::Position, potion::Potion, world_elements::WorldElements},
+        models::{
+            beast::Beast, mt::Mt, player::Player, coordinates::Coordinates, position::Position,
+            potion::Potion, world_elements::WorldElements
+        },
     };
 
 
@@ -96,19 +102,9 @@ mod actions {
             );
 
             // Set Potions
-            set!(
-                world,
-                (Potion {
-                    potion_id: 1, potion_name: 'Health Potion', potion_effect: 50
-                })
-            );
+            set!(world, (Potion { potion_id: 1, potion_name: 'Health Potion', potion_effect: 50 }));
 
-            set!(
-                world,
-                (Potion {
-                    potion_id: 2, potion_name: 'Super Potion', potion_effect: 100
-                })
-            );
+            set!(world, (Potion { potion_id: 2, potion_name: 'Super Potion', potion_effect: 100 }));
 
             // Set Mts
             set!(
@@ -148,7 +144,7 @@ mod actions {
                 world,
                 (Mt {
                     mt_id: 4,
-                    mt_name:'Fire Punch',
+                    mt_name: 'Fire Punch',
                     mt_type: WorldElements::Crystal(()),
                     mt_power: 75,
                     mt_accuracy: 100
@@ -202,29 +198,24 @@ mod actions {
 
         fn spawn(ref world: IWorldDispatcher, player_id: u32) {
             let player_from_world = get!(world, player_id, (Player));
-        
+
             set!(
                 world,
-                (Position {
-                        player: player_from_world,
-                        coordinates: Coordinates { x: 10, y: 10 }
-                    },
-                )
+                (Position { player: player_from_world, coordinates: Coordinates { x: 10, y: 10 } },)
             );
         }
 
-        fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y:u32) {
+        fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y: u32) {
             let player_from_world = get!(world, player_id, (Player));
-        
+
             set!(
                 world,
-                (Position {
-                        player: player_from_world,
-                        coordinates: Coordinates { x: new_x, y: new_y }
+                (
+                    Position {
+                        player: player_from_world, coordinates: Coordinates { x: new_x, y: new_y }
                     },
                 )
             );
         }
-
     }
 }
