@@ -93,14 +93,22 @@ mod battle_system {
             let mut battle = get!(world, battle_id, (Battle));
 
             let mut player_beast = get!(world, battle.active_beast_player, (Beast));
-            let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+            let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
             let opponent_attack = get!(world, opponent_beast.mt1, (Mt));
 
             let damage = self.calculate_damage(opponent_attack, opponent_beast, player_beast);
-            player_beast.current_hp -= damage;
+            if damage >= player_beast.current_hp {
+                player_beast.current_hp = 0;
+            } else {
+                player_beast.current_hp -= damage;
+            }
+            set!(world, (player_beast));
 
             if player_beast.current_hp <= 0_u32 {
+                let message = 'Player Beast Knocked Out!';
+                emit!(world, (StatusBattle { battle_id,  message }));
                 battle.battle_active = 0;
+                set!(world, (battle));
             }
         }
 
@@ -118,15 +126,16 @@ mod battle_system {
             } else {
                 opponent_beast.current_hp -= damage;
             }
+            set!(world, (opponent_beast));
 
             if opponent_beast.current_hp <= 0_u32 {
-                let message = 'Opponent\'s Beast Knocked Out!';
+                let message = 'Opponent Beast Knocked Out!';
                 emit!(world, (StatusBattle { battle_id,  message }));
                 battle.battle_active = 0;
+                set!(world, (battle));
             } else {
                 let message = 'Attack Performed!';
                 emit!(world, (StatusBattle { battle_id,  message }));
-                self.opponent_turn(battle_id);
             }
         }
 
@@ -136,17 +145,18 @@ mod battle_system {
             let mut player_beast = get!(world, battle.active_beast_player, (Beast));
             let potion = get!(world, potion_id, (Potion));
 
-            if potion.potion_effect == 1 {
-                player_beast.current_hp += 20_u32;
-                if player_beast.current_hp > player_beast.hp {
-                    player_beast.current_hp = player_beast.hp;
-                }
+            if potion.potion_effect <= player_beast.current_hp {
+                player_beast.current_hp += potion.potion_effect;
             }
+            else {
+                player_beast.current_hp = player_beast.hp;
+            }
+
+            set!(world, (player_beast));
+            player_beast = get!(world, battle.active_beast_player, (Beast));
 
             let message = 'Item Used!';
             emit!(world, (StatusBattle { battle_id,  message }));
-
-            self.opponent_turn(battle_id);
         }
 
         fn flee(ref world: IWorldDispatcher, battle_id: u32) {
@@ -158,12 +168,12 @@ mod battle_system {
             let flee_success = self.check_flee_success(player_beast, opponent_beast);
             if flee_success {
                 battle.battle_active = 0;
+                set!(world, (battle));
                 let message = 'Player Fled!';
                 emit!(world, (StatusBattle { battle_id,  message }));
             } else {
                 let message = 'Flee failed!';
                 emit!(world, (StatusBattle { battle_id,  message }));
-                self.opponent_turn(battle_id);
             }
         }
     }

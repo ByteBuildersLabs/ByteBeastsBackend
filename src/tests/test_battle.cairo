@@ -20,6 +20,7 @@ mod tests {
 
 
     // Helper function
+    // This function create the world and define the required models
     #[test]
      fn setup_world() -> (IWorldDispatcher, IBattleActionsDispatcher) {
         let mut models = array![
@@ -43,6 +44,8 @@ mod tests {
     }
 
     // Helper function
+    // This function set all the required models 
+    // with their values in the world
     #[test]
     fn setup_battle() -> (IWorldDispatcher, IBattleActionsDispatcher) {
         let (world, battle_system) = setup_world();
@@ -63,10 +66,10 @@ mod tests {
             beast_type: WorldElements::Draconic(()),
             beast_description: 'A fiery beast.',
             player_id: 1,
-            hp: 10,
-            current_hp: 10,
-            attack: 1,
-            defense: 1,
+            hp: 200,
+            current_hp: 200,
+            attack: 7,
+            defense: 7,
             mt1: 1, // Fire Blast
             mt2: 2, // Ember
             mt3: 3, // Flame Wheel
@@ -91,14 +94,14 @@ mod tests {
             beast_type: WorldElements::Crystal(()),
             beast_description: 'A water beast',
             player_id: 2,
-            hp: 5,
-            current_hp: 5,
-            attack: 1,
-            defense: 1,
-            mt1: 5, // Water Gun
+            hp: 200,
+            current_hp: 200,
+            attack: 5,
+            defense: 5,
+            mt1: 8, // Hydro Pump
             mt2: 6, // Bubble
             mt3: 7, // Aqua Tail
-            mt4: 8, // Hydro Pump
+            mt4: 5, // Water Gun 
             level: 5,
             experience_to_next_level: 1000
         };
@@ -106,8 +109,97 @@ mod tests {
         let potion = Potion {
             potion_id: 1,
             potion_name: 'Restore everything',
-            potion_effect: 1
+            potion_effect: 250
         };
+
+         // Set Mts
+         set!(
+            world,
+            (Mt {
+                mt_id: 1,
+                mt_name: 'Fire Blast',
+                mt_type: WorldElements::Draconic(()),
+                mt_power: 90,
+                mt_accuracy: 85
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 2,
+                mt_name: 'Ember',
+                mt_type: WorldElements::Crystal(()),
+                mt_power: 40,
+                mt_accuracy: 100
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 3,
+                mt_name: 'Flame Wheel',
+                mt_type: WorldElements::Draconic(()),
+                mt_power: 60,
+                mt_accuracy: 95
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 4,
+                mt_name:'Fire Punch',
+                mt_type: WorldElements::Crystal(()),
+                mt_power: 500,
+                mt_accuracy: 100
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 5,
+                mt_name: 'Water Gun',
+                mt_type: WorldElements::Crystal(()),
+                mt_power: 40,
+                mt_accuracy: 100
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 6,
+                mt_name: 'Bubble',
+                mt_type: WorldElements::Draconic(()),
+                mt_power: 20,
+                mt_accuracy: 100
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 7,
+                mt_name: 'Aqua Tail',
+                mt_type: WorldElements::Crystal(()),
+                mt_power: 90,
+                mt_accuracy: 90
+            })
+        );
+
+        set!(
+            world,
+            (Mt {
+                mt_id: 8,
+                mt_name: 'Hydro Pump',
+                mt_type: WorldElements::Crystal(()),
+                mt_power: 110,
+                mt_accuracy: 80
+            })
+        );
 
         set!(world,(player_ash));
 
@@ -166,31 +258,91 @@ mod tests {
     }
 
     #[test]
-    fn test_battle() {
+    fn test_battle_player_wins() {
         let (world, battle_system) = setup_battle();
+        let battle_id = 1;
 
-        let battle = get!(world, 1, (Battle));
-        let battle_id = battle.battle_id;
-        let player_beast = get!(world, battle.active_beast_player, (Beast));
-        let opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
-        let mt_player_beast_id = player_beast.mt1;
-        let mt_player_beast = get!(world, mt_player_beast_id,(Mt));
-        let damage = battle_system.calculate_damage(mt_player_beast, player_beast, opponent_beast);
+        let mut battle = get!(world, battle_id, (Battle));
+        let mut player_beast = get!(world, battle.active_beast_player, (Beast));
+        let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
         
+        let mt_player_beast_id = player_beast.mt1;
+        let mt_player_beast = get!(world, mt_player_beast_id, (Mt));
+
+        let mt_opponent_beast_id = opponent_beast.mt1;
+        let mt_opponent_beast = get!(world, mt_opponent_beast_id, (Mt));
+        
+        let player_beast_damage = battle_system.calculate_damage(mt_player_beast, player_beast, opponent_beast);
+        let opponent_beast_damage = battle_system.calculate_damage(mt_opponent_beast, opponent_beast, player_beast);
 
         // attack 
         battle_system.attack(battle_id, mt_player_beast_id);
-        assert!(player_beast.hp == player_beast.hp - damage, "Wrong player beast health");
-        assert!(opponent_beast.hp == opponent_beast.hp - damage, "Wrong opponent beast health");
-    
+        opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        assert!(opponent_beast.current_hp == opponent_beast.hp - player_beast_damage, "Wrong opponent beast health");
+        
+        // opponent turn
+        battle_system.opponent_turn(battle_id);
+        player_beast = get!(world, battle.active_beast_player, (Beast));   
+        assert!(player_beast.current_hp == player_beast.hp - opponent_beast_damage, "Wrong player beast health");
+        
         // use potion
         let potion_id = 1;
         battle_system.use_potion(battle_id, potion_id);
-        assert!(player_beast.hp == 10, "Wrong beast health after potion");
+        player_beast = get!(world, battle.active_beast_player, (Beast));
+        assert!(player_beast.current_hp == 200, "Wrong beast health after potion");
+
+        // attack with fire punch(one shot one kill)
+        battle_system.attack(battle_id, 4);
+
+        opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        assert!(opponent_beast.current_hp == 0, "Wrong opponent beast health");
+       
+        battle = get!(world, battle_id, (Battle));
+        assert!(battle.battle_active == 0, "Wrong battle status");
+    }
+
+    
+    #[test]
+    fn test_battle_opponent_wins() {
+        let (world, battle_system) = setup_battle();
+        let battle_id = 1;
+
+        let mut battle = get!(world, battle_id, (Battle));
+        let mut player_beast = get!(world, battle.active_beast_player, (Beast));
+        let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        
+        let mt_player_beast_id = player_beast.mt1;
+        let mt_player_beast = get!(world, mt_player_beast_id, (Mt));
+ 
+        let player_beast_damage = battle_system.calculate_damage(mt_player_beast, player_beast, opponent_beast);
+
+        // attack 
+        battle_system.attack(battle_id, mt_player_beast_id);
+        opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        assert!(opponent_beast.current_hp == opponent_beast.hp - player_beast_damage, "Wrong opponent beast health");
+        
+        // Update Mt to be powerfull
+        let mut mt_opponent_beast = get!(world, 8, (Mt)); // Opponent always attack with mt1
+        mt_opponent_beast.mt_power = 500;
+        set!(world,(mt_opponent_beast));
+
+        // opponent turn
+        battle_system.opponent_turn(battle_id);
+        player_beast = get!(world, battle.active_beast_player, (Beast)); 
+        assert!(player_beast.current_hp == 0, "Wrong player beast health");
+
+        battle = get!(world, battle_id, (Battle));
+        assert!(battle.battle_active == 0, "Wrong battle status");
+    }
+
+    #[test]
+    fn test_flee() {
+        let (world, battle_system) = setup_battle();
+        let battle_id = 1;
 
         // flee
         battle_system.flee(battle_id);
-        println!("status in test: {}", battle.battle_active);
+        let battle = get!(world, battle_id, (Battle));
         assert!(battle.battle_active == 0, "Wrong battle status");
     }
 
