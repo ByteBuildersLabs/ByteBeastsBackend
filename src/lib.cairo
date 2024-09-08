@@ -21,7 +21,6 @@ mod models {
     mod world_elements;
 }
 
-
 mod tests {
     mod test_battle;
 }
