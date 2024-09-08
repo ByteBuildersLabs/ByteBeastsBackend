@@ -224,20 +224,16 @@
     ]
   },
   {
-    "type": "struct",
-    "name": "bytebeasts::models::potion::Potion",
-    "members": [
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
       {
-        "name": "potion_id",
-        "type": "core::integer::u32"
+        "name": "False",
+        "type": "()"
       },
       {
-        "name": "potion_name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "potion_effect",
-        "type": "core::integer::u32"
+        "name": "True",
+        "type": "()"
       }
     ]
   },
@@ -273,6 +269,26 @@
     "items": [
       {
         "type": "function",
+        "name": "init_battle",
+        "inputs": [
+          {
+            "name": "player_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "opponent_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u32"
+          }
+        ],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
         "name": "check_flee_success",
         "inputs": [
           {
@@ -286,25 +302,9 @@
         ],
         "outputs": [
           {
-            "type": "core::felt252"
+            "type": "core::bool"
           }
         ],
-        "state_mutability": "view"
-      },
-      {
-        "type": "function",
-        "name": "apply_item_effect",
-        "inputs": [
-          {
-            "name": "potion",
-            "type": "bytebeasts::models::potion::Potion"
-          },
-          {
-            "name": "target",
-            "type": "bytebeasts::models::beast::Beast"
-          }
-        ],
-        "outputs": [],
         "state_mutability": "view"
       },
       {
@@ -337,22 +337,6 @@
         "inputs": [
           {
             "name": "battle_id",
-            "type": "core::integer::u32"
-          }
-        ],
-        "outputs": [],
-        "state_mutability": "external"
-      },
-      {
-        "type": "function",
-        "name": "init_battle",
-        "inputs": [
-          {
-            "name": "player_id",
-            "type": "core::integer::u32"
-          },
-          {
-            "name": "opponent_id",
             "type": "core::integer::u32"
           }
         ],
