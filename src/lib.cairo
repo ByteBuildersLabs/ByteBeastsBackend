@@ -20,3 +20,7 @@ mod models {
     mod role;
     mod world_elements;
 }
+
+mod tests {
+    mod test_battle;
+}
