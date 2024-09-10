@@ -5,6 +5,7 @@ mod systems {
 }
 
 mod models {
+    mod bag;
     mod battle;
     mod beast;
     mod coordinates;
