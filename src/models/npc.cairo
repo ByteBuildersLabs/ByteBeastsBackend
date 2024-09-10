@@ -1,6 +1,9 @@
 use super::role::Role;
 use super::coordinates::Coordinates;
 use super::mission_status::MissionStatus;
+use super::potion::Potion;
+
+use array::ArrayTrait; 
 
 #[derive(Drop, Serde)]
 #[dojo::model]
@@ -17,18 +20,20 @@ pub struct NPC {
     pub mission_status: MissionStatus, // Status of the mission associated with the NPC
     pub reward: u16, // Fixed reward given by the NPC
     pub experience_points: u16, // Experience points given by the NPC
+    pub potions: Array<Potion>, // Items held by the NPC
 }
 
 
 #[cfg(test)]
 mod tests {
     use bytebeasts::{
-        models::{role::Role, coordinates::Coordinates, mission_status::MissionStatus, npc::NPC},
+        models::{role::Role, coordinates::Coordinates, mission_status::MissionStatus, npc::NPC, potion::Potion},
     };
+    use array::ArrayTrait; 
 
     #[test]
     fn test_npc_creation() {
-        let npc = NPC {
+        let mut npc = NPC {
             npc_id: 1,
             npc_name: 'Gandalf',
             npc_description: 'A wise old wizard',
@@ -40,7 +45,15 @@ mod tests {
             mission_status: MissionStatus::NotStarted,
             reward: 50,
             experience_points: 100,
+            potions: ArrayTrait::new(),
         };
+        let potion = Potion {
+            potion_id: 1,
+            potion_name: 'Restore everything',
+            potion_effect: 50,
+        };
+
+        npc.potions.append(potion);
 
         assert_eq!(npc.npc_id, 1);
         assert_eq!(npc.npc_name, 'Gandalf');
@@ -53,6 +66,8 @@ mod tests {
         assert_eq!(npc.mission_status.into(), 0); // MissionStatus::NotStarted -> 0
         assert_eq!(npc.reward, 50);
         assert_eq!(npc.experience_points, 100);
+        assert_eq!(npc.potions.len(), 1, "NPC should have 1 potion");
+        assert_eq!(npc.potions.pop_front().unwrap().potion_id, 1, "NPC potion ID should be 1");
     }
 
     #[test]
