@@ -1,7 +1,9 @@
 mod systems {
-    mod actions;
     mod battle;
     mod realms;
+    mod move;
+    mod spawn;
+    mod world_setup;
 }
 
 mod models {

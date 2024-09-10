@@ -5,20 +5,14 @@ use bytebeasts::{
     },
 };
 
-
-// define the interface
 #[dojo::interface]
-trait IActions {
+trait IWorldSetup {
     fn setWorld(ref world: IWorldDispatcher);
-    fn spawn(ref world: IWorldDispatcher, player_id: u32);
-    fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y: u32);
 }
 
-// dojo decorator
 #[dojo::contract]
-mod actions {
-    use super::{IActions};
-
+mod world_setup {
+    use super::IWorldSetup;
     use starknet::{ContractAddress, get_caller_address};
     use bytebeasts::{
         models::{
@@ -27,9 +21,8 @@ mod actions {
         },
     };
 
-
     #[abi(embed_v0)]
-    impl ActionsImpl of IActions<ContractState> {
+    impl WorldSetupImpl of IWorldSetup<ContractState> {
         fn setWorld(ref world: IWorldDispatcher) {
             // Set Beasts
             set!(
@@ -103,7 +96,6 @@ mod actions {
 
             // Set Potions
             set!(world, (Potion { potion_id: 1, potion_name: 'Health Potion', potion_effect: 50 }));
-
             set!(world, (Potion { potion_id: 2, potion_name: 'Super Potion', potion_effect: 100 }));
 
             // Set Mts
@@ -193,28 +185,6 @@ mod actions {
                     mt_power: 110,
                     mt_accuracy: 80
                 })
-            );
-        }
-
-        fn spawn(ref world: IWorldDispatcher, player_id: u32) {
-            let player_from_world = get!(world, player_id, (Player));
-
-            set!(
-                world,
-                (Position { player: player_from_world, coordinates: Coordinates { x: 10, y: 10 } },)
-            );
-        }
-
-        fn move(ref world: IWorldDispatcher, player_id: u32, new_x: u32, new_y: u32) {
-            let player_from_world = get!(world, player_id, (Player));
-
-            set!(
-                world,
-                (
-                    Position {
-                        player: player_from_world, coordinates: Coordinates { x: new_x, y: new_y }
-                    },
-                )
             );
         }
     }
