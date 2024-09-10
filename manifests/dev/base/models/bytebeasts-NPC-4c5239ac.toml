@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x55ecd947ecdaf70c5e78ba1297ced3412418866c577b58a58fdabeef1accfd8"
-original_class_hash = "0x55ecd947ecdaf70c5e78ba1297ced3412418866c577b58a58fdabeef1accfd8"
+class_hash = "0x3ba44df67a037c20f004b7f5ab7725932d4519eed6beb6bc223a03e96c0f0f9"
+original_class_hash = "0x3ba44df67a037c20f004b7f5ab7725932d4519eed6beb6bc223a03e96c0f0f9"
 abi = "manifests/dev/base/abis/models/bytebeasts-NPC-4c5239ac.json"
 tag = "bytebeasts-NPC"
 manifest_name = "bytebeasts-NPC-4c5239ac"
@@ -58,4 +58,9 @@ key = false
 [[members]]
 name = "experience_points"
 type = "u16"
+key = false
+
+[[members]]
+name = "potions"
+type = "Array<Potion>"
 key = false

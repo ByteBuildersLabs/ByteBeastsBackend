@@ -440,6 +440,24 @@
   },
   {
     "type": "struct",
+    "name": "bytebeasts::models::potion::Potion",
+    "members": [
+      {
+        "name": "potion_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "potion_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "potion_effect",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
+    "type": "struct",
     "name": "bytebeasts::models::npc::NPC",
     "members": [
       {
@@ -485,6 +503,10 @@
       {
         "name": "experience_points",
         "type": "core::integer::u16"
+      },
+      {
+        "name": "potions",
+        "type": "core::array::Array::<bytebeasts::models::potion::Potion>"
       }
     ]
   },
