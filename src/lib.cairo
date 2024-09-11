@@ -22,6 +22,7 @@ mod models {
     mod potion;
     mod role;
     mod world_elements;
+    mod leaderboard;
 }
 
 mod tests {
