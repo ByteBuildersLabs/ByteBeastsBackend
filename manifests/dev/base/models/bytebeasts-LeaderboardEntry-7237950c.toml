@@ -1,0 +1,46 @@
+kind = "DojoModel"
+class_hash = "0x14d2dc52c426f057f139d65eb631734508c6604236152a7f8e0b72319e7ea71"
+original_class_hash = "0x14d2dc52c426f057f139d65eb631734508c6604236152a7f8e0b72319e7ea71"
+abi = "manifests/dev/base/abis/models/bytebeasts-LeaderboardEntry-7237950c.json"
+tag = "bytebeasts-LeaderboardEntry"
+manifest_name = "bytebeasts-LeaderboardEntry-7237950c"
+
+[[members]]
+name = "player_address"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "player_name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "score"
+type = "u32"
+key = false
+
+[[members]]
+name = "rank"
+type = "u32"
+key = false
+
+[[members]]
+name = "wins"
+type = "u32"
+key = false
+
+[[members]]
+name = "losses"
+type = "u32"
+key = false
+
+[[members]]
+name = "highest_score"
+type = "u32"
+key = false
+
+[[members]]
+name = "is_active"
+type = "bool"
+key = false
