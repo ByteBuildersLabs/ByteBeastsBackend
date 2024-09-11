@@ -1,0 +1,41 @@
+kind = "DojoModel"
+class_hash = "0x1826da0ada3289bf821104111dcb626fa3dbcd10b8afbe0300a27efd23746b4"
+original_class_hash = "0x1826da0ada3289bf821104111dcb626fa3dbcd10b8afbe0300a27efd23746b4"
+abi = "manifests/dev/base/abis/models/bytebeasts-Achievement-58a03b97.json"
+tag = "bytebeasts-Achievement"
+manifest_name = "bytebeasts-Achievement-58a03b97"
+
+[[members]]
+name = "achievement_id"
+type = "u64"
+key = true
+
+[[members]]
+name = "achievement_type"
+type = "AchievementType"
+key = false
+
+[[members]]
+name = "rarity"
+type = "AchievementRarity"
+key = false
+
+[[members]]
+name = "name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "description"
+type = "felt252"
+key = false
+
+[[members]]
+name = "is_hidden"
+type = "bool"
+key = false
+
+[[members]]
+name = "is_unlocked"
+type = "bool"
+key = false
