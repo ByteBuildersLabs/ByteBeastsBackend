@@ -478,7 +478,7 @@
       },
       {
         "name": "description",
-        "type": "core::felt252"
+        "type": "core::byte_array::ByteArray"
       },
       {
         "name": "is_hidden",

@@ -1,4 +1,4 @@
-#[derive(Serde, Copy, Drop, Introspect)]
+#[derive(Serde, Copy, Drop, Introspect, PartialEq)]
 pub enum AchievementType {
     FirstWin,
     TenWins,

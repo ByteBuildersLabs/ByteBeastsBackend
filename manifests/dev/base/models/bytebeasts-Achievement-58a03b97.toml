@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x1826da0ada3289bf821104111dcb626fa3dbcd10b8afbe0300a27efd23746b4"
-original_class_hash = "0x1826da0ada3289bf821104111dcb626fa3dbcd10b8afbe0300a27efd23746b4"
+class_hash = "0x41f50347f6f957bc556346a2cdea3f31523f3c25966826e7ca7dea1de185c40"
+original_class_hash = "0x41f50347f6f957bc556346a2cdea3f31523f3c25966826e7ca7dea1de185c40"
 abi = "manifests/dev/base/abis/models/bytebeasts-Achievement-58a03b97.json"
 tag = "bytebeasts-Achievement"
 manifest_name = "bytebeasts-Achievement-58a03b97"
@@ -27,7 +27,7 @@ key = false
 
 [[members]]
 name = "description"
-type = "felt252"
+type = "ByteArray"
 key = false
 
 [[members]]
