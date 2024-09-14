@@ -38,9 +38,39 @@ mod tests {
         (world, bag_system)
     }
 
+    
+    #[test]
+    fn test_setup_player_bag()  -> (IWorldDispatcher, IBagActionDispatcher) {
+        let (world, bag_system) = setup_world();
+
+        let player_ash = Player {
+            player_id: 1,
+            player_name: 'Ash',
+            beast_1: 1, // Beast 1 assigned
+            beast_2: 0, // No beast assigned
+            beast_3: 0, // No beast assigned
+            beast_4: 0, // No beast assigned
+            potions: 2
+        };
+
+        let bag = Bag {
+            bag_id: 1,
+            player_id: 1,
+            max_capacity: 10,
+            potions: ArrayTrait::new(),
+        };
+        
+        set!(world,(player_ash));
+
+        set!(world,(bag));
+
+        (world, bag_system)
+    }
 
     #[test]
     fn test_setup() {
         let (_, _,) = setup_world();
+        let (_, _,) = test_setup_player_bag();
+        
     }
 }

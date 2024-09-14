@@ -178,6 +178,10 @@
             "type": "core::integer::u32"
           },
           {
+            "name": "bag_id",
+            "type": "core::integer::u32"
+          },
+          {
             "name": "potion",
             "type": "bytebeasts::models::potion::Potion"
           }
@@ -191,6 +195,10 @@
         "inputs": [
           {
             "name": "player_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "bag_id",
             "type": "core::integer::u32"
           }
         ],

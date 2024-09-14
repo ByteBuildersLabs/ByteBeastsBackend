@@ -6,8 +6,8 @@ use bytebeasts::{
 #[dojo::interface]
 trait IBagAction {
     fn init_bag(ref world: IWorldDispatcher, bag_id: u32, player_id: u32);
-    fn add_item(ref world: IWorldDispatcher, player_id: u32, potion: Potion);
-    fn take_out_item(ref world: IWorldDispatcher, player_id: u32) -> Potion;
+    fn add_item(ref world: IWorldDispatcher, player_id: u32, bag_id: u32, potion: Potion);
+    fn take_out_item(ref world: IWorldDispatcher, player_id: u32, bag_id: u32) -> Potion;
 }
 
 #[dojo::contract]
@@ -33,14 +33,14 @@ mod bag_system {
             set!(world, (bag))
         }
 
-        fn add_item(ref world: IWorldDispatcher, player_id: u32, potion: Potion) {
-            let mut bag = get!(world,player_id,(Bag));
+        fn add_item(ref world: IWorldDispatcher, player_id: u32, bag_id: u32, potion: Potion) {
+            let mut bag = get!(world, (bag_id, player_id), (Bag));
             bag.potions.append(potion);
             set!(world, (bag));
         }
 
-        fn take_out_item(ref world: IWorldDispatcher, player_id: u32) -> Potion {
-            let mut bag = get!(world,player_id,(Bag));
+        fn take_out_item(ref world: IWorldDispatcher, player_id: u32, bag_id: u32) -> Potion {
+            let mut bag = get!(world, (bag_id, player_id), (Bag));
             let potion = bag.potions.pop_front().unwrap();
             set!(world, (bag));
             return potion;
