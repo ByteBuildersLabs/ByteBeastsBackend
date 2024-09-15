@@ -22,6 +22,9 @@ mod models {
     mod potion;
     mod role;
     mod world_elements;
+    mod achievement_rarity;
+    mod achievement_type;
+    mod achievements;
 }
 
 mod tests {
