@@ -1,0 +1,10 @@
+kind = "DojoContract"
+class_hash = "0x51aaf7a580665ebd6d7d32e2340f0e8b6850296fc1ad389c74a293d1a26029f"
+original_class_hash = "0x51aaf7a580665ebd6d7d32e2340f0e8b6850296fc1ad389c74a293d1a26029f"
+base_class_hash = "0x0"
+abi = "manifests/dev/base/abis/contracts/bytebeasts-bag_system-7ad8a155.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "bytebeasts-bag_system"
+manifest_name = "bytebeasts-bag_system-7ad8a155"

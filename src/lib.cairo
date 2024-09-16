@@ -4,6 +4,7 @@ mod systems {
     mod move;
     mod spawn;
     mod world_setup;
+    mod bag;
 }
 
 mod models {
@@ -29,4 +30,5 @@ mod models {
 
 mod tests {
     mod test_battle;
+    mod test_bag;
 }
