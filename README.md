@@ -60,3 +60,5 @@ This starter project is a constant work in progress and contributions are greatl
    - It can't get better then this, your pull request will be appreciated by the community.
 
 Happy coding!
+
+Just testing the integration with CodeRabbit
