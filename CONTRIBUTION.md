@@ -1,6 +1,6 @@
 # Contribution Guidelines
-Thank you for considering contributing to this project! We appreciate your time and effort in improving our work. Below are the guidelines to help you contribute effectively.
-But first, join our [Telegram]([url](https://t.me/+-84e2pqLtqNkZDAx))!
+Thank you for considering contributing to this project! We appreciate your time and effort in improving our work. Below are the guidelines to help you contribute effectively,
+but first, join our [Telegram](https://t.me/+-84e2pqLtqNkZDAx)!
 
 # How to Contribute
 ### 1. Fork the Repository: 
