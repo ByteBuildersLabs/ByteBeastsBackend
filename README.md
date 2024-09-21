@@ -23,6 +23,7 @@ The official Byte Beasts guide, the quickest and most streamlined way to get you
 Read the full tutorial [here](https://book.dojoengine.org/tutorial/dojo-starter).
 
 ## Running Locally
+To run locally:
 
 #### Terminal one (Make sure this is running)
 ```bash
