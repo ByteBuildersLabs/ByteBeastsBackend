@@ -42,21 +42,8 @@ sozo migrate apply
 torii --world 0x70835f8344647b1e573fe7aeccbf044230089eb19624d3c7dea4080f5dcb025 --allowed-origins "*"
 ```
 
----
-
 ## Contribution
 
-This starter project is a constant work in progress and contributions are greatly appreciated!
+We welcome contributions from developers of all levels! If you're interested in contributing to this project, please follow our  [CONTRIBUTION GUIDELINES](./CONTRIBUTION.md) to get started.
 
-1. **Report a Bug**
-
-   - If you think you have encountered a bug, and we should know about it, feel free to report it [here](https://github.com/dojoengine/dojo-starter/issues) and we will take care of it.
-
-2. **Request a Feature**
-
-   - You can also request for a feature [here](https://github.com/dojoengine/dojo-starter/issues), and if it's viable, it will be picked for development.
-
-3. **Create a Pull Request**
-   - It can't get better then this, your pull request will be appreciated by the community.
-
-Happy coding!
+Whether it's fixing bugs, improving documentation, or adding new features, your help is greatly appreciated. Don't hesitate to ask questions or reach out for support—we're here to help!
