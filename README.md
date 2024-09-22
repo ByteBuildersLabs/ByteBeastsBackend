@@ -24,58 +24,58 @@ Read the full tutorial [here](https://book.dojoengine.org/tutorial/dojo-starter)
 
 ## Prerequisites
 
-To work with Dojo, you need to have Git, Rust and Scarb installed on your PC to satisfy Dojo dependencies. You can install them with the following steps:
+To be able to run the ByteBeasts backend you need to have Git, Rust and Scarb installed on your PC to satisfy Dojo dependencies. You can install them with the following steps:
 
-#### Install Rust
+### Install Rust
 
 Go to the [Rust installation page](https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-linux-or-macos)
 
 After installing Rust, ensure your `PATH` environment variable includes the Cargo bin directory (usually `$HOME/.cargo/bin`).
 
-#### Install Git
+### Install Git
 Go to the [Git installation page](https://git-scm.com/downloads) and follow the instructions for your operating system to install Git.
 
-#### Install Scarb
+### Install Scarb
 The Dojo toolchain integrates [Scarb](https://docs.swmansion.com/scarb/) to build and run Dojo projects, installation instructions are [here](https://docs.swmansion.com/scarb/download.html).
 
-### Install Dojo using `dojoup`
+## Install Dojo using `dojoup`
 
 You can install with the `dojoup` version manager which enables you to easily install, update and manage your Dojo installation.
 
-#### Install dojoup
-```
+### Install dojoup
+```bash
 curl -L https://install.dojoengine.org | bash
 ```
-#### Install the latest Dojo release
-```
+### Install the latest Dojo release
+```bash
 dojoup
 ```
 
-### Install Dojo using `asdf`
+## Install Dojo using `asdf`
 
 You can alternatively use the `asdf` package manager to install and manage your Dojo installation.
 
-#### Install asdf
+### Install asdf
 
 Follow the [asdf installation instructions](https://asdf-vm.com/guide/getting-started.html)
 
-#### Add the asdf-dojo plugin
+### Add the asdf-dojo plugin
 
-```
+```bash
 asdf plugin add dojo https://github.com/dojoengine/asdf-dojo
 ```
 
-#### Install the latest or a specific version
+### Install the latest or a specific version
 
-```
+```bash
 asdf install dojo latest      # For the latest version
 asdf install dojo 0.7.0       # For a specific version
 
 ```
 
-#### Set the global or local version
+### Set the global or local version
 
-```
+```bash
 asdf global dojo latest       # Set globally
 asdf local dojo 0.7.0         # Set locally in your project directory
 
