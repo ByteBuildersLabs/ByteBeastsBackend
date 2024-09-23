@@ -38,7 +38,7 @@ Go to the [Git installation page](https://git-scm.com/downloads) and follow the 
 ### Install Scarb
 The Dojo toolchain integrates [Scarb](https://docs.swmansion.com/scarb/) to build and run Dojo projects, installation instructions are [here](https://docs.swmansion.com/scarb/download.html).
 
-## Install Dojo using `dojoup`
+### Install Dojo using `dojoup`
 
 You can install with the `dojoup` version manager which enables you to easily install, update and manage your Dojo installation.
 
@@ -51,7 +51,7 @@ curl -L https://install.dojoengine.org | bash
 dojoup
 ```
 
-## Install Dojo using `asdf`
+### Install Dojo using `asdf`
 
 You can alternatively use the `asdf` package manager to install and manage your Dojo installation.
 
@@ -83,13 +83,13 @@ asdf local dojo 0.7.0         # Set locally in your project directory
 
 ## Running Locally
 
-#### Terminal one (Make sure this is running)
+### Terminal one (Make sure this is running)
 ```bash
 # Run Katana
 katana --disable-fee --allowed-origins "*"
 ```
 
-#### Terminal two
+### Terminal two
 ```bash
 # Build the example
 sozo build
