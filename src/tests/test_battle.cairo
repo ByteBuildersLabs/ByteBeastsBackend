@@ -259,12 +259,18 @@ mod tests {
 
     #[test]
     fn test_battle_player_wins() {
+        println!("-> Battle Started!");
         let (world, battle_system) = setup_battle();
         let battle_id = 1;
 
         let mut battle = get!(world, battle_id, (Battle));
         let mut player_beast = get!(world, battle.active_beast_player, (Beast));
         let mut opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
+        println!("-> Player beast: {}", player_beast.beast_name);
+        println!("-> Health points: {}", player_beast.hp);
+        
+        println!("-> Opponent beast: {}", opponent_beast.beast_name);
+        println!("-> Health points: {}", opponent_beast.hp);
         
         let mt_player_beast_id = player_beast.mt1;
         let mt_player_beast = get!(world, mt_player_beast_id, (Mt));
@@ -279,23 +285,33 @@ mod tests {
         battle_system.attack(battle_id, mt_player_beast_id);
         opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
         assert!(opponent_beast.current_hp == opponent_beast.hp - player_beast_damage, "Wrong opponent beast health");
+        println!("-> Player has performed an attack with MT: {}", mt_player_beast.mt_name);
+        println!("-> Opponent beast health points: {}", opponent_beast.current_hp);
         
         // opponent turn
         battle_system.opponent_turn(battle_id);
         player_beast = get!(world, battle.active_beast_player, (Beast));   
         assert!(player_beast.current_hp == player_beast.hp - opponent_beast_damage, "Wrong player beast health");
+        println!("-> Opponent has performed an attack with MT: {}", mt_opponent_beast.mt_name);
+        println!("-> Player beast health points: {}", player_beast.current_hp);
         
         // use potion
         let potion_id = 1;
+        let potion = get!(world, potion_id, (Potion));
         battle_system.use_potion(battle_id, potion_id);
         player_beast = get!(world, battle.active_beast_player, (Beast));
         assert!(player_beast.current_hp == 200, "Wrong beast health after potion");
+        println!("-> Player used a {} potion", potion.potion_name);
+        println!("-> Player beast health points after potion: {}", player_beast.current_hp);
 
         // attack with fire punch(one shot one kill)
         battle_system.attack(battle_id, 4);
-
         opponent_beast = get!(world, battle.active_beast_opponent, (Beast));
         assert!(opponent_beast.current_hp == 0, "Wrong opponent beast health");
+        println!("-> Player has performed an attack with MT: {}", mt_player_beast.mt_name);
+        println!("-> Opponent beast health points: {}", opponent_beast.current_hp);
+        println!("-> Player wins the battle!");
+        
        
         battle = get!(world, battle_id, (Battle));
         assert!(battle.battle_active == 0, "Wrong battle status");
