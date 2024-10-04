@@ -48,7 +48,7 @@ curl -L https://install.dojoengine.org | bash
 ```
 ### Install the latest Dojo release 🚀
 ```bash
-dojoup
+dojoup --version v1.0.0-alpha.5
 ```
 
 ### Install Dojo using `asdf` 📦
