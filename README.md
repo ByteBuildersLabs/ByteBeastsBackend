@@ -53,10 +53,7 @@ You can install with the `dojoup` version manager which enables you to easily in
 ```bash
 curl -L https://install.dojoengine.org | bash
 ```
-### Install the latest Dojo release 🚀
-```bash
-dojoup v1.0.0-alpha.5
-```
+### Install the Dojo v1.0.0-alpha.5 release 🚀
 
 ### Install Dojo using `asdf` 📦
 
