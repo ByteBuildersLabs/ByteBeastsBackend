@@ -1,20 +1,27 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/mark-dark.svg">
-  <img alt="Dojo logo" align="right" width="120" src=".github/mark-light.svg">
+  <img    loading="lazy"     style="max-width: 120px; float: right; margin: 0 0 20px 20px;"
+  alt="ByteBeats official logo" align="right" width="120" src="./assets/bytebeastslogo.svg">
 </picture>
 
-<a href="https://twitter.com/dojostarknet">
-<img src="https://img.shields.io/twitter/follow/dojostarknet?style=social"/>
+<a href="https://x.com/0xByteBeasts">
+<img src="https://img.shields.io/twitter/follow/0xByteBeasts?style=social"/>
 </a>
-<a href="https://github.com/dojoengine/dojo">
-<img src="https://img.shields.io/github/stars/dojoengine/dojo?style=social"/>
+<a href="https://x.com/0xByteBeasts">
+<img src="https://img.shields.io/github/stars/ByteBuildersLabs?style=social"/>
 </a>
 
-[![discord](https://img.shields.io/badge/join-dojo-green?logo=discord&logoColor=white)](https://discord.gg/PwDa2mKhR4)
+
 [![Telegram Chat][tg-badge]][tg-url]
 
 [tg-badge]: https://img.shields.io/endpoint?color=neon&logo=telegram&label=chat&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fdojoengine
-[tg-url]: https://t.me/dojoengine
+[tg-url]: https://t.me/+-84e2pqLtqNkZDAx
+
+
+<style>
+  h1 { margin-top: 30px; }
+</style>
+
 
 # Byte Beasts: Official Guide 🐉🎮
 
@@ -46,10 +53,7 @@ You can install with the `dojoup` version manager which enables you to easily in
 ```bash
 curl -L https://install.dojoengine.org | bash
 ```
-### Install the latest Dojo release 🚀
-```bash
-dojoup
-```
+### Install the Dojo v1.0.0-alpha.5 release 🚀
 
 ### Install Dojo using `asdf` 📦
 
@@ -106,6 +110,7 @@ torii --world 0x70835f8344647b1e573fe7aeccbf044230089eb19624d3c7dea4080f5dcb025 
 We welcome contributions from developers of all levels! If you're interested in contributing to this project, please follow our  [CONTRIBUTION GUIDELINES](./CONTRIBUTION.md) to get started.
 
 Whether it's fixing bugs, improving documentation, or adding new features, your help is greatly appreciated. Don't hesitate to ask questions or reach out for support—we're here to help!
+
 
 ## Communication channel 📢
 If you're a contributor or would like to connect with the project maintainers, feel free to join our [Telegram](https://t.me/+-84e2pqLtqNkZDAx) group!
