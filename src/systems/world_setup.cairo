@@ -6,7 +6,7 @@ use bytebeasts::{
 };
 
 #[dojo::contract]
-pub mod world_setup {
+mod world {
     use starknet::{ContractAddress, get_caller_address};
     use bytebeasts::{
         models::{
@@ -17,7 +17,6 @@ pub mod world_setup {
 
     fn dojo_init(
         world: @IWorldDispatcher,
-        contract_address: ContractAddress,
     ) {
         // Set Beasts
         set!(
