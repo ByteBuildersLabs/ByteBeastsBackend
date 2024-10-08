@@ -18,11 +18,6 @@
 [tg-url]: https://t.me/+-84e2pqLtqNkZDAx
 
 
-<style>
-  h1 { margin-top: 30px; }
-</style>
-
-
 # Byte Beasts: Official Guide 🐉🎮
 
 The official Byte Beasts guide, the quickest and most streamlined way to get your Dojo provable game up and running. This guide will assist you with the initial setup, from cloning the repository to deploying your world.
