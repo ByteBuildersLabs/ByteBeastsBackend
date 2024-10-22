@@ -22,13 +22,13 @@
 <table>
   <tr>
     <td align="center">
-      <img src="Maintainers/danielcdz.everai.png" width="100px;" alt="Maintainer: Luis"/>
+      <img src="assets/danielcdz.everai.png" width="100px;" alt="Maintainer: danielcdz"/>
       <br />
       <a href="https://t.me/danielcdz">danielcdz</a>
       <br />
     </td>
     <td align="center">
-      <img src="Maintainers/marco.everai.png" width="100px;" alt="Maintainer: JuanDi"/>
+      <img src="assets/marco.everai.jpg" width="100px;" alt="Maintainer: Marco"/>
       <br />
       <a href="https://t.me/coxmar23">Marco</a>
       <br />
