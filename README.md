@@ -22,15 +22,15 @@
 <table>
   <tr>
     <td align="center">
-      <img src="Maintainers/LuisEverai.png" width="100px;" alt="Maintainer: Luis"/>
+      <img src="Maintainers/danielcdz.everai.png" width="100px;" alt="Maintainer: Luis"/>
       <br />
       <a href="https://t.me/danielcdz">danielcdz</a>
       <br />
     </td>
     <td align="center">
-      <img src="Maintainers/juandiEverai.jpeg" width="100px;" alt="Maintainer: JuanDi"/>
+      <img src="Maintainers/marco.everai.png" width="100px;" alt="Maintainer: JuanDi"/>
       <br />
-      <a href="https://t.me/JuanDixCode">JuanDi</a>
+      <a href="https://t.me/coxmar23">Marco</a>
       <br />
     </td>
   </tr>
