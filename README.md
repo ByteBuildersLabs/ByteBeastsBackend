@@ -17,6 +17,24 @@
 [tg-badge]: https://img.shields.io/endpoint?color=neon&logo=telegram&label=chat&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fdojoengine
 [tg-url]: https://t.me/+-84e2pqLtqNkZDAx
 
+## Maintainers 🥷
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/danielcdz.everai.png" width="100px;" alt="Maintainer: danielcdz"/>
+      <br />
+      <a href="https://t.me/danielcdz">danielcdz</a>
+      <br />
+    </td>
+    <td align="center">
+      <img src="assets/marco.everai.jpg" width="100px;" alt="Maintainer: Marco"/>
+      <br />
+      <a href="https://t.me/coxmar23">Marco</a>
+      <br />
+    </td>
+  </tr>
+</table>
 
 # Byte Beasts: Official Guide 🐉🎮
 
@@ -109,4 +127,3 @@ Whether it's fixing bugs, improving documentation, or adding new features, your 
 
 ## Communication channel 📢
 If you're a contributor or would like to connect with the project maintainers, feel free to join our [Telegram](https://t.me/+-84e2pqLtqNkZDAx) group!
-
