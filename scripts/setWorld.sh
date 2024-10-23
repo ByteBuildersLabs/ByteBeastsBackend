@@ -9,4 +9,4 @@ export WORLD_ADDRESS=$(cat ./manifests/dev/deployment/manifest.json | jq -r '.wo
 echo $WORLD_ADDRESS
 
 # sozo execute --world <WORLD_ADDRESS> <CONTRACT> <ENTRYPOINT>
-sozo execute --world $WORLD_ADDRESS actions setWorld --wait
+sozo execute --world $WORLD_ADDRESS world_setup setWorld --wait

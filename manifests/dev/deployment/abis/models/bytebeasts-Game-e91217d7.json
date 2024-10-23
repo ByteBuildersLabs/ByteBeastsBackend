@@ -363,30 +363,78 @@
   },
   {
     "type": "impl",
-    "name": "potionImpl",
-    "interface_name": "bytebeasts::models::potion::Ipotion"
+    "name": "gameImpl",
+    "interface_name": "bytebeasts::models::game::Igame"
+  },
+  {
+    "type": "enum",
+    "name": "bytebeasts::models::game::GameStatus",
+    "variants": [
+      {
+        "name": "Pending",
+        "type": "()"
+      },
+      {
+        "name": "InProgress",
+        "type": "()"
+      },
+      {
+        "name": "Finished",
+        "type": "()"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
+      }
+    ]
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::potion::Potion",
+    "name": "bytebeasts::models::game::Game",
     "members": [
       {
-        "name": "potion_id",
-        "type": "core::integer::u32"
+        "name": "game_id",
+        "type": "core::integer::u128"
       },
       {
-        "name": "potion_name",
-        "type": "core::felt252"
+        "name": "player_1",
+        "type": "core::starknet::contract_address::ContractAddress"
       },
       {
-        "name": "potion_effect",
-        "type": "core::integer::u32"
+        "name": "player_2",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "player_3",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "player_4",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "status",
+        "type": "bytebeasts::models::game::GameStatus"
+      },
+      {
+        "name": "is_private",
+        "type": "core::bool"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::potion::Ipotion",
+    "name": "bytebeasts::models::game::Igame",
     "items": [
       {
         "type": "function",
@@ -394,7 +442,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::potion::Potion"
+            "type": "bytebeasts::models::game::Game"
           }
         ],
         "outputs": [],
@@ -404,7 +452,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::potion::potion::Event",
+    "name": "bytebeasts::models::game::game::Event",
     "kind": "enum",
     "variants": []
   }

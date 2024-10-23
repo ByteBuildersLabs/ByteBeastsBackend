@@ -363,8 +363,80 @@
   },
   {
     "type": "impl",
-    "name": "potionImpl",
-    "interface_name": "bytebeasts::models::potion::Ipotion"
+    "name": "npcImpl",
+    "interface_name": "bytebeasts::models::npc::Inpc"
+  },
+  {
+    "type": "enum",
+    "name": "bytebeasts::models::role::Role",
+    "variants": [
+      {
+        "name": "Vendor",
+        "type": "()"
+      },
+      {
+        "name": "Trainer",
+        "type": "()"
+      },
+      {
+        "name": "Guide",
+        "type": "()"
+      },
+      {
+        "name": "QuestGiver",
+        "type": "()"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "bytebeasts::models::coordinates::Coordinates",
+    "members": [
+      {
+        "name": "x",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "y",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "bytebeasts::models::mission_status::MissionStatus",
+    "variants": [
+      {
+        "name": "NotStarted",
+        "type": "()"
+      },
+      {
+        "name": "InProgress",
+        "type": "()"
+      },
+      {
+        "name": "Completed",
+        "type": "()"
+      },
+      {
+        "name": "Failed",
+        "type": "()"
+      }
+    ]
   },
   {
     "type": "struct",
@@ -385,8 +457,62 @@
     ]
   },
   {
+    "type": "struct",
+    "name": "bytebeasts::models::npc::NPC",
+    "members": [
+      {
+        "name": "npc_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "npc_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "npc_description",
+        "type": "core::felt252"
+      },
+      {
+        "name": "npc_role",
+        "type": "bytebeasts::models::role::Role"
+      },
+      {
+        "name": "dialogue",
+        "type": "core::byte_array::ByteArray"
+      },
+      {
+        "name": "is_active",
+        "type": "core::bool"
+      },
+      {
+        "name": "location",
+        "type": "bytebeasts::models::coordinates::Coordinates"
+      },
+      {
+        "name": "importance_level",
+        "type": "core::integer::u8"
+      },
+      {
+        "name": "mission_status",
+        "type": "bytebeasts::models::mission_status::MissionStatus"
+      },
+      {
+        "name": "reward",
+        "type": "core::integer::u16"
+      },
+      {
+        "name": "experience_points",
+        "type": "core::integer::u16"
+      },
+      {
+        "name": "potions",
+        "type": "core::array::Array::<bytebeasts::models::potion::Potion>"
+      }
+    ]
+  },
+  {
     "type": "interface",
-    "name": "bytebeasts::models::potion::Ipotion",
+    "name": "bytebeasts::models::npc::Inpc",
     "items": [
       {
         "type": "function",
@@ -394,7 +520,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::potion::Potion"
+            "type": "bytebeasts::models::npc::NPC"
           }
         ],
         "outputs": [],
@@ -404,7 +530,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::potion::potion::Event",
+    "name": "bytebeasts::models::npc::npc::Event",
     "kind": "enum",
     "variants": []
   }

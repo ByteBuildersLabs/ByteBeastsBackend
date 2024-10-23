@@ -363,8 +363,8 @@
   },
   {
     "type": "impl",
-    "name": "potionImpl",
-    "interface_name": "bytebeasts::models::potion::Ipotion"
+    "name": "bagImpl",
+    "interface_name": "bytebeasts::models::bag::Ibag"
   },
   {
     "type": "struct",
@@ -385,8 +385,30 @@
     ]
   },
   {
+    "type": "struct",
+    "name": "bytebeasts::models::bag::Bag",
+    "members": [
+      {
+        "name": "bag_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "player_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "max_capacity",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "potions",
+        "type": "core::array::Array::<bytebeasts::models::potion::Potion>"
+      }
+    ]
+  },
+  {
     "type": "interface",
-    "name": "bytebeasts::models::potion::Ipotion",
+    "name": "bytebeasts::models::bag::Ibag",
     "items": [
       {
         "type": "function",
@@ -394,7 +416,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::potion::Potion"
+            "type": "bytebeasts::models::bag::Bag"
           }
         ],
         "outputs": [],
@@ -404,7 +426,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::potion::potion::Event",
+    "name": "bytebeasts::models::bag::bag::Event",
     "kind": "enum",
     "variants": []
   }

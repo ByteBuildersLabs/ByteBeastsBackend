@@ -363,30 +363,48 @@
   },
   {
     "type": "impl",
-    "name": "potionImpl",
-    "interface_name": "bytebeasts::models::potion::Ipotion"
+    "name": "achievement_progressImpl",
+    "interface_name": "bytebeasts::models::achievements::Iachievement_progress"
+  },
+  {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
+      }
+    ]
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::potion::Potion",
+    "name": "bytebeasts::models::achievements::AchievementProgress",
     "members": [
       {
-        "name": "potion_id",
+        "name": "player_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "achievement_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "progress",
         "type": "core::integer::u32"
       },
       {
-        "name": "potion_name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "potion_effect",
-        "type": "core::integer::u32"
+        "name": "is_unlocked",
+        "type": "core::bool"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::potion::Ipotion",
+    "name": "bytebeasts::models::achievements::Iachievement_progress",
     "items": [
       {
         "type": "function",
@@ -394,7 +412,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::potion::Potion"
+            "type": "bytebeasts::models::achievements::AchievementProgress"
           }
         ],
         "outputs": [],
@@ -404,7 +422,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::potion::potion::Event",
+    "name": "bytebeasts::models::achievements::achievement_progress::Event",
     "kind": "enum",
     "variants": []
   }
