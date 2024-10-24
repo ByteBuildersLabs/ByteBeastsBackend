@@ -68,7 +68,7 @@ original_class_hash = "0x6ab57932e6f1d360557867a6775d89180d623a481695d4349f6d356
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/bytebeasts-move_action-62decdb8.json"
 reads = []
-writes = []
+writes = ["bytebeasts-Position"]
 init_calldata = []
 tag = "bytebeasts-move_action"
 manifest_name = "bytebeasts-move_action-62decdb8"
@@ -100,7 +100,13 @@ original_class_hash = "0xad9d2da0783e3a31f6198d7c355bd293e496019e0e335449377a2c0
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/bytebeasts-world_setup-674b640b.json"
 reads = []
-writes = []
+writes = [
+    "bytebeasts-Beast",
+    "bytebeasts-Mt",
+    "bytebeasts-Player",
+    "bytebeasts-Potion",
+    "bytebeasts-Position",
+]
 init_calldata = []
 tag = "bytebeasts-world_setup"
 manifest_name = "bytebeasts-world_setup-674b640b"

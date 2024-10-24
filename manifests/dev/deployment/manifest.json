@@ -2605,7 +2605,9 @@
         }
       ],
       "reads": [],
-      "writes": [],
+      "writes": [
+        "bytebeasts-Position"
+      ],
       "init_calldata": [],
       "tag": "bytebeasts-move_action",
       "manifest_name": "bytebeasts-move_action-62decdb8"
@@ -3088,7 +3090,13 @@
         }
       ],
       "reads": [],
-      "writes": [],
+      "writes": [
+        "bytebeasts-Beast",
+        "bytebeasts-Mt",
+        "bytebeasts-Player",
+        "bytebeasts-Potion",
+        "bytebeasts-Position"
+      ],
       "init_calldata": [],
       "tag": "bytebeasts-world_setup",
       "manifest_name": "bytebeasts-world_setup-674b640b"
