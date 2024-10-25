@@ -364,11 +364,37 @@
   {
     "type": "impl",
     "name": "beastImpl",
-    "interface_name": "bytebeasts::models::Ibeast"
+    "interface_name": "bytebeasts::models::beast::Ibeast"
+  },
+  {
+    "type": "enum",
+    "name": "bytebeasts::models::world_elements::WorldElements",
+    "variants": [
+      {
+        "name": "Crystal",
+        "type": "()"
+      },
+      {
+        "name": "Draconic",
+        "type": "()"
+      },
+      {
+        "name": "Shadow",
+        "type": "()"
+      },
+      {
+        "name": "Light",
+        "type": "()"
+      },
+      {
+        "name": "Titanium",
+        "type": "()"
+      }
+    ]
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Beast",
+    "name": "bytebeasts::models::beast::Beast",
     "members": [
       {
         "name": "beast_id",
@@ -380,7 +406,7 @@
       },
       {
         "name": "beast_type",
-        "type": "core::integer::u32"
+        "type": "bytebeasts::models::world_elements::WorldElements"
       },
       {
         "name": "beast_description",
@@ -434,7 +460,7 @@
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Ibeast",
+    "name": "bytebeasts::models::beast::Ibeast",
     "items": [
       {
         "type": "function",
@@ -442,7 +468,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Beast"
+            "type": "bytebeasts::models::beast::Beast"
           }
         ],
         "outputs": [],
@@ -452,7 +478,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::beast::Event",
+    "name": "bytebeasts::models::beast::beast::Event",
     "kind": "enum",
     "variants": []
   }

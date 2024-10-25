@@ -364,11 +364,45 @@
   {
     "type": "impl",
     "name": "positionImpl",
-    "interface_name": "bytebeasts::models::Iposition"
+    "interface_name": "bytebeasts::models::position::Iposition"
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Vec2",
+    "name": "bytebeasts::models::player::Player",
+    "members": [
+      {
+        "name": "player_id",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "player_name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "beast_1",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "beast_2",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "beast_3",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "beast_4",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "potions",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "bytebeasts::models::coordinates::Coordinates",
     "members": [
       {
         "name": "x",
@@ -382,21 +416,21 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::Position",
+    "name": "bytebeasts::models::position::Position",
     "members": [
       {
         "name": "player",
-        "type": "core::starknet::contract_address::ContractAddress"
+        "type": "bytebeasts::models::player::Player"
       },
       {
-        "name": "vec",
-        "type": "bytebeasts::models::Vec2"
+        "name": "coordinates",
+        "type": "bytebeasts::models::coordinates::Coordinates"
       }
     ]
   },
   {
     "type": "interface",
-    "name": "bytebeasts::models::Iposition",
+    "name": "bytebeasts::models::position::Iposition",
     "items": [
       {
         "type": "function",
@@ -404,7 +438,7 @@
         "inputs": [
           {
             "name": "model",
-            "type": "bytebeasts::models::Position"
+            "type": "bytebeasts::models::position::Position"
           }
         ],
         "outputs": [],
@@ -414,7 +448,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::models::position::Event",
+    "name": "bytebeasts::models::position::position::Event",
     "kind": "enum",
     "variants": []
   }

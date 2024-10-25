@@ -1,0 +1,2 @@
+tag = "bytebeasts-spawn_action"
+writes = [ "bytebeasts-Beast", "bytebeasts-Mt", "bytebeasts-Player", "bytebeasts-Potion","bytebeasts-Position"]

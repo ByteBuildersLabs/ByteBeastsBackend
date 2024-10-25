@@ -9,4 +9,4 @@ export WORLD_ADDRESS="$(cat ./manifests/dev/deployment/manifest.json | jq -r '.w
 echo $WORLD_ADDRESS
 
 # sozo execute --world <WORLD_ADDRESS> <CONTRACT> <ENTRYPOINT>
-sozo execute --world $WORLD_ADDRESS actions move -c 1,15,15 --wait
+sozo execute --world $WORLD_ADDRESS move_action move -c 1,15,15 --wait
