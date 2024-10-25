@@ -1,0 +1,2 @@
+tag = "bytebeasts-world_setup"
+writes = ["bytebeasts-Beast", "bytebeasts-Mt", "bytebeasts-Player", "bytebeasts-Potion","bytebeasts-Position"]

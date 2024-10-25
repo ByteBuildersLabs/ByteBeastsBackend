@@ -128,110 +128,17 @@
   },
   {
     "type": "impl",
-    "name": "ActionsImpl",
-    "interface_name": "bytebeasts::systems::realms::IActions"
-  },
-  {
-    "type": "enum",
-    "name": "bytebeasts::models::game::GameStatus",
-    "variants": [
-      {
-        "name": "Pending",
-        "type": "()"
-      },
-      {
-        "name": "InProgress",
-        "type": "()"
-      },
-      {
-        "name": "Finished",
-        "type": "()"
-      }
-    ]
-  },
-  {
-    "type": "enum",
-    "name": "core::bool",
-    "variants": [
-      {
-        "name": "False",
-        "type": "()"
-      },
-      {
-        "name": "True",
-        "type": "()"
-      }
-    ]
-  },
-  {
-    "type": "struct",
-    "name": "bytebeasts::models::game::Game",
-    "members": [
-      {
-        "name": "game_id",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "player_1",
-        "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "player_2",
-        "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "player_3",
-        "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "player_4",
-        "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "status",
-        "type": "bytebeasts::models::game::GameStatus"
-      },
-      {
-        "name": "is_private",
-        "type": "core::bool"
-      }
-    ]
+    "name": "WorldSetupImpl",
+    "interface_name": "bytebeasts::systems::world_setup::IWorldSetup"
   },
   {
     "type": "interface",
-    "name": "bytebeasts::systems::realms::IActions",
+    "name": "bytebeasts::systems::world_setup::IWorldSetup",
     "items": [
       {
         "type": "function",
-        "name": "create_initial_game_id",
+        "name": "setWorld",
         "inputs": [],
-        "outputs": [],
-        "state_mutability": "external"
-      },
-      {
-        "type": "function",
-        "name": "create_game",
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "bytebeasts::models::game::Game"
-          }
-        ],
-        "state_mutability": "external"
-      },
-      {
-        "type": "function",
-        "name": "join_game",
-        "inputs": [
-          {
-            "name": "game_id",
-            "type": "core::integer::u128"
-          },
-          {
-            "name": "player_2_address",
-            "type": "core::starknet::contract_address::ContractAddress"
-          }
-        ],
         "outputs": [],
         "state_mutability": "external"
       }
@@ -240,11 +147,11 @@
   {
     "type": "impl",
     "name": "IDojoInitImpl",
-    "interface_name": "bytebeasts::systems::realms::actions::IDojoInit"
+    "interface_name": "bytebeasts::systems::world_setup::world_setup::IDojoInit"
   },
   {
     "type": "interface",
-    "name": "bytebeasts::systems::realms::actions::IDojoInit",
+    "name": "bytebeasts::systems::world_setup::world_setup::IDojoInit",
     "items": [
       {
         "type": "function",
@@ -304,7 +211,7 @@
   },
   {
     "type": "event",
-    "name": "bytebeasts::systems::realms::actions::Event",
+    "name": "bytebeasts::systems::world_setup::world_setup::Event",
     "kind": "enum",
     "variants": [
       {
