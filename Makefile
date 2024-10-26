@@ -4,9 +4,6 @@ katana:
 setup:
 	@./scripts/setup.sh
 
-deploy-slot:
-	@./scripts/deploy_slot.sh $(PROFILE) $(ACTION)
-
 init:
 	@mkdir -p .git/hooks
 	@touch .git/hooks/pre-push
