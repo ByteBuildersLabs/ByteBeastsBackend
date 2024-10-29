@@ -11,7 +11,7 @@ use bytebeasts::{
 //                           INTERFACE
 // ***************************************************************
 
-/// Interface defining battle-related actions.
+// Interface defining battle-related actions.
 #[dojo::interface]
 trait IBattleActions {
     // Initializes a battle
@@ -34,7 +34,7 @@ trait IBattleActions {
 //                           CONTRACT MODULE
 // ***************************************************************
 
-/// Contract implementing battle actions.
+// Contract implementing battle actions.
 #[dojo::contract]
 mod battle_system {
 
@@ -57,7 +57,7 @@ mod battle_system {
         message: felt252, // Event message
     }
 
-    /// Event emitted for player status updates.
+    // Event emitted for player status updates.
     #[derive(Copy, Drop, Serde)]
     #[dojo::model]
     #[dojo::event]
@@ -75,7 +75,7 @@ mod battle_system {
 #[abi(embed_v0)]
 impl BattleActionsImpl of IBattleActions<ContractState> {
     
-    /// Initializes a new battle.
+    // Initializes a new battle.
     fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32 {
         let player = get!(world, player_id, (Player)); // Fetch player data
         let opponent = get!(world, opponent_id, (Player)); // Fetch opponent data
@@ -104,19 +104,22 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
             return battle_created_id; // Return battle ID
         }
 
-        /// Checks if the player can flee based on beast levels.
+        // Checks if the player can flee based on beast levels.
         fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool {
             player_beast.level > opponent_beast.level 
         }  
 
-         /// Calculates the damage dealt by an attacker to a defender.
+         // Calculates the damage dealt by an attacker to a defender.
         fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
+            
             let base_damage = mt.mt_power * attacker.attack / defender.defense;  // Basic damage formula
 
-            
+            //TODO: extend with effectivity by type, randomness, etc
+
             let effective_damage = base_damage; // Placeholder for effectiveness adjustments
 
-            // Hardcoded hit chance
+            // TODO: investigate how can we make It random
+
             let hit_chance = 80_u32; // Hardcoded for now
             if hit_chance > mt.mt_accuracy {
                 return 0_u32; // Misses if hit chance is greater than accuracy
@@ -159,7 +162,7 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
 // ***************************************************************
 //                           Player Attack
 // ***************************************************************
-        /// Executes the player's attack in the battle.
+        // Executes the player's attack in the battle.
         fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
             let mut battle = get!(world, battle_id, (Battle)); // Retrieve battle details
 
@@ -195,7 +198,7 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
 // ***************************************************************
 //                           Use Potion
 // ***************************************************************
-        /// Allows the player to use a potion on their beast to restore health.
+        // Allows the player to use a potion on their beast to restore health.
         fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
             let mut battle = get!(world, battle_id, (Battle));  // Retrieve battle details
 
@@ -222,7 +225,7 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
 // ***************************************************************
 //                           Flee Action
 // ***************************************************************
-        /// Attempts to flee the battle. Success is determined by the relative levels of the player and opponent beasts.
+        // Attempts to flee the battle. Success is determined by the relative levels of the player and opponent beasts.
         fn flee(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle)); // Retrieve battle details
 
