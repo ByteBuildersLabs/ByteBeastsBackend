@@ -14,13 +14,20 @@ use bytebeasts::{
 /// Interface defining battle-related actions.
 #[dojo::interface]
 trait IBattleActions {
-    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32; // Initializes a battle
-    fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool; // Checks flee success
-    fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32; // Calculates damage
-    fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32); // Handles opponent's turn
-    fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32); // Executes an attack
-    fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32); // Uses a potion
-    fn flee(ref world: IWorldDispatcher, battle_id: u32); // Attempts to flee
+    // Initializes a battle
+    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32; 
+    // Checks flee success
+    fn check_flee_success(player_beast: Beast, opponent_beast: Beast) -> bool; 
+    // Calculates damage
+    fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32; 
+    // Handles opponent's turn
+    fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32); 
+    // Executes an attack
+    fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32); 
+    // Uses a potion
+    fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32); 
+    // Attempts to flee
+    fn flee(ref world: IWorldDispatcher, battle_id: u32); 
 }
 
 // ***************************************************************
@@ -30,18 +37,15 @@ trait IBattleActions {
 /// Contract implementing battle actions.
 #[dojo::contract]
 mod battle_system {
-// ***************************************************************
-//                           IMPORTS
-// ***************************************************************
 
     use super::{IBattleActions}; 
     use bytebeasts::{
         models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
     };
 
-    // ***************************************************************
-    //                       EVENTS
-    // ***************************************************************
+// ***************************************************************
+//                       EVENTS
+// ***************************************************************
 
     /// Event emitted for battle status updates.
     #[derive(Copy, Drop, Serde)]
