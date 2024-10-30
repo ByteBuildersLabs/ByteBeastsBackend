@@ -1,10 +1,7 @@
-
 // Required modules and models for the battle system.
 use bytebeasts::{
     models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
 };
-
-
 
 // Interface defining battle-related actions.
 #[dojo::interface]
@@ -22,23 +19,18 @@ trait IBattleActions {
     // Uses a potion
     fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32); 
     // Attempts to flee
-    fn flee(ref world: IWorldDispatcher, battle_id: u32); 
+    fn flee(ref world: IWorldDispatcher, battle_id: u32);
 }
-
-
 
 // Contract implementing battle actions.
 #[dojo::contract]
 mod battle_system {
-
-    use super::{IBattleActions}; 
+    use super::{IBattleActions};
     use bytebeasts::{
         models::{beast::Beast, mt::Mt, player::Player, battle::Battle, potion::Potion},
     };
 
-
-
-    /// Event emitted for battle status updates.
+    // Event emitted for battle status updates.
     #[derive(Copy, Drop, Serde)]
     #[dojo::model]
     #[dojo::event]
@@ -58,19 +50,17 @@ mod battle_system {
         message: felt252, // Event message
     }
 
+    #[abi(embed_v0)]
+    impl BattleActionsImpl of IBattleActions<ContractState> {
+        // Initializes a new battle.
+        fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32 {
+            let player = get!(world, player_id, (Player)); // Fetch player data
+            let opponent = get!(world, opponent_id, (Player)); // Fetch opponent data
+            let active_beast_player = get!(world, player.beast_1, (Beast)); // Player's beast
+            let active_beast_opponent = get!(world, opponent.beast_1, (Beast)); // Opponent's beast
 
 
-#[abi(embed_v0)]
-impl BattleActionsImpl of IBattleActions<ContractState> {
-    
-    // Initializes a new battle.
-    fn init_battle(ref world: IWorldDispatcher, player_id: u32, opponent_id: u32) -> u32 {
-        let player = get!(world, player_id, (Player)); // Fetch player data
-        let opponent = get!(world, opponent_id, (Player)); // Fetch opponent data
-        let active_beast_player = get!(world, player.beast_1, (Beast)); // Player's beast
-        let active_beast_opponent = get!(world, opponent.beast_1, (Beast)); // Opponent's beast
-
-        let battle_created_id = 1; // Temporarily hardcoded battle ID
+            let battle_created_id = 1; // Hardcoded for now
             set!(
                 world,
                 (Battle {
@@ -97,16 +87,15 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
             player_beast.level > opponent_beast.level 
         }  
 
-         // Calculates the damage dealt by an attacker to a defender.
+        // Calculates the damage dealt by an attacker to a defender.
         fn calculate_damage(mt: Mt, attacker: Beast, defender: Beast) -> u32 {
-            
-            let base_damage = mt.mt_power * attacker.attack / defender.defense;  // Basic damage formula
+            let base_damage = mt.mt_power * attacker.attack / defender.defense;
 
             //TODO: extend with effectivity by type, randomness, etc
-
-            let effective_damage = base_damage; // Placeholder for effectiveness adjustments
+            let effective_damage = base_damage; 
 
             // TODO: investigate how can we make It random
+            // let hit_chance = random_felt252() % 100_u32;
 
             let hit_chance = 80_u32; // Hardcoded for now
             if hit_chance > mt.mt_accuracy {
@@ -116,9 +105,7 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
             effective_damage
         }
 
-
-
-        /// Executes the opponent's turn in the battle.
+        // Executes the opponent's turn in the battle.
         fn opponent_turn(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle)); // Retrieve battle details
 
@@ -143,7 +130,6 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
                 set!(world, (battle)); // Update battle status in the world
             }
         }
-
 
         // Executes the player's attack in the battle.
         fn attack(ref world: IWorldDispatcher, battle_id: u32, mt_id: u32) {
@@ -175,9 +161,8 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
                 let message = 'Attack Performed!';
                 emit!(world, (StatusBattle { battle_id,  message })); // Emit message indicating the attack was performed
             }
-            }
-        }
 
+        }
 
         // Allows the player to use a potion on their beast to restore health.
         fn use_potion(ref world: IWorldDispatcher, battle_id: u32, potion_id: u32) {
@@ -203,7 +188,6 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
             emit!(world, (StatusBattle { battle_id,  message }));
         }
 
-
         // Attempts to flee the battle. Success is determined by the relative levels of the player and opponent beasts.
         fn flee(ref world: IWorldDispatcher, battle_id: u32) {
             let mut battle = get!(world, battle_id, (Battle)); // Retrieve battle details
@@ -226,6 +210,7 @@ impl BattleActionsImpl of IBattleActions<ContractState> {
                 let message = 'Flee failed!';
                 emit!(world, (StatusBattle { battle_id,  message }));
             }
+
         }
     }
 }
