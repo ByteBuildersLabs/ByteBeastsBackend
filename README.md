@@ -11,7 +11,6 @@
 <img src="https://img.shields.io/github/stars/ByteBuildersLabs?style=social"/>
 </a>
 
-
 [![Telegram Chat][tg-badge]][tg-url]
 
 [tg-badge]: https://img.shields.io/endpoint?color=neon&logo=telegram&label=chat&style=flat-square&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fdojoengine
@@ -53,9 +52,11 @@ Go to the [Rust installation page](https://doc.rust-lang.org/book/ch01-01-instal
 After installing Rust, ensure your `PATH` environment variable includes the Cargo bin directory (usually `$HOME/.cargo/bin`).
 
 ### Install Git 🧑‍💻
+
 Go to the [Git installation page](https://git-scm.com/downloads) and follow the instructions for your operating system to install Git.
 
 ### Install Scarb ⚙️
+
 The Dojo toolchain integrates [Scarb](https://docs.swmansion.com/scarb/) to build and run Dojo projects, installation instructions are [here](https://docs.swmansion.com/scarb/download.html).
 
 ### Install Dojo using `dojoup` 🥋
@@ -63,10 +64,14 @@ The Dojo toolchain integrates [Scarb](https://docs.swmansion.com/scarb/) to buil
 You can install with the `dojoup` version manager which enables you to easily install, update and manage your Dojo installation.
 
 ### Install dojoup 🛠️
+
 ```bash
 curl -L https://install.dojoengine.org | bash
 ```
+
 ### Install the Dojo v1.0.0-alpha.5 release 🚀
+
+dojoup --version 1.0.0-alpha.5
 
 ### Install Dojo using `asdf` 📦
 
@@ -90,7 +95,7 @@ asdf install dojo 0.7.0       # For a specific version
 
 ```
 
-### Set the global or local version  📁
+### Set the global or local version 📁
 
 ```bash
 asdf global dojo latest       # Set globally
@@ -98,32 +103,48 @@ asdf local dojo 0.7.0         # Set locally in your project directory
 
 ```
 
+### Setup the hooks
+
+This project uses `Git hooks` to ensure code quality and prevent issues before they reach the remote repository.
+
+#### Pre-push Hook
+
+We have implemented a `pre-push` hook that automatically runs tests before any code is pushed to the remote repository. This helps maintain code quality and prevents broken code from being pushed.
+
+##### What it does
+
+- Runs `sozo test` automatically before each push
+- Blocks the push if tests fail
+- Allows the push to proceed only if all tests pass
+
+##### Setup Instructions
+
+```bash
+# Run Katana
+make init
+```
+
 ## Running Locally 🖥️
 
 ### Terminal one (Make sure this is running) 🏃
+
 ```bash
 # Run Katana
-katana --disable-fee --allowed-origins "*"
+make katana
 ```
 
 ### Terminal two 🔄
+
 ```bash
-# Build the example
-sozo build
-
-# Migrate the example
-sozo migrate apply
-
-# Start Torii
-torii --world 0x70835f8344647b1e573fe7aeccbf044230089eb19624d3c7dea4080f5dcb025 --allowed-origins "*"
+# Build migrate and start torii
+make setup
 ```
 
 ## Contribution 🤝
-
 We welcome contributions from developers of all levels! If you're interested in contributing to this project, please follow our  [CONTRIBUTION GUIDELINES](./docs/contribution/CONTRIBUTION.md) to get started.
 
 Whether it's fixing bugs, improving documentation, or adding new features, your help is greatly appreciated. Don't hesitate to ask questions or reach out for support—we're here to help!
 
-
 ## Communication channel 📢
+
 If you're a contributor or would like to connect with the project maintainers, feel free to join our [Telegram](https://t.me/+-84e2pqLtqNkZDAx) group!
