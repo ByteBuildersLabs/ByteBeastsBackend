@@ -1,7 +1,3 @@
-// ***************************************************************
-//                           MODEL DEFINITION
-// ***************************************************************
-
 // Defines the `Battle` Model, which represents a battle between two players.
 // Includes various fields to track the state and progress of the battle.
 #[derive(Copy, Drop, Serde)]
@@ -30,16 +26,10 @@ pub struct Battle {
     pub turn: u32,
 }
 
-// ***************************************************************
-//                           TEST MODULE
-// ***************************************************************
+
 
 #[cfg(test)]
 mod tests {
-
-    // ***************************************************************
-    //                   TEST CASE: Battle Initialization
-    // ***************************************************************
 
     use bytebeasts::{models::{battle::Battle},};
 
