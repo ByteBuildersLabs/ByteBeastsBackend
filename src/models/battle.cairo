@@ -1,19 +1,38 @@
+// Defines the `Battle` Model, which represents a battle between two players.
+// Includes various fields to track the state and progress of the battle.
 #[derive(Copy, Drop, Serde)]
 #[dojo::model]
 pub struct Battle {
+    // Unique identifier for the battle.
     #[key]
     pub battle_id: u32,
+    
+    // ID of the player involved in the battle.
     pub player_id: u32,
+    
+    // ID of the opponent involved in the battle.
     pub opponent_id: u32,
+    
+    // ID of the active beast for the player.
     pub active_beast_player: u32,
+    
+    // ID of the active beast for the opponent.
     pub active_beast_opponent: u32,
+    
+    // Flag to indicate if the battle is currently active (1 for active, 0 for inactive).
     pub battle_active: u32,
+    
+    // Current turn number in the battle.
     pub turn: u32,
 }
 
+
 #[cfg(test)]
 mod tests {
+
     use bytebeasts::{models::{battle::Battle},};
+
+   
 
     #[test]
     fn test_battle_initialization() {
