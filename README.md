@@ -7,7 +7,7 @@
 <a href="https://x.com/0xByteBeasts">
 <img src="https://img.shields.io/twitter/follow/0xByteBeasts?style=social"/>
 </a>
-<a href="https://x.com/0xByteBeasts">
+<a href="https://github.com/ByteBuildersLabs/ByteBeastsBackend/stargazers">
 <img src="https://img.shields.io/github/stars/ByteBuildersLabs?style=social"/>
 </a>
 
