@@ -8,7 +8,7 @@ pub enum TournamentStatus {
 }
 
 
-#[derive(Copy, Drop, Serde)]
+#[derive(Drop, Serde)]
 #[dojo::model]
 pub struct Tournament {
     #[key]

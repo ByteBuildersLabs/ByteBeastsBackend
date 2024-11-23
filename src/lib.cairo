@@ -5,6 +5,7 @@ mod systems {
     mod spawn;
     mod world_setup;
     mod bag;
+    mod tournament;
 }
 
 mod models {
@@ -26,9 +27,11 @@ mod models {
     mod achievement_rarity;
     mod achievement_type;
     mod achievements;
+    mod tournament;
 }
 
 mod tests {
     mod test_battle;
     mod test_bag;
+    mod test_tournament;
 }
