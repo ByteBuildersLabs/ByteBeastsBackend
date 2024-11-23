@@ -1,0 +1,31 @@
+kind = "DojoModel"
+class_hash = "0x2d40a7cd64e9c72b855b55fddaa9de2d4c80aadce9f8a4276bf3d859cb18a9c"
+original_class_hash = "0x2d40a7cd64e9c72b855b55fddaa9de2d4c80aadce9f8a4276bf3d859cb18a9c"
+abi = "manifests/dev/base/abis/models/bytebeasts-Evolution-52744a50.json"
+tag = "bytebeasts-Evolution"
+manifest_name = "bytebeasts-Evolution-52744a50"
+
+[[members]]
+name = "base_beast_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "evolved_beast_id"
+type = "u32"
+key = false
+
+[[members]]
+name = "level_requirement"
+type = "u32"
+key = false
+
+[[members]]
+name = "required_battles"
+type = "u32"
+key = false
+
+[[members]]
+name = "required_item"
+type = "Option<u32>"
+key = false
