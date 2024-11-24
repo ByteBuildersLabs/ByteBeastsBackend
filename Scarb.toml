@@ -13,5 +13,6 @@ move = "./scripts/move.sh"
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.5" }
+alexandria = { git = "https://github.com/keep-starknet-strange/alexandria" }
 
 [[target.dojo]]
