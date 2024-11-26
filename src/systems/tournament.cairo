@@ -13,9 +13,9 @@ trait ITournamentAction {
         current_participants: Array<Player>,
         prize_pool: u32
     );
-    // fn register_player(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32);
-    // fn start_tournament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32);
-    // fn complete_torunament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32);
+    fn register_player(ref world: IWorldDispatcher, tournament_id: u32, new_player: Player);
+    fn start_tournament(ref world: IWorldDispatcher, tournament_id: u32);
+    // fn complete_tournament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32);
     fn get_tournament(world: @IWorldDispatcher, tournament_id: u32) -> Tournament;
 }
 
@@ -49,6 +49,36 @@ mod tournament_system {
                 prize_pool: prize_pool
             };
             set!(world, (tournament))
+        }
+
+        fn register_player(ref world: IWorldDispatcher, tournament_id: u32, new_player: Player) {
+            let mut tournament = get!(world, tournament_id, (Tournament));
+        
+            assert!(tournament.status == TournamentStatus::Pending, "Tournament not open for registration");
+        
+            assert!(
+                tournament.current_participants.len() < tournament.max_participants.try_into().unwrap(), 
+                "Tournament is full"
+            );
+
+            tournament.current_participants.append(new_player);
+
+            set!(world, (tournament));
+        }
+
+        fn start_tournament(ref world: IWorldDispatcher, tournament_id: u32) {
+            let mut tournament = get!(world, tournament_id, (Tournament));
+        
+            assert!(tournament.status == TournamentStatus::Pending, "Tournament not pending");
+        
+            assert!(
+                tournament.current_participants.len() >= 2, 
+                "Not enough participants to start"
+            );
+
+            tournament.status = TournamentStatus::Ongoing;
+
+            set!(world, (tournament));
         }
 
         fn get_tournament(world: @IWorldDispatcher, tournament_id: u32) -> Tournament {
