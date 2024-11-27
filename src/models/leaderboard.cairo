@@ -74,17 +74,17 @@ trait LeaderboardBehavior {
     fn add_entry(ref self: Leaderboard, entry: LeaderboardEntry) -> Result<(), felt252>;
     fn is_full(self: @Leaderboard) -> bool;
     // not implemented:
-    // fn remove_entry(&mut self, player_id: ContractAddress);
-    // fn sort_by_score(&mut self);
+    // fn remove_entry(mut self, player_id: ContractAddress);
+    // fn sort_by_score(mut self);
     // fn get_top_n(&self, n: usize) -> Vec<LeaderboardEntry>;
-    // fn filter_players(&self, filter: LeaderboardFilter) -> Vec<LeaderboardEntry>;
-    // fn get_player_rank(&self, player_id: ContractAddress) -> Option<u32>;
+    // fn filter_players(self, filter: LeaderboardFilter) -> Vec<LeaderboardEntry>;
+    // fn get_player_rank(self, player_id: ContractAddress) -> Option<u32>;
     // fn get_summary(&self) -> LeaderboardSummary;
-    // fn batch_update_entries(&mut self, updates: Vec<LeaderboardEntry>);
-    // fn save_snapshot(&self);
-    // fn get_snapshot(&self, timestamp: u64) -> Option<Leaderboard>;
-    // fn merge_leaderboards(&mut self, other: Leaderboard);
-    // fn last_updated_string(&self) -> felt252;
+    // fn batch_update_entries(mut self, updates: Vec<LeaderboardEntry>);
+    // fn save_snapshot(self);
+    // fn get_snapshot(self, timestamp: u64) -> Option<Leaderboard>;
+    // fn merge_leaderboards(mut self, other: Leaderboard);
+    // fn last_updated_string(self) -> felt252;
 }
 
 
