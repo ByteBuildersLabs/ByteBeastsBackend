@@ -28,6 +28,7 @@ mod models {
     mod achievement_type;
     mod achievements;
     mod tournament;
+    mod leaderboard;
 }
 
 mod tests {

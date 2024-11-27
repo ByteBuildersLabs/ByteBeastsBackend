@@ -2,9 +2,60 @@
 version = 1
 
 [[package]]
+name = "alexandria_data_structures"
+version = "0.2.0"
+source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.5.4#e7b69575f92076e96a83a76efa6bed3c32a15f9f"
+dependencies = [
+ "alexandria_encoding",
+]
+
+[[package]]
+name = "alexandria_encoding"
+version = "0.1.0"
+source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.5.4#e7b69575f92076e96a83a76efa6bed3c32a15f9f"
+dependencies = [
+ "alexandria_math",
+ "alexandria_numeric",
+]
+
+[[package]]
+name = "alexandria_math"
+version = "0.2.0"
+source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.5.4#e7b69575f92076e96a83a76efa6bed3c32a15f9f"
+dependencies = [
+ "alexandria_data_structures",
+]
+
+[[package]]
+name = "alexandria_numeric"
+version = "0.1.0"
+source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.5.4#e7b69575f92076e96a83a76efa6bed3c32a15f9f"
+dependencies = [
+ "alexandria_math",
+]
+
+[[package]]
+name = "alexandria_searching"
+version = "0.1.0"
+source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.5.4#e7b69575f92076e96a83a76efa6bed3c32a15f9f"
+dependencies = [
+ "alexandria_data_structures",
+]
+
+[[package]]
+name = "alexandria_sorting"
+version = "0.1.0"
+source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.5.4#e7b69575f92076e96a83a76efa6bed3c32a15f9f"
+dependencies = [
+ "alexandria_data_structures",
+]
+
+[[package]]
 name = "bytebeasts"
 version = "0.1.0"
 dependencies = [
+ "alexandria_searching",
+ "alexandria_sorting",
  "dojo",
 ]
 
