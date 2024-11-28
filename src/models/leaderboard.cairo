@@ -55,36 +55,6 @@ impl LeaderboardEntryPartialEq of PartialEq<LeaderboardEntry> {
     }
 }
 
-// impl SpanLeaderboardEntryPartialOrd of PartialOrd<@LeaderboardEntry> {
-//     fn le(lhs: @LeaderboardEntry, rhs: @LeaderboardEntry) -> bool {
-//         // less than or equal
-//         lhs.player_id <= rhs.player_id
-//     }
-
-//     fn ge(lhs: @LeaderboardEntry, rhs: @LeaderboardEntry) -> bool {
-//         // greater than or equal
-//         lhs.player_id >= rhs.player_id
-//     }
-
-//     fn lt(lhs: @LeaderboardEntry, rhs: @LeaderboardEntry) -> bool {
-//         lhs.player_id < rhs.player_id
-//     }
-
-//     fn gt(lhs: @LeaderboardEntry, rhs: @LeaderboardEntry) -> bool {
-//         lhs.player_id > rhs.player_id
-//     }
-// }
-
-// impl SpanLeaderboardEntryPartialEq of PartialEq<@LeaderboardEntry> {
-//     fn eq(lhs: @@LeaderboardEntry, rhs: @@LeaderboardEntry) -> bool {
-//         lhs.player_id == rhs.player_id
-//     }
-
-//     fn ne(lhs: @@LeaderboardEntry, rhs: @@LeaderboardEntry) -> bool {
-//         lhs.player_id != rhs.player_id
-//     }
-// }
-
 
 #[derive(Drop, Serde)]
 #[dojo::model]
@@ -96,7 +66,6 @@ pub struct Leaderboard {
     pub entries: Array<LeaderboardEntry>,   // List of leaderboard entries
     pub last_updated: u64,                  // Timestamp of last update
 }
-
 
 
 trait LeaderboardBehavior {
@@ -160,9 +129,6 @@ impl LeaderboardImpl of LeaderboardTrait {
         self.last_updated = starknet::get_block_timestamp();
         Result::Ok(())
     }
-
-
-
 }
 
 
