@@ -7,13 +7,12 @@ use core::{
 use alexandria_data_structures::array_ext::ArrayTraitExt;
 use alexandria_sorting::bubble_sort::bubble_sort_elements;
 
-const MAX_ENTRIES: usize = 5;
 
 #[derive(Copy, Drop, Serde)]
 #[dojo::model]
 pub struct LeaderboardEntry {
     #[key]
-    pub player_id: u32,         // On-chain player address
+    pub player_id: u32,                     // player ID
     pub player_name: felt252,               // Display name
     pub score: u32,                         // Overall score
     pub rank: u32,                          // Rank in the leaderboard
@@ -26,12 +25,10 @@ pub struct LeaderboardEntry {
 //trait for sorting by score
 impl LeaderboardEntryPartialOrd of PartialOrd<LeaderboardEntry> {
     fn le(lhs: LeaderboardEntry, rhs: LeaderboardEntry) -> bool {
-        // less than or equal
         lhs.score <= rhs.score
     }
 
     fn ge(lhs: LeaderboardEntry, rhs: LeaderboardEntry) -> bool {
-        // greater than or equal
         lhs.score >= rhs.score
     }
 
@@ -54,7 +51,6 @@ impl LeaderboardEntryPartialEq of PartialEq<LeaderboardEntry> {
         lhs.player_id != rhs.player_id
     }
 }
-
 
 
 #[derive(Drop, Serde)]
@@ -184,7 +180,7 @@ mod tests {
         result::{Result, ResultTrait},
         array::ArrayTrait,
     };
-    use super::{LeaderboardTrait, MAX_ENTRIES};
+    use super::{LeaderboardTrait};
     use bytebeasts::models::leaderboard::{Leaderboard, LeaderboardEntry};
     use alexandria_data_structures::array_ext::ArrayTraitExt;
     use alexandria_sorting::bubble_sort::bubble_sort_elements;
@@ -232,11 +228,30 @@ mod tests {
         let entry4 = create_mock_entry(9, 'David', 22400, 40, 20, 400, true);
         let entry5 = create_mock_entry(5, 'Eve', 500, 50, 25, 500, true);
 
+        let _ = leaderboard.add_entry(entry4);
+        let _ = leaderboard.add_entry(entry5);
         let entries = array![entry1, entry2, entry3, entry4, entry5];
         let not_added = leaderboard.add_batch(entries);
         assert_eq!(leaderboard.entries.len(), 5, "Wrong number of entries");
-        assert_eq!(not_added.len(), 0, "Wrong number of not added entries");
+        assert_eq!(not_added.len(), 2, "Wrong number of not added entries");
         assert_eq!(leaderboard.entries.at(0).player_name, @'Bob', "Wrong first player name");
         assert_eq!(leaderboard.entries.at(4).player_name, @'Eve', "Wrong last player name");
+    }
+
+    #[test]
+    fn test_remove_entry() {
+        let mut leaderboard = create_empty_leaderboard();
+        let entry1 = create_mock_entry(12, 'Alice', 1100, 10, 5, 100, true);
+        let entry2 = create_mock_entry(2, 'Bob', 200121, 20, 10, 200, true);
+        let entry3 = create_mock_entry(34, 'Charlie', 1300, 30, 15, 300, true);
+        let entry4 = create_mock_entry(9, 'David', 22400, 40, 20, 400, true);
+        let entry5 = create_mock_entry(5, 'Eve', 500, 50, 25, 500, true);
+
+        let entries = array![entry1, entry2, entry3, entry4, entry5];
+        let _ = leaderboard.add_batch(entries);
+        let res = leaderboard.remove_entry(entry3);
+        assert_eq!(res.is_ok(), true);
+        assert_eq!(leaderboard.entries.len(), 4, "Wrong number of entries");
+        assert_eq!(leaderboard.entries.at(2).player_name, @'Alice', "Wrong player name");
     }
 }
