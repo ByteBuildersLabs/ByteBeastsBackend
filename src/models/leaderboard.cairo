@@ -161,6 +161,7 @@ impl LeaderboardImpl of LeaderboardTrait {
                 let _ = self.entries.pop_front();
                 left.append_all(ref self.entries);
                 self.entries = left;
+                self.last_updated = starknet::get_block_timestamp();
                 Result::Ok(())
             },
             Option::None => Result::Err('Entry not found'),
