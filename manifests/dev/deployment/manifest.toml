@@ -94,6 +94,19 @@ manifest_name = "bytebeasts-spawn_action-5176c1e8"
 
 [[contracts]]
 kind = "DojoContract"
+address = "0x2671b8a136f1441cbd5fb6d3d9c5bdc45a3fbf184970b334cfd31ed98cf0b69"
+class_hash = "0x7bbd215ec46e02f1c7aad934c54a58b9081c43939d8afe0e7843e8202d8cea7"
+original_class_hash = "0x7bbd215ec46e02f1c7aad934c54a58b9081c43939d8afe0e7843e8202d8cea7"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/dev/deployment/abis/contracts/bytebeasts-tournament_system-1f2bbf20.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "bytebeasts-tournament_system"
+manifest_name = "bytebeasts-tournament_system-1f2bbf20"
+
+[[contracts]]
+kind = "DojoContract"
 address = "0x1a0997571ba63300bba592512cc9ac1daa8911ee08c049b5693d93c06377d25"
 class_hash = "0xad9d2da0783e3a31f6198d7c355bd293e496019e0e335449377a2c0146880"
 original_class_hash = "0xad9d2da0783e3a31f6198d7c355bd293e496019e0e335449377a2c0146880"
@@ -457,6 +470,82 @@ key = false
 
 [[models]]
 kind = "DojoModel"
+class_hash = "0x13d964c4091be478133a4aadbb278da14229f77225ce8da5dd246e42abc7ac0"
+original_class_hash = "0x13d964c4091be478133a4aadbb278da14229f77225ce8da5dd246e42abc7ac0"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Leaderboard-7e680376.json"
+tag = "bytebeasts-Leaderboard"
+manifest_name = "bytebeasts-Leaderboard-7e680376"
+
+[[models.members]]
+name = "leaderboard_id"
+type = "u64"
+key = true
+
+[[models.members]]
+name = "name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "description"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "entries"
+type = "Array<LeaderboardEntry>"
+key = false
+
+[[models.members]]
+name = "last_updated"
+type = "u64"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x4f9ca94349981f722e598f396bcca466289aca05dcfb277ef562ee02fee333c"
+original_class_hash = "0x4f9ca94349981f722e598f396bcca466289aca05dcfb277ef562ee02fee333c"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-LeaderboardEntry-7237950c.json"
+tag = "bytebeasts-LeaderboardEntry"
+manifest_name = "bytebeasts-LeaderboardEntry-7237950c"
+
+[[models.members]]
+name = "player_id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "player_name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "score"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "wins"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "losses"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "highest_score"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "is_active"
+type = "bool"
+key = false
+
+[[models]]
+kind = "DojoModel"
 class_hash = "0x341a07493baed313e741253a241aa31fc9d40a9c373cd2bae49f85ab66f98cc"
 original_class_hash = "0x341a07493baed313e741253a241aa31fc9d40a9c373cd2bae49f85ab66f98cc"
 abi = "manifests/dev/deployment/abis/models/bytebeasts-Mt-37360d30.json"
@@ -674,4 +763,47 @@ key = true
 [[models.members]]
 name = "message"
 type = "felt252"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x3004c0d548b033db92ed628e38e940ee67b44cf73ffd50a0bc10c334a000aec"
+original_class_hash = "0x3004c0d548b033db92ed628e38e940ee67b44cf73ffd50a0bc10c334a000aec"
+abi = "manifests/dev/deployment/abis/models/bytebeasts-Tournament-12bdecb1.json"
+tag = "bytebeasts-Tournament"
+manifest_name = "bytebeasts-Tournament-12bdecb1"
+
+[[models.members]]
+name = "tournament_id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "name"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "status"
+type = "TournamentStatus"
+key = false
+
+[[models.members]]
+name = "entry_fee"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "max_participants"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "current_participants"
+type = "Array<Player>"
+key = false
+
+[[models.members]]
+name = "prize_pool"
+type = "u32"
 key = false

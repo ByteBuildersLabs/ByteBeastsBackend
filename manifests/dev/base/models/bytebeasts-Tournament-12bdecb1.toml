@@ -1,0 +1,41 @@
+kind = "DojoModel"
+class_hash = "0x3004c0d548b033db92ed628e38e940ee67b44cf73ffd50a0bc10c334a000aec"
+original_class_hash = "0x3004c0d548b033db92ed628e38e940ee67b44cf73ffd50a0bc10c334a000aec"
+abi = "manifests/dev/base/abis/models/bytebeasts-Tournament-12bdecb1.json"
+tag = "bytebeasts-Tournament"
+manifest_name = "bytebeasts-Tournament-12bdecb1"
+
+[[members]]
+name = "tournament_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "status"
+type = "TournamentStatus"
+key = false
+
+[[members]]
+name = "entry_fee"
+type = "u32"
+key = false
+
+[[members]]
+name = "max_participants"
+type = "u32"
+key = false
+
+[[members]]
+name = "current_participants"
+type = "Array<Player>"
+key = false
+
+[[members]]
+name = "prize_pool"
+type = "u32"
+key = false
