@@ -1,5 +1,5 @@
 use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
-use bytebeasts::{models::{player::Player, tournament::Tournament, tournament::TournamentStatus},};
+use bytebeasts::{models::{tournament::Tournament, tournament::TournamentStatus},};
 
 #[dojo::interface]
 trait ITournamentAction {
@@ -10,12 +10,12 @@ trait ITournamentAction {
         status: TournamentStatus,
         entry_fee: u32,
         max_participants: u32,
-        current_participants: Array<Player>,
+        current_participants: Array<u32>,
         prize_pool: u32
     );
-    fn register_player(ref world: IWorldDispatcher, tournament_id: u32, new_player: Player);
+    fn register_player(ref world: IWorldDispatcher, tournament_id: u32, new_player_id: u32);
     fn start_tournament(ref world: IWorldDispatcher, tournament_id: u32);
-    // fn complete_tournament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32);
+    fn complete_tournament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32);
     fn get_tournament(world: @IWorldDispatcher, tournament_id: u32) -> Tournament;
 }
 
@@ -24,7 +24,7 @@ trait ITournamentAction {
 mod tournament_system {
     use super::ITournamentAction;
     use bytebeasts::{
-        models::{player::Player, tournament::Tournament, tournament::TournamentStatus},
+        models::{tournament::Tournament, tournament::TournamentStatus},
     };
 
     #[abi(embed_v0)]
@@ -36,7 +36,7 @@ mod tournament_system {
             status: TournamentStatus,
             entry_fee: u32,
             max_participants: u32,
-            current_participants: Array<Player>,
+            current_participants: Array<u32>,
             prize_pool: u32
         ) {
             let tournament = Tournament {
@@ -51,7 +51,7 @@ mod tournament_system {
             set!(world, (tournament))
         }
 
-        fn register_player(ref world: IWorldDispatcher, tournament_id: u32, new_player: Player) {
+        fn register_player(ref world: IWorldDispatcher, tournament_id: u32, new_player_id: u32) {
             let mut tournament = get!(world, tournament_id, (Tournament));
         
             assert!(tournament.status == TournamentStatus::Pending, "Tournament not open for registration");
@@ -61,7 +61,7 @@ mod tournament_system {
                 "Tournament is full"
             );
 
-            tournament.current_participants.append(new_player);
+            tournament.current_participants.append(new_player_id);
 
             set!(world, (tournament));
         }
@@ -77,6 +77,18 @@ mod tournament_system {
             );
 
             tournament.status = TournamentStatus::Ongoing;
+
+            set!(world, (tournament));
+        }
+
+        fn complete_tournament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32) {
+            let mut tournament = get!(world, tournament_id, (Tournament));
+        
+            assert!(tournament.status == TournamentStatus::Ongoing, "Tournament not ongoing");
+
+            // TODO distribute prize pool to winner
+
+            tournament.status = TournamentStatus::Completed;
 
             set!(world, (tournament));
         }
