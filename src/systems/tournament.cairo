@@ -82,12 +82,22 @@ mod tournament_system {
         }
 
         fn complete_tournament(ref world: IWorldDispatcher, tournament_id: u32, player_id: u32) {
-            let mut tournament = get!(world, tournament_id, (Tournament));
+            let tournament = get!(world, tournament_id, (Tournament));
         
             assert!(tournament.status == TournamentStatus::Ongoing, "Tournament not ongoing");
 
-            // TODO distribute prize pool to winner
+             // Validate winner is a participant
+            let mut is_participant = false;
+            for participant in tournament.current_participants {
+                if participant == player_id {
+                    is_participant = true;
+                    break;
+                }
+            };
+            assert!(is_participant, "Winner not participant");
 
+            // TODO distribute prize pool to winner
+            let mut tournament = get!(world, tournament_id, (Tournament));
             tournament.status = TournamentStatus::Completed;
 
             set!(world, (tournament));

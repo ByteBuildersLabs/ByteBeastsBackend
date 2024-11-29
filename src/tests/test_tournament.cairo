@@ -62,6 +62,27 @@ mod tests {
         }
     }
 
+    const PLAYER3_ID: u32 = 3;
+    const PLAYER3_NAME: felt252 = 'PLAYER3';
+    const PLAYER3_BEAST1: u32 = 0;
+    const PLAYER3_BEAST2: u32 = 0;
+    const PLAYER3_BEAST3: u32 = 0;
+    const PLAYER3_BEAST4: u32 = 0;
+    const PLAYER3_POTIONS: u32 = 0;
+
+    // Helper function to create the third player
+    fn get_player3() -> Player {
+        Player {
+            player_id: PLAYER3_ID,
+            player_name: PLAYER3_NAME,
+            beast_1: PLAYER3_BEAST1,
+            beast_2: PLAYER3_BEAST2,
+            beast_3: PLAYER3_BEAST3,
+            beast_4: PLAYER3_BEAST4,
+            potions: PLAYER3_POTIONS
+        }
+    }
+
     // Initializes the testing environment by creating the world with the required models and deploying the tournament contract
     fn setup_world() -> (IWorldDispatcher, ITournamentActionDispatcher) {
         let mut models = array![
@@ -111,7 +132,7 @@ mod tests {
         let player1 = get_player1();
         set!(world, (player1));
         let player2 = get_player2();
-        set!(world, (player1));
+        set!(world, (player2));
 
         // Creates a tournament with 2 participants
         tournament_system.create_tournament(
@@ -182,15 +203,7 @@ mod tests {
     fn test_register_player_tournament_full() {
         let (world, tournament_system) = setup_tournament_with_players();
 
-        let player3 = Player {
-            player_id: 3,
-            player_name: 'PLAYER3',
-            beast_1: 0,
-            beast_2: 0,
-            beast_3: 0,
-            beast_4: 0,
-            potions: 0
-        };
+        let player3 = get_player3();
         set!(world, (player3));
 
         tournament_system.register_player(TOURNAMENT_ID, player3.player_id);
@@ -255,6 +268,17 @@ mod tests {
         let (_, tournament_system) = setup_tournament();
 
         tournament_system.complete_tournament(TOURNAMENT_ID, PLAYER1_ID);
+    }
+
+    // This test verifies that the declared winner of a tournament must be a participant
+    #[test]
+    #[should_panic(expected: ("Winner not participant", 'ENTRYPOINT_FAILED'))]
+    fn test_complete_tournament_not_participant() {
+        let (_, tournament_system) = setup_tournament_with_players();
+
+        tournament_system.start_tournament(TOURNAMENT_ID);
+
+        tournament_system.complete_tournament(TOURNAMENT_ID, PLAYER3_ID);
     }
 
     // This test verifies the tournament can be completed correctly
