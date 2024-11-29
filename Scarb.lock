@@ -35,14 +35,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "alexandria_searching"
-version = "0.1.0"
-source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.6.0#946e6e2f9d390ad9f345882a352c0dd6f02ef3ad"
-dependencies = [
- "alexandria_data_structures",
-]
-
-[[package]]
 name = "alexandria_sorting"
 version = "0.1.0"
 source = "git+https://github.com/keep-starknet-strange/alexandria.git?tag=cairo-v2.6.0#946e6e2f9d390ad9f345882a352c0dd6f02ef3ad"
@@ -54,7 +46,6 @@ dependencies = [
 name = "bytebeasts"
 version = "0.1.0"
 dependencies = [
- "alexandria_searching",
  "alexandria_sorting",
  "dojo",
 ]
