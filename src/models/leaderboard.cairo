@@ -51,6 +51,16 @@ impl LeaderboardEntryPartialEq of PartialEq<LeaderboardEntry> {
     }
 }
 
+#[generate_trait]
+impl LeaderboardEntryImpl of LeaderboardEntryTrait {
+    fn calculate_score (ref self: LeaderboardEntry) -> u32 {
+        // calculates score based on wins, losses and highest score
+        self.wins * 100 + self.highest_score - self.losses * 70
+    }
+}
+
+
+
 
 #[derive(Drop, Serde)]
 #[dojo::model]
@@ -104,6 +114,28 @@ impl LeaderboardImpl of LeaderboardTrait {
     fn get_leaderboard_length(ref self: Leaderboard) -> u32 {
         // returns number of entries in the leaderboard
         self.entries.len()
+    }
+
+
+    fn update_entry_stats(ref self: Leaderboard, player_id: u32, new_wins: u32, new_losses: u32, new_highest_score: u32) -> Result<(), felt252> {
+        // recalculates score and updates entry in the leaderboard
+        // addning new wins, losses and changing highest score to an old entry
+        match self.get_index_by_player_id(player_id) {
+            Result::Ok(index) => {
+                let mut entry = self.entries.at(index).clone();
+                entry.wins += new_wins;
+                entry.losses += new_losses;
+                if new_highest_score > entry.highest_score {
+                    entry.highest_score = new_highest_score;
+                }
+                entry.score = entry.calculate_score();
+                match self.update_entry(entry) {
+                    Result::Ok(_) => Result::Ok(()),
+                    Result::Err(e) => Result::Err(e),
+                }
+            },
+            Result::Err(e) => Result::Err(e),
+        }
     }
 
     fn get_index_by_player_id(ref self: Leaderboard, player_id: u32) -> Result<u32, felt252> {
@@ -180,6 +212,7 @@ impl LeaderboardImpl of LeaderboardTrait {
             Result::Err(e) => Result::Err(e),
         }
     }
+
 
     fn get_entries(ref self: Leaderboard) -> Array<LeaderboardEntry> {
         // returns all entries in the leaderboard
@@ -407,5 +440,31 @@ mod tests {
         let mut empty_leaderboard = create_empty_leaderboard();
         let empty_slice = empty_leaderboard.get_slice(0, 1);
         assert_eq!(empty_slice.is_err(), true, "Empty leaderboard should return error");
+    }
+
+    #[test]
+    fn test_update_entry_stats() {
+        let mut leaderboard = create_empty_leaderboard();
+        let entry5 = create_mock_entry(5, 'Eve', 500, 50, 25, 500, true);
+        let entry3 = create_mock_entry(34, 'Charlie', 2250, 30, 15, 300, true);
+        let entry1 = create_mock_entry(12, 'Alice', 2400, 10, 5, 100, true);
+        let entry2 = create_mock_entry(2, 'Bob', 200121, 20, 10, 200, true);
+        let entry4 = create_mock_entry(9, 'David', 22400, 40, 20, 400, true);
+
+        let _ = leaderboard.add_batch(array![entry1, entry2, entry3, entry4, entry5]);
+        let new_wins: u32 = 31;
+        let new_losses: u32 = 10;
+        let new_highest_score: u32 = 400;
+        let res = leaderboard.update_entry_stats(34, new_wins, new_losses, new_highest_score);
+        let rank = leaderboard.get_index_by_player_id(34).unwrap();
+
+        let total_wins: u32 = entry3.wins + new_wins;
+        let total_losses: u32 = entry3.losses + new_losses;
+        assert_eq!(res.is_ok(), true);
+        assert_eq!(rank, 2, "Wrong rank after update");
+        assert_eq!(leaderboard.entries.len(), 5, "Wrong number of entries");
+        assert_eq!(leaderboard.entries.at(rank).wins, @total_wins, "Wrong wins");
+        assert_eq!(leaderboard.entries.at(rank).losses, @total_losses, "Wrong losses");
+        assert_eq!(leaderboard.entries.at(rank).highest_score, @new_highest_score, "Wrong highest score");
     }
 }
