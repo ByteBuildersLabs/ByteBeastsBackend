@@ -101,7 +101,7 @@ impl LeaderboardImpl of LeaderboardTrait {
 
     // PUBLIC METHODS
 
-    fn get_liderboard_length(ref self: Leaderboard) -> u32 {
+    fn get_leaderboard_length(ref self: Leaderboard) -> u32 {
         // returns number of entries in the leaderboard
         self.entries.len()
     }
