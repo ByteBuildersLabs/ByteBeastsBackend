@@ -35,6 +35,6 @@ mod models {
 mod tests {
     mod test_battle;
     mod test_bag;
-    mod test_leaderboard;
     mod test_tournament;
+    mod test_leaderboard;
 }
