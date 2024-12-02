@@ -1,0 +1,10 @@
+kind = "DojoContract"
+class_hash = "0x20aead2ca71d2f0bfcbfa28a41b4b7687aa1af2579394c256ca0c4dc73bd2e8"
+original_class_hash = "0x20aead2ca71d2f0bfcbfa28a41b4b7687aa1af2579394c256ca0c4dc73bd2e8"
+base_class_hash = "0x0"
+abi = "manifests/dev/base/abis/contracts/bytebeasts-tournament_system-1f2bbf20.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "bytebeasts-tournament_system"
+manifest_name = "bytebeasts-tournament_system-1f2bbf20"
