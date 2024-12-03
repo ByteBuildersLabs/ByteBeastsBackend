@@ -1,0 +1,31 @@
+kind = "DojoModel"
+class_hash = "0x13d964c4091be478133a4aadbb278da14229f77225ce8da5dd246e42abc7ac0"
+original_class_hash = "0x13d964c4091be478133a4aadbb278da14229f77225ce8da5dd246e42abc7ac0"
+abi = "manifests/dev/base/abis/models/bytebeasts-Leaderboard-7e680376.json"
+tag = "bytebeasts-Leaderboard"
+manifest_name = "bytebeasts-Leaderboard-7e680376"
+
+[[members]]
+name = "leaderboard_id"
+type = "u64"
+key = true
+
+[[members]]
+name = "name"
+type = "felt252"
+key = false
+
+[[members]]
+name = "description"
+type = "felt252"
+key = false
+
+[[members]]
+name = "entries"
+type = "Array<LeaderboardEntry>"
+key = false
+
+[[members]]
+name = "last_updated"
+type = "u64"
+key = false

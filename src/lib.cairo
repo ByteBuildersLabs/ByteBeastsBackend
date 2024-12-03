@@ -29,10 +29,12 @@ mod models {
     mod achievements;
     mod tournament;
     mod season;
+    mod leaderboard;
 }
 
 mod tests {
     mod test_battle;
     mod test_bag;
     mod test_tournament;
+    mod test_leaderboard;
 }
