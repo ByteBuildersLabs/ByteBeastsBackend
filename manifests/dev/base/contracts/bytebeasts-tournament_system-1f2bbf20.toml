@@ -1,6 +1,6 @@
 kind = "DojoContract"
-class_hash = "0x7bbd215ec46e02f1c7aad934c54a58b9081c43939d8afe0e7843e8202d8cea7"
-original_class_hash = "0x7bbd215ec46e02f1c7aad934c54a58b9081c43939d8afe0e7843e8202d8cea7"
+class_hash = "0x20aead2ca71d2f0bfcbfa28a41b4b7687aa1af2579394c256ca0c4dc73bd2e8"
+original_class_hash = "0x20aead2ca71d2f0bfcbfa28a41b4b7687aa1af2579394c256ca0c4dc73bd2e8"
 base_class_hash = "0x0"
 abi = "manifests/dev/base/abis/contracts/bytebeasts-tournament_system-1f2bbf20.json"
 reads = []

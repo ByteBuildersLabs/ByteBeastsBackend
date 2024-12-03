@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x3004c0d548b033db92ed628e38e940ee67b44cf73ffd50a0bc10c334a000aec"
-original_class_hash = "0x3004c0d548b033db92ed628e38e940ee67b44cf73ffd50a0bc10c334a000aec"
+class_hash = "0x6d38c864554f8be34be3ab85e56ce73c86ad695b61b8ccec9553cf208631d0b"
+original_class_hash = "0x6d38c864554f8be34be3ab85e56ce73c86ad695b61b8ccec9553cf208631d0b"
 abi = "manifests/dev/base/abis/models/bytebeasts-Tournament-12bdecb1.json"
 tag = "bytebeasts-Tournament"
 manifest_name = "bytebeasts-Tournament-12bdecb1"
@@ -32,7 +32,7 @@ key = false
 
 [[members]]
 name = "current_participants"
-type = "Array<Player>"
+type = "Array<u32>"
 key = false
 
 [[members]]

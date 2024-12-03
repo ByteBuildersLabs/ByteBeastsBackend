@@ -386,40 +386,6 @@
   },
   {
     "type": "struct",
-    "name": "bytebeasts::models::player::Player",
-    "members": [
-      {
-        "name": "player_id",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "player_name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "beast_1",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "beast_2",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "beast_3",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "beast_4",
-        "type": "core::integer::u32"
-      },
-      {
-        "name": "potions",
-        "type": "core::integer::u32"
-      }
-    ]
-  },
-  {
-    "type": "struct",
     "name": "bytebeasts::models::tournament::Tournament",
     "members": [
       {
@@ -444,7 +410,7 @@
       },
       {
         "name": "current_participants",
-        "type": "core::array::Array::<bytebeasts::models::player::Player>"
+        "type": "core::array::Array::<core::integer::u32>"
       },
       {
         "name": "prize_pool",
