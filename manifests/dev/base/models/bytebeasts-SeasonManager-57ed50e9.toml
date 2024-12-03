@@ -1,0 +1,16 @@
+kind = "DojoModel"
+class_hash = "0x6795f48396469dd05f2357a86bf37d0392c24d938bc0972006834ac365b62c"
+original_class_hash = "0x6795f48396469dd05f2357a86bf37d0392c24d938bc0972006834ac365b62c"
+abi = "manifests/dev/base/abis/models/bytebeasts-SeasonManager-57ed50e9.json"
+tag = "bytebeasts-SeasonManager"
+manifest_name = "bytebeasts-SeasonManager-57ed50e9"
+
+[[members]]
+name = "manager_id"
+type = "u64"
+key = true
+
+[[members]]
+name = "seasons"
+type = "Array<Season>"
+key = false
