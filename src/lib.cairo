@@ -30,6 +30,7 @@ mod models {
     mod tournament;
     mod season;
     mod leaderboard;
+    mod evolution;
 }
 
 mod tests {
