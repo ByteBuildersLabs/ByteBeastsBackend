@@ -13,7 +13,7 @@ move = "./scripts/move.sh"
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.5" }
-# Alexandria versions with tag greater that "cairo-v.5.4" conflict with dojo engine
+# Alexandria versions with tag greater that "cairo-v2.5.4" conflict with dojo engine
 alexandria_sorting = { git = "https://github.com/keep-starknet-strange/alexandria.git", tag = "cairo-v2.6.0" }
 
 [[target.dojo]]
