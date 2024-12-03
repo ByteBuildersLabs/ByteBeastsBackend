@@ -1,5 +1,3 @@
-use super::player::Player;
-
 #[derive(Serde, Copy, Drop, Introspect, PartialEq, Debug)]
 pub enum TournamentStatus {
     Pending,
@@ -17,7 +15,7 @@ pub struct Tournament {
     pub status: TournamentStatus,
     pub entry_fee: u32,
     pub max_participants: u32,
-    pub current_participants: Array<Player>,
+    pub current_participants: Array<u32>,
     pub prize_pool: u32,
 }
 
@@ -25,32 +23,19 @@ pub struct Tournament {
 #[cfg(test)]
 mod tests {
     use bytebeasts::{
-        models::{tournament::Tournament, tournament::TournamentStatus, player::Player}
+        models::{tournament::Tournament, tournament::TournamentStatus}
     };
 
 
     #[test]
     fn test_tournament_initialization() {
-        let mut players = ArrayTrait::new();
-
-        let player_ash = Player {
-            player_id: 1,
-            player_name: 'Ash',
-            beast_1: 1, // Beast 1 assigned
-            beast_2: 0, // No beast assigned
-            beast_3: 0, // No beast assigned
-            beast_4: 0, // No beast assigned
-            potions: 1
-        };
-        players.append(player_ash);
-
         let tournament = Tournament {
             tournament_id: 1,
             name: 'gersonwashere',
             status: TournamentStatus::Pending,
             entry_fee: 1,
             max_participants: 2,
-            current_participants: players,
+            current_participants: array![1],
             prize_pool: 1,
         };
 

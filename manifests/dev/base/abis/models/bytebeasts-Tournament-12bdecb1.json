@@ -386,6 +386,7 @@
   },
   {
     "type": "struct",
+<<<<<<< HEAD
     "name": "bytebeasts::models::player::Player",
     "members": [
       {
@@ -420,6 +421,8 @@
   },
   {
     "type": "struct",
+=======
+>>>>>>> origin/main
     "name": "bytebeasts::models::tournament::Tournament",
     "members": [
       {
@@ -444,7 +447,11 @@
       },
       {
         "name": "current_participants",
+<<<<<<< HEAD
         "type": "core::array::Array::<bytebeasts::models::player::Player>"
+=======
+        "type": "core::array::Array::<core::integer::u32>"
+>>>>>>> origin/main
       },
       {
         "name": "prize_pool",

@@ -151,6 +151,7 @@
   },
   {
     "type": "struct",
+<<<<<<< HEAD
     "name": "bytebeasts::models::player::Player",
     "members": [
       {
@@ -185,6 +186,8 @@
   },
   {
     "type": "struct",
+=======
+>>>>>>> origin/main
     "name": "bytebeasts::models::tournament::Tournament",
     "members": [
       {
@@ -209,7 +212,11 @@
       },
       {
         "name": "current_participants",
+<<<<<<< HEAD
         "type": "core::array::Array::<bytebeasts::models::player::Player>"
+=======
+        "type": "core::array::Array::<core::integer::u32>"
+>>>>>>> origin/main
       },
       {
         "name": "prize_pool",
@@ -247,7 +254,11 @@
           },
           {
             "name": "current_participants",
+<<<<<<< HEAD
             "type": "core::array::Array::<bytebeasts::models::player::Player>"
+=======
+            "type": "core::array::Array::<core::integer::u32>"
+>>>>>>> origin/main
           },
           {
             "name": "prize_pool",
@@ -266,8 +277,13 @@
             "type": "core::integer::u32"
           },
           {
+<<<<<<< HEAD
             "name": "new_player",
             "type": "bytebeasts::models::player::Player"
+=======
+            "name": "new_player_id",
+            "type": "core::integer::u32"
+>>>>>>> origin/main
           }
         ],
         "outputs": [],
@@ -287,6 +303,25 @@
       },
       {
         "type": "function",
+<<<<<<< HEAD
+=======
+        "name": "complete_tournament",
+        "inputs": [
+          {
+            "name": "tournament_id",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "player_id",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+>>>>>>> origin/main
         "name": "get_tournament",
         "inputs": [
           {
