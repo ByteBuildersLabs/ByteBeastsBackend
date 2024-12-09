@@ -1,0 +1,10 @@
+kind = "DojoContract"
+class_hash = "0x1a7893ed15f19f9e8233d342a0a0bea37c58fdcb54b10d867fb2269c77de125"
+original_class_hash = "0x1a7893ed15f19f9e8233d342a0a0bea37c58fdcb54b10d867fb2269c77de125"
+base_class_hash = "0x0"
+abi = "manifests/dev/base/abis/contracts/bytebeasts-leaderboard_system-63f2c524.json"
+reads = []
+writes = []
+init_calldata = []
+tag = "bytebeasts-leaderboard_system"
+manifest_name = "bytebeasts-leaderboard_system-63f2c524"
