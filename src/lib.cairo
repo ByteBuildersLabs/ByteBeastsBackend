@@ -6,6 +6,7 @@ mod systems {
     mod world_setup;
     mod bag;
     mod tournament;
+    mod season;
 }
 
 mod models {
@@ -38,4 +39,5 @@ mod tests {
     mod test_bag;
     mod test_tournament;
     mod test_leaderboard;
+    mod test_season;
 }
