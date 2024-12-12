@@ -1,11 +1,11 @@
 mod systems {
-    //mod battle;
-    //mod realms;
-    //mod move;
-    //mod spawn;
-    //mod world_setup;
-    //mod bag;
-    //mod tournament;
+    mod battle;
+    mod realms;
+    mod move;
+    mod spawn;
+    mod world_setup;
+    mod bag;
+    mod tournament;
     mod leaderboard;
 }
 
@@ -35,8 +35,8 @@ mod models {
 }
 
 mod tests {
-    //mod test_battle;
-   // mod test_bag;
-   // mod test_tournament;
+    mod test_battle;
+    mod test_bag;
+    mod test_tournament;
     mod test_leaderboard;
 }
