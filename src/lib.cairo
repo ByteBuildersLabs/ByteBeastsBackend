@@ -6,6 +6,7 @@ mod systems {
     mod world_setup;
     mod bag;
     mod tournament;
+    mod leaderboard;
 }
 
 mod models {
